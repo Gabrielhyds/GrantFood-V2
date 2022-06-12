@@ -84,42 +84,30 @@ include_once "includes/foto.php";
                     </div>
                     <ul class="sidebar-menu">
 
-                        <li class="menu-header">Components</li>
-                        <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Components</span></a>
-                            <ul class="menu-dropdown">
-                                <li><a href="general.html"><i class="ion ion-ios-circle-outline"></i> Basic</a></li>
-                                <li><a href="components.html"><i class="ion ion-ios-circle-outline"></i> Main Components</a></li>
-                                <li><a href="buttons.html"><i class="ion ion-ios-circle-outline"></i> Buttons</a></li>
-                                <li><a href="toastr.html"><i class="ion ion-ios-circle-outline"></i> Toastr</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-flag"></i><span>Icons</span></a>
-                            <ul class="menu-dropdown">
-                                <li><a href="ion-icons.html"><i class="ion ion-ios-circle-outline"></i> Ion Icons</a></li>
-                                <li><a href="fontawesome.html"><i class="ion ion-ios-circle-outline"></i> Font Awesome</a></li>
-                                <li><a href="flag.html"><i class="ion ion-ios-circle-outline"></i> Flag</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="table.html"><i class="ion ion-clipboard"></i><span>Tables</span></a>
-                        </li>
-                        <li>
-                            <a href="chartjs.html"><i class="ion ion-stats-bars"></i><span>Chart.js</span></a>
-                        </li>
+                        <li class="menu-header">Opções</li>
                         <li class="active">
-                            <a href="simple.html"><i class="ion ion-ios-location-outline"></i><span>Google Maps</span></a>
+                            <a href="statusMesa.php"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
                         </li>
                         <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-ios-copy-outline"></i><span>Examples</span></a>
+                            <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
                             <ul class="menu-dropdown">
-                                <li><a href="login.html"><i class="ion ion-ios-circle-outline"></i> Login</a></li>
-                                <li><a href="register.html"><i class="ion ion-ios-circle-outline"></i> Register</a></li>
-                                <li><a href="forgot.html"><i class="ion ion-ios-circle-outline"></i> Forgot Password</a></li>
-                                <li><a href="reset.html"><i class="ion ion-ios-circle-outline"></i> Reset Password</a></li>
-                                <li><a href="404.html"><i class="ion ion-ios-circle-outline"></i> 404</a></li>
+                                <li><a href="CadastrarFunc.php"><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
+                                <li><a href="listarFunc.php"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
+                            <ul class="menu-dropdown">
+                                <li><a href="ion-icons.html"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
+                                <li><a href="fontawesome.html"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
+                                <li><a href="flag.html"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
+                            </ul>
+                        </li>
+                        <li >
+                            <a href="simple.html"><i class="ion ion-medkit"></i><span>Inserir</span></a>
+                        </li>
+                        <li >
+                            <a href="simple.html"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
                 </aside>
             </div>
