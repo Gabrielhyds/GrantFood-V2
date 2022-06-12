@@ -87,10 +87,10 @@ include_once "includes/foto.php";
                         <li>
                             <a href="statusMesa.php"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
                             <ul class="menu-dropdown">
-                                <li><a href="CadastrarFunc.php"><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
+                                <li class="active"><a href="CadastrarFunc.php"><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
                                 <li><a href="listarFunc.php"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
                             </ul>
                         </li>
@@ -102,10 +102,10 @@ include_once "includes/foto.php";
                                 <li><a href="flag.html"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
                             </ul>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="simple.html"><i class="ion ion-medkit"></i><span>Inserir</span></a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="simple.html"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
                 </aside>
