@@ -12,7 +12,7 @@ if(isset($_POST['btnLogar'])){
     if(mysqli_num_rows($login) == 1){
         $_SESSION['usuario'] = $_POST['usuario'];
         $_SESSION['senha'] = $_POST['senha'];
-        //var_dump($_SESSION['permissao'] = $_POST['permissao']);
+        $_SESSION['permissao'] = $_POST['permissao'];
         switch($permissao){
             case 1: //gerente
                 header("Location:  ../../View/Funcionario/statusMesa.php");

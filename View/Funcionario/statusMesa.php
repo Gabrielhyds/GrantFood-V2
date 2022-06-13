@@ -11,6 +11,7 @@ require_once('includes/sessao.php');
 
 
 include_once "includes/foto.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +88,13 @@ include_once "includes/foto.php";
                         <div class="sidebar-user-details">
                             <div class="user-name"><?php echo $_SESSION['usuario'];?></div>
                             <div class="user-role">
-                                Gerente
+                                <?php 
+                                    if($_SESSION['permissao'] == 1){
+                                        echo 'Gerente';
+                                    }else{
+                                        echo 'Garçom';
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -97,6 +104,9 @@ include_once "includes/foto.php";
                         <li class="active">
                             <a href="statusMesa.php"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
                         </li>
+                        <?php
+                            if($_SESSION['permissao'] == 1){
+                        ?>  
                         <li>
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
                             <ul class="menu-dropdown">
@@ -118,6 +128,9 @@ include_once "includes/foto.php";
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
+                        <?php 
+                            }
+                        ?>
                 </aside>
             </div>
             <div class="main-content">
