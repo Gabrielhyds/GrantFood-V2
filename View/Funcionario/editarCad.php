@@ -10,7 +10,7 @@ session_start();
  ob_start();
 
 //verifica se a sessão usuario existe  
-//require_once('includes/sessao.php');
+require_once('includes/sessao.php');
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 

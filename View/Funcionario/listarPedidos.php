@@ -30,6 +30,12 @@ include_once "includes/foto.php";
 
   <link rel="stylesheet" href="assets/css/demo.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <?php
+    if(!isset($_GET['telas'])){
+      echo "<meta HTTP-EQUIV='refresh' CONTENT='20'>";
+    }
+      
+    ?>
   <style>
       * label{
           color:black;
@@ -112,14 +118,15 @@ include_once "includes/foto.php";
 
                         <li class="menu-header">Opções</li>
                         <li class="active">
-                            <a href="listarPedidos.php"><i class="ion ion-clipboard"></i><span>Lista de pedidos</span></a>
+                            <a href="listarPedidos.php"><i class="ion ion-clipboard"></i><span>Listar Pedidos</span></a>
                         </li>
+                       
                 </aside>
             </div>
             <div class="main-content">
                 <section class="section">
                     <h1 class="section-header">
-                        <div>Listar Pedidos</div>
+                        <div>Pedidos</div>
                     </h1>
 
 
