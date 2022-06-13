@@ -10,7 +10,7 @@ session_start();
  ob_start();
 
 //verifica se a sessão usuario existe  
-require_once('includes/sessao.php');
+//require_once('includes/sessao.php');
 
 //inclui a foto do usuário
 include_once "includes/foto.php";
@@ -47,6 +47,15 @@ include_once "includes/foto.php";
           font-weight: bold !important;
           text-align: left !important;
           color: white;
+      }
+
+      .btn-status{
+          border: none;
+          border-radius: 30px;
+          color: white;
+          font-weight: 500;
+          font-size: 11px;
+;
       }
   </style>
 </head>
@@ -95,7 +104,7 @@ include_once "includes/foto.php";
                         <div class="sidebar-user-details">
                             <div class="user-name"><?php echo $_SESSION['usuario'];?></div>
                             <div class="user-role">
-                                Gerente
+                                Cozinha
                             </div>
                         </div>
                     </div>
@@ -103,28 +112,7 @@ include_once "includes/foto.php";
 
                         <li class="menu-header">Opções</li>
                         <li class="active">
-                            <a href="statusMesa.php"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
-                            <ul class="menu-dropdown">
-                                <li><a href="CadastrarFunc.php"><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
-                                <li ><a href="listarFunc.php"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
-                            <ul class="menu-dropdown">
-                                <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
-                                <li><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
-                                <li><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
-                            </ul>
-                        </li>
-                        <li >
-                            <a href="inserir.php"><i class="ion ion-medkit"></i><span>Inserir</span></a>
-                        </li>
-                        <li >
-                            <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
+                            <a href="listarPedidos.php"><i class="ion ion-clipboard"></i><span>Lista de pedidos</span></a>
                         </li>
                 </aside>
             </div>
@@ -150,12 +138,12 @@ include_once "includes/foto.php";
       <div class="row">
         <b style="font-size: 20px">Nº de pedidos: <span style="color: blue; font-size: 25px"><?php echo $linhas;?></span></b> 
       </div>
-      <div class="text-end">
+      <div class="col-md-12 text-right">
         <button type="button"  onclick="window.location.href='listarPedidos.php?telas=pedidosPreparar'" class="btn btn-success">Pedidos em preparo</button>
       </div>
       <br>
     </div>
-    <div class="card  text-bg-info" style="padding: 20px;">
+    <div class="card  text-bg-info" style="background-color: #0d3180; padding: 20px;">
         <div class="card-header text-center text-white">
             <h5 class="card-title">Pedidos</h5>
         </div>
@@ -187,11 +175,31 @@ include_once "includes/foto.php";
 
             <div class="card">
               <div class="card-header">
-                <b style="font-size: 17px">#<?php echo $row['id'];?></b>
-                   <span class="badge text-bg-<?php echo $classe;?>"><?php echo $row['status'];?></span> 
+                  <div class="row">
+                      <div class="col-md-4">
+                            <b style="font-size: 17px">#<?php echo $row['id'];?></b>
+                            <span class="badge badge-<?php echo $classe;?>"><?php echo $row['status'];?></span> 
+                      </div>
+                      <div class="col-md-8 text-right">
+                        <!-- Status enviado -->
+                        <b>Alterar status:</b>
+                        <form action="" method="post">
+                            <input type="hidden" name="statusPrep" value="Preparo">
+                            <input type="hidden" name="pedido" value="<?php echo $row['id']?>">
+                            <button type="submit" class="btn-status" name="btnPreparo" style="background-color: #17a2b8;"><span class="ion-android-restaurant"></span> Preparo</button>
+                        </form>
+                    </div>
+                  </div>
+                    
                   
               </div>
               <div class="card-body">
+                <div class="row border-top border-bottom">
+                    <div class="col"><b>ID</b></div>
+                    <div class="col"><b>Item</b></div>
+                    <div class="col"><b>Quantidade</b></div>
+                    <div class="col"><b>Valor</b></div>
+                </div>
                 <?php
                     $total = 0;
                     $numero = $row['id'];
@@ -216,26 +224,15 @@ include_once "includes/foto.php";
                 ?>
 
                 <div class="row">
-                    <p><b>Observação:</b> <?php echo $row['observacao']?></p>
+                    <div class="col-md-12">
+                        <p><b>Observação:</b> <?php echo $row['observacao']?></p>
+                    </div>
+                    
                 </div>
               </div>
               <div class="card-footer text-muted text-end">
-                <div class="text-left">
-                     <?php
-                        if($classe != 'dark'){
-                   ?>
-                        <form action="../../Model/Funcionario/alterarStPedido.php" method="POST">
-                            <select name="status" class="form-select-sm">
-                              <option value="Enviado" <?php echo $classe == 'primary'?'selected':'' ?>>Enviado</option>
-                              <option value="Preparo" <?php echo $classe == 'info'?'selected':'' ?>>Em preparo</option>
-                              <option value="Caminho" <?php echo $classe == 'success'?'selected':'' ?>>A Caminho</option>
-                            </select>
-                            <input type="hidden" name="pedido" value="<?php echo $row['id'];?>">
-                            <button type="submit" name="alterar" class="btn btn-primary btn-sm">Alterar</button>
-                        </form>
-                    <?php
-                        }
-                    ?>
+                <div class="text-right">
+                     <?php echo $row['data']?>
                 </div>
               </div>
             </div>
@@ -298,3 +295,65 @@ include_once "includes/foto.php";
 </body>
 
 </html>
+
+<?php
+if(isset($_POST['btnEnviado'])){
+	$status = $_POST['statusEnvi'];
+    $idPedido = $_POST['pedido'];
+
+    if(!empty($idPedido)){
+        $sql = "UPDATE pedido SET status = '$status' WHERE id = '$idPedido'";
+        $results1  = mysqli_query($connection, $sql);
+
+        if($results1){
+        	header('Location: ?foi');
+        }else{
+        	header('Location: ?erro=sql');
+        }
+
+        
+    }else{
+    	header('Location: ');
+    }
+}
+
+if(isset($_POST['btnPreparo'])){
+	$status = $_POST['statusPrep'];
+    $idPedido = $_POST['pedido'];
+
+    if(!empty($idPedido)){
+        $sql = "UPDATE pedido SET status = '$status' WHERE id = '$idPedido'";
+        $results1  = mysqli_query($connection, $sql);
+
+        if($results1){
+        	header('Location: ?foi');
+        }else{
+        	header('Location: ?erro=sql');
+        }
+
+        
+    }else{
+    	header('Location: ');
+    }
+}
+
+if(isset($_POST['btnCaminho'])){
+	$status = $_POST['statusCamin'];
+    $idPedido = $_POST['pedido'];
+
+    if(!empty($idPedido)){
+        $sql = "UPDATE pedido SET status = '$status' WHERE id = '$idPedido'";
+        $results1  = mysqli_query($connection, $sql);
+
+        if($results1){
+        	header('Location: ?foi');
+        }else{
+        	header('Location: ?erro=sql');
+        }
+
+        
+    }else{
+    	header('Location: ');
+    }
+}
+?>

@@ -192,7 +192,7 @@ if(isset($_GET["action"]))
                     ?>
                     <div class="row border-top border-bottom">
                         <div class="row main align-items-center">
-                            <div class="col-2"><img class="img-fluid" src="../Funcionario/assets/images/food/<?php echo $values["item_imagem"] . ""; ?>"></div>
+                            <div class="col-2"><img class="img-fluid" src="../Funcionario/assets/img/food/<?php echo $values["item_imagem"] . ""; ?>"></div>
                             <div class="col">
                                 <div class="row text-muted"><?php echo $values["item_name"]; ?></div>
                             </div>

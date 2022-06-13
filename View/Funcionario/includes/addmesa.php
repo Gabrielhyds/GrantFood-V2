@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="row" style="color: white;"> 
-      <div align="center">
+    <div class="row" style="color: black;"> 
+      <div class="col-md-12 text-center">
         <h3>Adicionar mesa</h5>
         <hr>
       </div>
@@ -39,17 +39,28 @@
                         <table style="position: relative; bottom: 70px;" >
                         <!--Produto-->
                         <tr>
-                        <div class="input-group mb-3">
-                            <td><button class="btn btn-primary" type="button" id="button-addon1" style="width: 150px; margin-top: 10px" disabled><span class="texto">Número</span></button></td>
-                            <td><input type="number" class="form-control" name="novaMesa" style="position: relative; top: 5px; left: 5px; width: 420px"></td>
-                        </div>
+                          <div class="input-group mb-3">
+                              <td><button class="btn btn-primary" type="button" id="button-addon1" style="width: 150px; margin-top: 10px" disabled><span class="texto">Número</span></button></td>
+                              <td><input type="number" class="form-control" name="novaMesa" style="position: relative; top: 5px; left: 5px; width: 420px"></td>
+                          </div>
+                        </tr>
+                        <tr>
+                          <div class="input-group mb-3">
+                              <td><button class="btn btn-info" type="button" id="button-addon1" style="width: 150px; margin-top: 10px" disabled><span class="texto">Lugares</span></button></td>
+                              <td><input type="number" class="form-control" name="lugares" style="position: relative; top: 5px; left: 5px; width: 420px"></td>
+                          </div>
                         </tr>
 
                           <!--Inserir e Remover-->
                           <tr>
-                            <div class="btn" >
-                              <td style="position: relative;  top: 20px"><button type="submit" name="criar" class="btn btn-success" style="font-family: arial; font-weight: bold"><span class="fa fa-plus mr-1"></span>Adicionar</button>
+                            <div class="row">
+                              <div class="col-md-12 text-center">
+                                <td style="position: relative;  top: 20px">
+                                  <button type="submit" name="criar" class="btn btn-success" style="font-family: arial; font-weight: bold"><span class="fa fa-plus mr-1"></span>Adicionar</button>
+                                </td>
+                              </div>
                             </div>
+                            
                           </tr>
                         </table>
                     </div>

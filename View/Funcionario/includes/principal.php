@@ -1,20 +1,45 @@
 <br>
   <div class="container">
     <div class="row" style="color: white;"> 
-      <div align="center">
+      <div class="col-md-12" align="center">
         <h3 style="color:black">Lista de mesas</h5>
         <hr>
       </div>
     </div> 
     <div class="row">
-      <div align="right">
-        <a href="?telas=addmesa" class="btn btn-success">Adicionar mesa</a>
-        <a href="?telas=removemesa" class="btn btn-danger">Apagar mesa</a>
+      <div class="col-md-12" align="right">
+        <a href="?telas=addmesa" class="btn btn-success"><span class="ion-plus"></span> Adicionar mesa</a>
       </div>
     </div>
   </div>
+  <br>
   
-  <div class="container">
+      <?php 
+          if(isset($_GET['success'])){
+            if($_GET['success'] == 'apagada'){
+              ?>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <div class="alert alert-success" role="alert">
+                    Mesa <b><?php echo $_GET['mesaApagada']?></b> removida com sucesso!!!
+                  </div>
+                </div>
+              </div>
+              <?php
+            } else if ($_GET['success'] == 'criada'){
+              ?>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <div class="alert alert-success" role="alert">
+                    Mesa <b><?php echo $_GET['mesaCriada']?></b> criada com sucesso!!!
+                  </div>
+                </div>
+              </div>
+              <?php
+            }
+          }
+        ?>
+      
     <div class="row">
     <?php
         $sql = "SELECT * FROM mesa ORDER BY numero ASC";
@@ -34,8 +59,11 @@
                     <div class="color-block-head">
                      Disponível
                     </div>
+                    <div class="color-block-head">
+                      Lugares: <b><?php echo $row['lugares']?></b>
+                    </div> 
                     <div class="color-block-text">
-                    <br>Mesa <?php echo $row['numero'];?>
+                    Mesa <?php echo $row['numero'];?>
                     </div>
                   </div>
                   <div class="color-block-bottom">
@@ -52,8 +80,11 @@
                     <div class="color-block-head">
                       Ocupado
                     </div>
+                    <div class="color-block-head">
+                      Lugares: <b><?php echo $row['lugares']?></b>
+                    </div> 
                     <div class="color-block-text">
-                      <br>Mesa <?php echo $row['numero'];?>
+                    Mesa <?php echo $row['numero'];?>
                     </div>
                   </div>
                   <div class="color-block-bottom">
@@ -70,8 +101,11 @@
                       <div class="color-block-head">
                         Fechar conta
                       </div>
+                      <div class="color-block-head">
+                        Lugares: <b><?php echo $row['lugares']?></b>
+                      </div> 
                       <div class="color-block-text">
-                      <br>Mesa <?php echo $row['numero'];?>
+                        Mesa <?php echo $row['numero'];?>
                       </div>
                     </div>
                     <div class="color-block-bottom">
@@ -93,4 +127,3 @@
       ?>
       
     </div>
-  </div>

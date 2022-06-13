@@ -184,10 +184,16 @@
           if($_GET['success'] == 'fecharConta'){
             ?>
               <div class="alert alert-warning sucesso" role="alert">
-                O garçom virá até você para finalizar a conta. Aguarde! 😀👍
+                O garçom virá até você para finalizar a conta. Aguarde! 👍
               </div>
             <?php
             include 'avaliar.php';
+          }else if($_GET['success'] == 'pedidoFeito'){
+            ?> 
+                <form action="../../Model/Cliente/fecharConta.php" method="POST">
+                  <button type="submit" class="btn" name="update">Fechar conta</button>
+                </form>
+            <?php
           }
           if($_GET['success'] == 'avaliar'){
                 if(isset($_SESSION['msg'])){
@@ -197,11 +203,10 @@
           }
         }else{
           ?> 
-          
-              <form action="../../Model/Cliente/fecharConta.php" method="POST">
-                <button type="submit" class="btn" name="update">Fechar conta</button>
-              </form>
-          <?php
+                <form action="../../Model/Cliente/fecharConta.php" method="POST">
+                  <button type="submit" class="btn" name="update">Fechar conta</button>
+                </form>
+            <?php
         }
         $sessao = $_SESSION['chave'];
         $sql = "SELECT * FROM pedido WHERE sessao = '$sessao' ORDER BY id DESC";
@@ -271,7 +276,7 @@
                      ?>
                     <div class="row border-top border-bottom">
                         <div class="row main align-items-center">
-                            <div class="col-2"><img class="img-fluid" src="../Funcionario/assets/images/food/<?php echo $produto["image"] . ""; ?>"></div>
+                            <div class="col-2"><img class="img-fluid" src="../Funcionario/assets/img/food/<?php echo $produto["image"] . ""; ?>"></div>
                             <div class="col">
                                 <div class="row text-muted"><?php echo $values["item"]; ?></div>
                             </div>

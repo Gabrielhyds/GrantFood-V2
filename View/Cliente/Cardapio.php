@@ -253,7 +253,7 @@ if(isset($_GET["action"]))
                     </h6>
                       <form method="post" action="cardapio.php?action=add&id=<?php echo $row["id"]; ?>"> 
                         <button style="background-color: Transparent; background-repeat:no-repeat; border: none; " type="submit" name="addcart" data-target="#add">
-                            <i class="fas fa-plus-circle" style="color: white; font-size: 25px;"></i>+</button>
+                            <i class="fas fa-plus-circle" style="color: white; font-size: 25px;"></i></button>
                   </div>
                     <input type="hidden" name="hidden_nome" value="<?php echo $row["nome"]; ?>" />
                     <input type="hidden" name="quantidade" value="1"/>

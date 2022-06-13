@@ -2,6 +2,19 @@
 include('../../Banco/Conexao.php');
 session_start();
 
+if(isset($_POST['apagar'])){
+    $idMesa = $_POST['mesa'];
+
+    if(!empty($idMesa)){
+        $sql = "DELETE FROM mesa WHERE numero = '$idMesa'";
+        $results = mysqli_query($connection, $sql);
+
+        if ($results){
+            header('Location: ../../View/Funcionario/statusMesa.php?success=apagada&mesaApagada=' . $idMesa .'');
+        }
+    }
+}
+
 if(isset($_POST['finalizar'])){
 	$idMesa = $_POST['mesa'];
 

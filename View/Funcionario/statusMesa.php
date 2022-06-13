@@ -18,18 +18,27 @@ include_once "includes/foto.php";
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
     <title>Cadastrar Funcionario</title>
-
-
+    <?php
+      echo "<meta HTTP-EQUIV='refresh' CONTENT='15'>";
+    ?>
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/cards.css">
     <link rel="stylesheet" href="assets/css/demo.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/card.css">
     <style>
       * label{
           color:black;
+      }
+
+      .btn-status{
+          border: none;
+          border-radius: 30px;
+          color: white;
+          font-weight: 500;
+          font-size: 11px;
+;
       }
   </style>
 </head>
