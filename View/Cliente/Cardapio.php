@@ -238,7 +238,7 @@ if(isset($_GET["action"]))
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="../../Views/Funcionario/assets/images/food/<?php echo $row["image"]; ?>" alt="">
+                  <img src="../../View/Funcionario/assets/img/food/<?php echo $row["image"]; ?>" alt="">
                 </div>
                 <div class="detail-box" style="background-color: #FF3A0B;">
                   <h5>
