@@ -14,15 +14,15 @@ if(!empty($id)){
 	$sql = "DELETE FROM categoria WHERE id=$id";
 	if ($connection->query($sql) === TRUE) {
 		$_SESSION['msg'] = '<div class="alert alert-success" role="alert">Categoria Excluida com sucesso &#128516</div>';
-		header("Location:../../views/Funcionario/cardapio.php");
+		header("Location:../../view/Funcionario/listarCateg.php");
 	} else {
 		$_SESSION['msg'] = '<div class="alert alert-success" role="alert">Erro ao excluir a Categoria &#128542</div>';
-		header("Location:../../views/Funcionario/cardapio.php");
+		header("Location:../../view/Funcionario/listarCateg.php");
 	}
 }
 else{	
 	$_SESSION['msg'] = '<div class="alert alert-success" role="alert">Erro ao excluir a Categoria &#128542</div>';
-	header("Location:../../views/Funcionario/listarCateg.php?".$id);
+	header("Location:../../view/Funcionario/listarCateg.php?".$id);
 }
 
 ?>

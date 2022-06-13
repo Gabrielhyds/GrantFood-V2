@@ -16,15 +16,15 @@ if(!empty($_POST['estrela'])){
 		$_SESSION['msg'] = '<div class="alert alert-success	 sucesso" role="alert">
 			Agradecemos o feedback! 
 		</div>';
-		header("Location: ../../Views/Cliente/pedidos.php?success=avaliar");
+		header("Location: ../../View/Cliente/pedidos.php?success=avaliar");
 	}else{
 		$_SESSION['msg'] = "Erro ao cadastrar a avaliação";
-		header("Location: ../../Views/Cliente/pedidos.php?success=avaliar");
+		header("Location: ../../View/Cliente/pedidos.php?success=avaliar");
 	}
 	
 }else{
 	$_SESSION['msg'] = '<div class="alert alert-danger	 sucesso" role="alert">
 	É necessário selecionar pelo menos uma estrela.
 </div>';
-	header("Location: ../../Views/Cliente/pedidos.php?success=avaliar");
+	header("Location: ../../View/Cliente/pedidos.php?success=avaliar");
 }

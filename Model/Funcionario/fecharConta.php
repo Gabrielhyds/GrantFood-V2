@@ -15,14 +15,14 @@ if(isset($_POST['finalizar'])){
         $results2  = mysqli_query($connection, $sql2);
 
         if($results1 && $results2){
-        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=pago');
+        	header('Location: ../../View/Funcionario/statusMesa.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=pago');
         }else{
-        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=erro');
+        	header('Location: ../../View/Funcionario/statusMesa.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=erro');
         }
 
         
     }else{
-    	header('Location: .../../Views/Funcionario/statusMesa.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&erro=metodo');
+    	header('Location: .../../View/Funcionario/statusMesa.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&erro=metodo');
     }
 }
 

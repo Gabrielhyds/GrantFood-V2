@@ -11,13 +11,13 @@ if(isset($_POST['alterar'])){
         $results1  = mysqli_query($connection, $sql);
 
         if($results1){
-        	header('Location: ../../Views/Funcionario/listarPedidos.php');
+        	header('Location: ../../View/Funcionario/listarPedidos.php');
         }else{
-        	header('Location: ../../Views/Funcionario/istarPedidos.php?status=erro');
+        	header('Location: ../../View/Funcionario/istarPedidos.php?status=erro');
         }
 
         
     }else{
-    	header('Location: ../../Views/Funcionario/istarPedidos.php?status=erro');
+    	header('Location: ../../View/Funcionario/istarPedidos.php?status=erro');
     }
 }

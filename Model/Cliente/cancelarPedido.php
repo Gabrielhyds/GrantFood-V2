@@ -13,6 +13,6 @@ if(isset($_POST['cancelar'])){
         $results2 = mysqli_query($connection, $sql2);
 
 
-        header('Location: ../../Views/Cliente/pedidos.php?success=pedidoApagado');
+        header('Location: ../../View/Cliente/pedidos.php?success=pedidoApagado');
     }
 }

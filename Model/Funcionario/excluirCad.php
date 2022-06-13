@@ -15,13 +15,13 @@ if(!empty($id)){
 	$sql = "DELETE FROM produtos WHERE id=$id";
 	if ($connection->query($sql) === TRUE) {
 		$_SESSION['msg'] = '<div class="alert alert-success" role="alert">Produto Excluido com sucesso &#128516</div>';
-		header("Location:../../views/Funcionario/ListarCad.php");
+		header("Location:../../view/Funcionario/ListarCad.php");
 	} else {
 		$_SESSION['msg'] = '<div class="alert alert-success" role="alert">Erro ao excluir o Produto &#128542</div>';
-		header("Location:../../views/Funcionario/ListarCad.php");
+		header("Location:../../view/Funcionario/ListarCad.php");
 	}
 }
 else{	
 	$_SESSION['msg'] = '<div class="alert alert-success" role="alert">Erro ao excluir o Produto &#128542</div>';
-	header("Location:../../views/Funcionario/ListarCad.php");
+	header("Location:../../view/Funcionario/ListarCad.php");
 }

@@ -52,7 +52,7 @@ if(isset($_POST['btnAtualizar'])){
             // Gera um nome único para a imagem
             $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
             // Caminho de onde ficará a imagem
-            $caminho_imagem = "../../Views/Funcionario/assets/images/FotoPerfil/" . $nome_imagem;
+            $caminho_imagem = "../../View/Funcionario/assets/img/FotoPerfil/" . $nome_imagem;
             // Faz o upload da imagem para seu respectivo caminho
             if(move_uploaded_file($foto["tmp_name"], $caminho_imagem)){       
                    
@@ -74,11 +74,11 @@ if(isset($_POST['btnAtualizar'])){
                 
                 //Criar a variavel global para salvar a mensagem de sucesso
                 $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Funcionário Atualizado com sucesso &#128526</div>';
-                header("Location:../../Views/Funcionario/cadastrarFunc.php");
+                header("Location:../../View/Funcionario/cadastrarFunc.php");
             }else{
                 //Criar a variavel global para salvar a mensagem de sucesso
                 $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Erro ao Atualizado o Funcionário &#128532;</b></div>';
-                header("Location:../../Views/Funcionario/editarFunc.php?id=$id");
+                header("Location:../../View/Funcionario/editarFunc.php?id=$id");
             }
     }
 

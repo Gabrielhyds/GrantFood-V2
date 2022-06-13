@@ -28,7 +28,7 @@ if(isset($_POST['btnAtualizar'])){
             // Gera um nome único para a imagem
             $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
             // Caminho de onde ficará a imagem
-            $caminho_imagem = "../../Views/Funcionario/assets/images/food/" . $nome_imagem;
+            $caminho_imagem = "../../View/Funcionario/assets/img/food/" . $nome_imagem;
             // Faz o upload da imagem para seu respectivo caminho
             if(move_uploaded_file($foto["tmp_name"], $caminho_imagem)){       
                    
@@ -39,11 +39,11 @@ if(isset($_POST['btnAtualizar'])){
             
                 //Criar a variavel global para salvar a mensagem de sucesso
                 $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Produto Atualizado com sucesso &#128526</div>';
-                header("Location:../../Views/Funcionario/cardapio.php");
+                header("Location:../../View/Funcionario/cardapio.php");
             }else{
                 //Criar a variavel global para salvar a mensagem de sucesso
                 $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Erro ao Atualizar o Produto &#128532;</b></div>';
-                header("Location:../../Views/Funcionario/editarCad.php?id=$id");
+                header("Location:../../View/Funcionario/editarCad.php?id=$id");
             }
     }
 

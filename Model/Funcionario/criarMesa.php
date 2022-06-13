@@ -10,13 +10,13 @@ if(isset($_POST['criar'])){
         $results1  = mysqli_query($connection, $sql);
 
         if($results1){
-        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=addmesa&success=criada');
+        	header('Location: ../../View/Funcionario/statusMesa.php?telas=addmesa&success=criada');
         }else{
-        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=addmesa&erro=jaExiste');
+        	header('Location: ../../View/Funcionario/statusMesa.php?telas=addmesa&erro=jaExiste');
         }
 
         
     }else{
-    	header('Location: ../../Views/Funcionario/statusMesa.php?telas=addmesa&erro=erroInput');
+    	header('Location: ../../View/Funcionario/statusMesa.php?telas=addmesa&erro=erroInput');
     }
 }

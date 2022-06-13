@@ -16,16 +16,16 @@ if(isset($_POST['remover'])){
                 $results2  = mysqli_query($connection, $sql2);
                 
                 if($results2){
-                    header('Location: ../../Views/Funcionario/statusMesa.php?telas=removemesa&success=apagada');
+                    header('Location: ../../View/Funcionario/statusMesa.php?telas=removemesa&success=apagada');
                 }else{
-                    header('Location: ../../Views/Funcionario/statusMesa.php?telas=removemesa&erro=erroApagar');
+                    header('Location: ../../View/Funcionario/statusMesa.php?telas=removemesa&erro=erroApagar');
                 }
             }else{
-                header('Location: ../../Views/Funcionario/statusMesa.php?telas=removemesa&erro=naoExiste');
+                header('Location: ../../View/Funcionario/statusMesa.php?telas=removemesa&erro=naoExiste');
             }
             
         }
     }else{
-    	header('Location: ../../Views/Funcionario/statusMesa.php?telas=removemesa&erro=erroInput');
+    	header('Location: ../../View/Funcionario/statusMesa.php?telas=removemesa&erro=erroInput');
     }
 }

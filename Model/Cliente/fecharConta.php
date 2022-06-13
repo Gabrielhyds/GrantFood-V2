@@ -10,9 +10,9 @@ if(isset($_POST['update'])){
         $results1  = mysqli_query($connection, $sql1);
 
         if($results1){
-            header('Location: ../../Views/Cliente/pedidos.php?success=fecharConta');
+            header('Location: ../../View/Cliente/pedidos.php?success=fecharConta');
         }else{
-            header('Location: ../../Views/Cliente/pedidos.php?error=fecharConta');
+            header('Location: ../../View/Cliente/pedidos.php?error=fecharConta');
         }
     }
 }

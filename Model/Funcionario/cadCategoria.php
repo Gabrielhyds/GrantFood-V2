@@ -17,6 +17,6 @@
             $cad_categoria->bindParam(':nomeCat', $dados['nome'], PDO::PARAM_STR);
             $cad_categoria->execute();
             $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Categoria Cadastrada com sucesso &#128526</div>';
-            header("Location:../../Views/Funcionario/cardapio.php");
+            header("Location:../../View/Funcionario/cardapio.php");
     }
 ?>

@@ -108,7 +108,7 @@ include_once "includes/foto.php";
                             </ul>
                         </li>
                         <li >
-                            <a href="inserir"><i class="ion ion-medkit"></i><span>Inserir</span></a>
+                            <a href="inserir.php"><i class="ion ion-medkit"></i><span>Inserir</span></a>
                         </li>
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
@@ -133,7 +133,7 @@ include_once "includes/foto.php";
             </div>
               <div>
               <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
-              <table class="table alert alert-primary">
+              <table class="table alert alert-info">
                 <thead>
  
                     <tr>

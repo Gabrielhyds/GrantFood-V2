@@ -14,15 +14,15 @@ if(isset($_POST['adicionarConta'])){
 
         if($results1){
             echo "foi";
-        	header('Location: ../../Views/Funcionario/inserir.php?success=criada&tipo=' . $tipo . '');
+        	header('Location: ../../View/Funcionario/inserir.php?success=criada&tipo=' . $tipo . '');
         }else{
             echo "nao foi";
-        	header('Location: ../../Views/Funcionario/inserir.php?erro=sqlContas');
+        	header('Location: ../../View/Funcionario/inserir.php?erro=sqlContas');
         }
 
         
     }else{
-    	header('Location: ../../Views/Funcionario/inserir.php?erro=erroInput');
+    	header('Location: ../../View/Funcionario/inserir.php?erro=erroInput');
     }
 }
 
@@ -37,14 +37,14 @@ if(isset($_POST['adicionarManutencao'])){
         $results1  = mysqli_query($connection, $sql);
 
         if($results1){
-             header('Location: ../../Views/Funcionario/inserir.php?success=criada&tipo=' . $tipo .'');
+             header('Location: ../../View/Funcionario/inserir.php?success=criada&tipo=' . $tipo .'');
         }else{
-        	header('Location: ../../Views/Funcionario/inserir.php?erro=sqlManutencao');
+        	header('Location: ../../View/Funcionario/inserir.php?erro=sqlManutencao');
         }
 
         
     }else{
-    	header('Location: ../../Views/Funcionario/inserir.php?erro=erroInput');
+    	header('Location: ../../View/Funcionario/inserir.php?erro=erroInput');
     }
 }
 
@@ -58,13 +58,13 @@ if(isset($_POST['adicionarEstoque'])){
         $results1  = mysqli_query($connection, $sql);
 
         if($results1){
-        	header('Location: ../../Views/Funcionario/inserir.php?success=criada&tipo=' . $tipo. '');
+        	header('Location: ../../View/Funcionario/inserir.php?success=criada&tipo=' . $tipo. '');
         }else{
-        	header('Location: ../../Views/Funcionario/inserir.php?erro=sqlEstoque');
+        	header('Location: ../../View/Funcionario/inserir.php?erro=sqlEstoque');
         }
 
         
     }else{
-    	header('Location: ../../Views/Funcionario/inserir.php?erro=erroInput');
+    	header('Location: ../../View/Funcionario/inserir.php?erro=erroInput');
     }
 }

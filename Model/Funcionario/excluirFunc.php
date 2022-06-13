@@ -19,9 +19,9 @@ if(!empty($id)){
 	$resultado_usuario = mysqli_query($connection, $result_usuario);
 	mysqli_affected_rows($connection);
 	$_SESSION['msg'] = '<div class="alert alert-success" role="alert">Funcionário Excluido com sucesso &#128516</div>';
-    header("Location:../../views/Funcionario/ListarFunc.php");
+    header("Location:../../view/Funcionario/ListarFunc.php");
 }
 else{	
 	$_SESSION['msg'] = '<div class="alert alert-success" role="alert">Erro ao excluir o Funcionário &#128542</div>';
-	header("Location:../../views/Funcionario/ListarFunc.php");
+	header("Location:../../view/Funcionario/ListarFunc.php");
 }

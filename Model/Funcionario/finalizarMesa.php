@@ -17,9 +17,9 @@ if(isset($_POST['finalizar'])){
         $results4  = mysqli_query($connection, $sql4);
 
         if($results1 && $results2 && $results3 && $results4){
-        	header('Location: ../../Views/Funcionario/statusMesa.php?status=mesaonline');
+        	header('Location: ../../View/Funcionario/statusMesa.php?status=mesaonline');
         }else{
-        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&status=erro');
+        	header('Location: ../../View/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&status=erro');
         }
 
         

@@ -50,7 +50,7 @@ if(isset($_POST['update'])){
 
                unset($_SESSION["shopping_cart"]);
      
-               header('Location: ../../Views/Cliente/pedidos.php?success=pedidoFeito');
+               header('Location: ../../View/Cliente/pedidos.php?success=pedidoFeito');
                     
                     
                  }else{

@@ -12,13 +12,13 @@ if(isset($_POST['alterar'])){
         $results1  = mysqli_query($connection, $sql);
 
         if($results1){
-        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'');
+        	header('Location: ../../View/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'');
         }else{
-        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&status=erro');
+        	header('Location: ../../View/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&status=erro');
         }
 
         
     }else{
-    	header('Location: ../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&erro=metodo');
+    	header('Location: ../../View/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&erro=metodo');
     }
 }
