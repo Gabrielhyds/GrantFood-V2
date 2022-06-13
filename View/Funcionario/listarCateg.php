@@ -10,10 +10,7 @@ session_start();
  ob_start();
 
 //verifica se a sessão usuario existe  
-//require_once('includes/sessao.php');
-
-
-
+require_once('includes/sessao.php');
 
 //inclui a foto de perfil do usuário
 include 'includes/foto.php';

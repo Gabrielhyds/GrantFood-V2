@@ -7,7 +7,7 @@ session_start();
 include '../../Banco/conexao.php';
 
 //verifica se a sessão usuario existe  
-//require_once('includes/sessao.php');
+require_once('includes/sessao.php');
 
 
 include_once "includes/foto.php";

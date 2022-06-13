@@ -78,7 +78,7 @@ include_once "includes/foto.php";
                         <div class="sidebar-user-details">
                             <div class="user-name"><?php echo $_SESSION['usuario'];?></div>
                             <div class="user-role">
-                                Gerente
+                                Garçom
                             </div>
                         </div>
                     </div>
@@ -86,35 +86,13 @@ include_once "includes/foto.php";
 
                         <li class="menu-header">Opções</li>
                         <li class="active">
-                            <a href="statusMesa.php"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
-                            <ul class="menu-dropdown">
-                                <li><a href="CadastrarFunc.php"><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
-                                <li><a href="listarFunc.php"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
-                            <ul class="menu-dropdown">
-                                <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
-                                <li><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
-                                <li><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
-                            </ul>
-                        </li>
-                        <li >
-                            <a href="inserir.php"><i class="ion ion-medkit"></i><span>Inserir</span></a>
-                        </li>
-                        <li >
-                            <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
-                        </li>
+                            <a href="statusMesa2.php"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
                 </aside>
             </div>
             <div class="main-content">
                 <section class="section">
                     <h1 class="section-header">
-                        <div>Status da Mesa</div>
+                        <div>Mesas cadastradas no sistema</div>
                     </h1>
                     <!-- Pagina principal -->       
                     <div class="card-body">
