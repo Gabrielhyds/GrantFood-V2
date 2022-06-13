@@ -12,10 +12,12 @@ create table usuario(
     cpf char(11),
     salario decimal(7,2),
     cargaHoraria int , 
-    ponto varchar(15),
-    dica varchar(50),
     foto VARCHAR(255)
 );
+
+insert into usuario (idFunc,nome,tipo,senha,usuario,genero,cpf,salario,cargaHoraria,foto) values (1,"admin","1","admin","admin","Masculino","1234567890",1000.00,8,"asçldfkjasdlfkç.jpg");
+insert into usuario (idFunc,nome,tipo,senha,usuario,genero,cpf,salario,cargaHoraria,foto) values (2,"admin","2","admin","adminGarcom","Masculino","1234567890",1000.00,8,"asçldfkjasdlfkç.jpg");
+insert into usuario (idFunc,nome,tipo,senha,usuario,genero,cpf,salario,cargaHoraria,foto) values (3,"admin","3","admin","adminCozinha","Masculino","1234567890",1000.00,8,"asçldfkjasdlfkç.jpg");
 
 SELECT * FROM usuario;
 create table endereco(
@@ -117,6 +119,7 @@ create table pedido(
 	preco double(10,2) NOT NULL,
 	status varchar(255) DEFAULT 'Enviado',
 	data varchar(50) NOT NULL,
+	observacao varchar(255) NOT NULL,
     foreign key(mesa) references mesa(numero),
     foreign key(sessao) references sessao(codSessao)
 );
