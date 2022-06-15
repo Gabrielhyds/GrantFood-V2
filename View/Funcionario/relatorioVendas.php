@@ -21,7 +21,7 @@ include_once "includes/foto.php";
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>Cadastrar Funcionario</title>
+    <title>Relatório de vendas</title>
 
 
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
@@ -127,6 +127,15 @@ include_once "includes/foto.php";
                         <li class="active">
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatório de vendas</span></a>
                         </li>
+                        <div class="sidebar-user">
+                          <div class="sidebar-user-picture"><?php
+                              if (!is_null($foto)){ ?>
+                              <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
+                              <?php }else{ ?>
+                                  <img  class="img d-flex align-items-center justify-content-center" src="assets/img/example-image.jpeg" alt="" style="width:105px;height: 75px;">
+                              <?php }?>
+                          </div>
+                        </div>
                 </aside>
             </div>
             <div class="main-content">
@@ -134,55 +143,31 @@ include_once "includes/foto.php";
                     <h1 class="section-header">
                         <div>Relatório de vendas</div>
                     </h1>
-            <div class="row">
-              <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card card-sm bg-primary">
-                  <div class="card-icon">
-                    &#128178
-                  </div>
-                  <div class="card-wrap">
-                    <div class="card-body">
-                      
-                    </div>
-                    <div class="card-header">
-                      <h4>Lucro total</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card card-sm bg-danger">
-                  <div class="card-icon">
-                    &#128200
-                  </div>
-                  <div class="card-wrap">
-                    <div class="card-body">
-                    </div>
-                    <div class="card-header">
-                      <h4>Prejuízo</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card card-sm bg-warning">
-                  <div class="card-icon">
-                    <i class="ion ion-paper-airplane"></i>
-                  </div>
-                  <div class="card-wrap">
-                    <div class="card-body">
-                    </div>
-                    <div class="card-header">
-                      <h4>Gastos</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
-            </div>
-        </div>
-            </div>
-
+                   <form action="includes/gerarPdf.php" method="POST">
+                   <?php
+                      if (isset($_SESSION['msg'])) {
+                          echo $_SESSION['msg'];
+                          unset($_SESSION['msg']);
+                      }
+                    ?>
+                    <select name="" class="form-control" id="">
+                        <option value="0">Selecione</option>
+                        <option value="1">Janeiro</option>
+                        <option value="2">Feveiro</option>
+                        <option value="3">Março</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Maio</option>
+                        <option value="6">Junho</option>
+                        <option value="7">Julho</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                      </select>
+                      <br>
+                      <button class="btn btn-success" name="btnConsultar" type="submit">Consultar</button>
+                   </form>
                 </section>
             </div>
             <footer class="main-footer">

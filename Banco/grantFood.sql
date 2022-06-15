@@ -190,3 +190,11 @@ CREATE TABLE avaliacao(
   codMesa int NOT NULL,
   foreign key(codMesa) references mesa(numero)
 );
+
+
+-- total de pedidos feitos
+SELECT SUM(logp.preco) AS totalVendas FROM logpedido AS logp;
+
+-- total de vendas feitas nos ultimos 30 dias
+SELECT SUM(logped.preco) AS totalVendas FROM logpedido AS logped wHERE data BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE();
+
