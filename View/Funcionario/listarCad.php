@@ -200,7 +200,7 @@ include_once "includes/foto.php";
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="http://maps.google.com/maps/api/js?key=YOUR_API_KEY&amp;sensor=true"></script>
   <script src="assets/modules/gmaps.js"></script>
-  
+  <script src="../Modal/sweetalert2.min.js"></script>
   <script>
     // init map
     var simple_map = new GMaps({

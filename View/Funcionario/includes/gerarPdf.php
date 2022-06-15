@@ -15,11 +15,7 @@ function Header()
     $this->Ln(30);
     $this->Cell(190,10,utf8_decode('total de vendas'),0,0,'C');
     $this->Ln(20);
-    $this->cell(25,10,'Id',1,0,'C',0);
-    $this->cell(40,10,'Nome',1,0,'C',0);
-    $this->cell(40,10,utf8_decode('Usuário'),1,0,'C',0);
-    $this->cell(40,10,utf8_decode('Salário'),1,0,'C',0);
-    $this->cell(40,10,utf8_decode('Permissão'),1,1,'C',0);
+    $this->cell(25,10,utf8_decode('preço'),1,0,'C',0);
 }
 
 // Pie de página
@@ -42,7 +38,7 @@ $pdf = new PDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial','I',9);
 while ($row=$resultado->fetch_assoc()) {
-	$pdf->cell(25,10,$row['preco'],1,0,'C',0);
+	$pdf->cell(25,10,$row['totalVendas'],1,0,'C',0);
 }
 $pdf->Output();
  ?>

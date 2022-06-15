@@ -42,12 +42,13 @@ $row_telefone = mysqli_fetch_assoc($resultado_telefone);
     <title>Cadastrar Funcionario</title>
 
 
-    <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="assets/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
 
   <link rel="stylesheet" href="assets/css/demo.css">
   <link rel="stylesheet" href="assets/css/style.css">
+
   <style>
       * label{
           color:black;

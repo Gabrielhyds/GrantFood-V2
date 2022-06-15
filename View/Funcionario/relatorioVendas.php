@@ -169,6 +169,39 @@ include_once "includes/foto.php";
                       <button class="btn btn-success" name="btnConsultar" type="submit">Consultar</button>
                    </form>
                 </section>
+                <?php $sql = "SELECT SUM(preco) AS total_Vendas FROM logpedido wHERE data BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE();"; $result = $connection->query($sql);?>
+              <table class="table alert alert-info">
+                <thead>
+
+                    <tr>
+                    <th scope="col" style="color:black">Total de vendas</th>
+                    <th scope="col" style="color:black">Ações</th>
+                    
+                    </tr>
+                </thead>
+                <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
+                <tbody>
+                    <tr>
+                      <td style="color:black"><?php echo $row["total_Vendas"]; ?></td>
+                      
+                      <td> 
+                        <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarCad.php?id=<?php echo $row['id']; ?>'">
+                            Editar
+                        </button> 
+                        <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCad.php?id=<?php echo $row['id']; ?>'">
+                            Excluir
+                        </button>
+                      </td> 
+                    </tr>
+                </tbody>
+                <?php   
+                    }}else{echo '<div class="alert alert-danger" role="alert">
+                                  &#128552 nenhum produto cadastrado!
+                                </div>';
+                    } 
+                ?> 
+                </table>
+              </div>  
             </div>
             <footer class="main-footer">
                 <div class="footer-left" style="color:black;">
@@ -207,3 +240,4 @@ include_once "includes/foto.php";
 </body>
 
 </html>
+
