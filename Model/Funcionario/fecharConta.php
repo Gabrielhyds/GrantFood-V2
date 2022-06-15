@@ -29,8 +29,10 @@ if(isset($_POST['finalizar'])){
 if(isset($_POST['geral'])){
     $idMesa = $_POST['mesa'];
     $metodo =    $_POST['metodo'];
-
-    if($metodo != 0){
+    
+    if(empty($metodo) && $metodo == 0){
+        header('Location: ../../View/Funcionario/statusMesa.php?telas=pagartudo&idMesa='. $idMesa .'&status=vazio');
+    }  else {
         foreach($_SESSION["ids"] as $keys => $values){
                 $pedido_id = $values["pedido_id"];
 
@@ -42,12 +44,8 @@ if(isset($_POST['geral'])){
 
                if($results2 && $results3){
                 unset($_SESSION["ids"]);
-                header('Location: ../../Views/Funcionario/statusMesa.php?telas=pagartudo&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=pago');
+                header('Location: ../../View/Funcionario/statusMesa.php?telas=pagartudo&idMesa='. $idMesa .'&status=pago');
                }    
         }
-    }else{
-        header('Location: ../../Views/Funcionario/statusMesa.php?telas=pagartudo&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=vazio');
     }
-
-    
 }

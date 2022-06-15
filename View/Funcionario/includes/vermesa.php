@@ -23,16 +23,23 @@
     }
 ?>
 
-    <h2 class="mb-4">Ver mesa (detalhes) - Mesa #<?php echo $idMesa;?></h2>
+    <h2 class="mb-4">Mesa #<?php echo $idMesa;?> - Informações</h2>
     <div class="row">
-        <span>SESSAO:  <?php echo $codSessao;?></span>
+        <div class="col-md-12">
+            <span><b>SESSÃO:</b> <ins><?php echo $codSessao;?></ins> </span>
+        </div>
+        
     </div>
+    <br>
     <div class="row">
-        <div class="text-end">
-            <form action="../../Model/Funcionario/finalizarMesa.php" method="POST">
+        <div class="col-md-6">
+            <form action="../../Model/Funcionario/configMesa.php" method="POST">
                 <input type="hidden" name="mesa" value="<?php echo $idMesa?>">
-                <button type="submit" name="finalizar" class="btn btn-danger">Finalizar mesa</button>
-                <button type="button"  onclick="window.location.href='statusMesa.php?telas=baixarQR&idMesa=<?php echo $idMesa;?>'" class="btn btn-success">Baixar QRCode</button>
+                <button type="submit" name="apagar" class="btn btn-danger"><span class="ion-trash-a"></span> Apagar mesa</button>
+        </div>
+        <div class="col-md-6 text-right">
+                <button type="submit" name="finalizar" class="btn btn-danger"><span class="ion-close-circled"></span> Finalizar mesa</button>
+                <button type="button"  onclick="window.location.href='statusMesa.php?telas=baixarQR&idMesa=<?php echo $idMesa;?>'" class="btn btn-success"><span class="ion-arrow-down-a"></span> Baixar QRCode</button>
             </form>
             
         </div>
@@ -46,9 +53,9 @@
             if(@mysqli_num_rows($result) > 0)
             {
     ?>
-    <div class="card  text-bg-info" style="padding: 20px;">
+    <div class="card  text-bg-info" style="background-color: #0d3180; padding: 20px;">
         <div class="card-header text-center text-white">
-            <h5 class="card-title">Pedidos</h5>
+            <h5 class="card-title" style="color: white;">Pedidos</h5>
         </div>
         <br>
         <?php
@@ -74,12 +81,45 @@
             ?>
             <div class="card">
               <div class="card-header">
-                <b style="font-size: 17px">#<?php echo $row['id'];?></b>
-                   <span class="badge text-bg-<?php echo $classe;?>"><?php echo $row['status'];?></span> 
+                  <div class="row">
+                    <div class="col-md-4">
+                        <b style="font-size: 17px">#<?php echo $row['id'];?></b>
+                        <span class="badge badge-<?php echo $classe;?>"><?php echo $row['status'];?></span>
+                    </div>
+                    <?php
+                        if($classe != 'dark'){
+                   ?>
+                    <div class="col-md-8 text-right">
+                        <!-- Status enviado -->
+                        <b>Alterar status:</b>
+                        <form action="../../Model/Funcionario/alterarMesa.php" method="post">
+                            <input type="hidden" name="statusEnvi" value="Enviado">
+                            <input type="hidden" name="statusPrep" value="Preparo">
+                            <input type="hidden" name="statusCamin" value="Caminho">
+                            <input type="hidden" name="statusPagar" value="Pagar">
+                            <input type="hidden" name="mesa" value="<?php echo $_GET['idMesa']?>">
+                            <input type="hidden" name="pedido" value="<?php echo $row['id']?>">
+                            <button type="submit" class="btn-status" name="btnEnviado" style="background-color: #574B90;"><span class="ion-paper-airplane"></span> Enviado</button>
+                            <button type="submit" class="btn-status" name="btnPreparo" style="background-color: #17a2b8;"><span class="ion-android-restaurant"></span> Preparo</button>
+                            <button type="submit" class="btn-status" name="btnCaminho" style="background-color: #28a745;"><span class="ion-android-checkmark-circle"></span> Caminho</button>
+                            <button type="submit" class="btn-status" name="btnPagar" style="background-color: #ffc107;"><span class="ion-social-usd"></span> Pagar</button>
+                        </form>
+                    </div>
+                    <?php
+                        }
+                    ?>
+                  </div>
+                  
+                
                   
               </div>
               <div class="card-body">
-
+                <div class="row border-top border-bottom">
+                    <div class="col"><b>ID</b></div>
+                    <div class="col"><b>Item</b></div>
+                    <div class="col"><b>Quantidade</b></div>
+                    <div class="col"><b>Valor</b></div>
+                </div>
                 <!--<h5 class="card-title">Special title treatment</h5>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>-->
@@ -109,32 +149,17 @@
                 ?>
 
                 <div class="row">
-                    <p><b>Observação:</b> <?php echo $row['observacao']?></p>
-                    <p class="card-text text-end">
-                        <b>Total:</b> <?php echo $total;?>
-                    </p>
+                    <div class="col-md-6">
+                        <p><b>Observação:</b> <?php echo $row['observacao']?></p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="card-text text-right">
+                            <b>Total:</b> <ins><?php echo $total;?></ins>
+                        </p>
+                    </div>
                 </div>
               </div>
-              <div class="card-footer text-muted text-end">
-                <div class="text-left">
-                     <?php
-                        if($classe != 'dark'){
-                   ?>
-                        <form action="../../Model/Funcionario/alterarMesa.php" method="POST">
-                            <select name="status" class="form-select-sm">
-                              <option value="Enviado" <?php echo $classe == 'primary'?'selected':'' ?>>Enviado</option>
-                              <option value="Preparo" <?php echo $classe == 'info'?'selected':'' ?>>Em preparo</option>
-                              <option value="Caminho" <?php echo $classe == 'success'?'selected':'' ?>>A Caminho</option>
-                              <option value="Pagar" <?php echo $classe == 'warning'?'selected':'' ?>>A Pagar</option>
-                            </select>
-                            <input type="hidden" name="mesa" value="<?php echo $idMesa;?>">
-                            <input type="hidden" name="pedido" value="<?php echo $row['id'];?>">
-                            <button type="submit" name="alterar" class="btn btn-primary btn-sm">Alterar</button>
-                        </form>
-                    <?php
-                        }
-                    ?>
-                </div>
+              <div class="card-footer text-muted text-right">
                 <?php 
                     echo date('H:i:s d/m/Y ', strtotime($row['data']));
                     if($classe == 'warning'){
@@ -147,8 +172,7 @@
                     }
                 ?>
               </div>
-            </div>
-            <br>
+            </div>  
           <?php
               }
             ?>

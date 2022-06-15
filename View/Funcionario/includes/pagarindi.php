@@ -14,9 +14,8 @@
     if(!isset($erro)){
 ?>
 
-    <h2 class="mb-4">Ver mesa (detalhes) - Mesa #<?php echo $idMesa;?></h2>
-
-    <div class="card  text-bg-info" style="padding: 20px;">
+    <h2 class="mb-4">Mesa #<?php echo $idMesa;?> - Informações</h2>
+    <div class="card  text-bg-info" style="background-color: #0d3180; padding: 20px;">
         <div class="card-header text-center text-white">
             <h5 class="card-title">Pedido detalhe</h5>
         </div>
@@ -50,11 +49,16 @@
             <div class="card">
               <div class="card-header">
                 <b style="font-size: 17px">#<?php echo $row['id'];?></b>
-                   <span class="badge text-bg-<?php echo $classe;?>"><?php echo $row['status'];?></span> 
+                   <span class="badge badge-<?php echo $classe;?>"><?php echo $row['status'];?></span> 
                 
               </div>
               <div class="card-body">
-
+                <div class="row border-top border-bottom">
+                    <div class="col"><b>ID</b></div>
+                    <div class="col"><b>Item</b></div>
+                    <div class="col"><b>Quantidade</b></div>
+                    <div class="col"><b>Valor</b></div>
+                </div>
                 <!--<h5 class="card-title">Special title treatment</h5>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>-->
@@ -84,9 +88,12 @@
                 ?>
 
                 <div class="row">
-                    <p class="card-text text-end">
-                        <b>Total:</b> <?php echo $total;?>
-                    </p>
+                    <div class="col-md-12">
+                        <p class="card-text text-right">
+                            <b>Total:</b> <ins><?php echo $total;?></ins> 
+                        </p>
+                    </div>
+                    
                 </div>
 
                 <?php
@@ -101,7 +108,7 @@
                                   <p class="mb-0"><b>Lembre-se de que finalizar o pedido, não finaliza a mesa.</b></p>
                                 </div>
                                 <div class="text-center">
-                                    <a href="../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa=<?php echo $idMesa;?>" class="btn btn-primary">Voltar</a>
+                                    <a href="../../View/Funcionario/statusMesa.php?telas=vermesa&idMesa=<?php echo $idMesa;?>" class="btn btn-primary">Voltar</a>
                                 </div>
                                 <?php
                             }else if($_GET["status"] == "erro"){
@@ -113,22 +120,27 @@
                             }
                         }else{
                             ?>
-                    <div class="row text-center">
-                        <h5 class="card-title ">Dados de pagamento</h5>
+                    
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                             <h5 class="card-title ">Dados de pagamento</h5>
                         </div>
-                        <div class="row">
+                       
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
                             <form action="../../Model/Funcionario/fecharConta.php" method="POST">
                                 <select class="form-select" name="metodo" aria-label="Default select example">
-                                  <option value="dinheiro">Dinheiro</option>
-                                  <option value="debito">Cartão de débito</option>
-                                  <option value="credito">Cartão de crédito</option>
-                                  <option value="pix">Pix</option>
+                                    <option value="dinheiro">Dinheiro</option>
+                                    <option value="debito">Cartão de débito</option>
+                                    <option value="credito">Cartão de crédito</option>
+                                    <option value="pix">Pix</option>
                                 </select>
                                 <input type="hidden" name="idPedido" value="<?php echo $numero?>">
                                 <input type="hidden" name="mesa" value="<?php echo $idMesa?>">
-                            
                         </div>
-                      </div>
+                    </div>
+              </div>
                       
                       <div class="card-footer text-muted text-center">
                         <button class="btn btn-primary" name="finalizar" type="submit">Finalizar</button>

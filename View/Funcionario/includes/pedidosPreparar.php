@@ -1,7 +1,22 @@
         <div class="card">
               <div class="card-header">
-                <b style="font-size: 17px">#<?php echo $row['id'];?></b>
-                   <span class="badge text-bg-<?php echo $classe;?>"><?php echo $row['status'];?></span> 
+                  <div class="row">
+                      <div class="col-md-4">
+                            <b style="font-size: 17px">#<?php echo $row['id'];?></b>
+                            <span class="badge badge-<?php echo $classe;?>"><?php echo $row['status'];?></span> 
+                      </div>
+                      <div class="col-md-8 text-right">
+                        <!-- Status enviado -->
+                        <b>Alterar status:</b>
+                        <form action="" method="post">
+                            <input type="hidden" name="statusEnvi" value="Enviado">
+                            <input type="hidden" name="statusCamin" value="Caminho">
+                            <input type="hidden" name="pedido" value="<?php echo $row['id']?>">
+                            <button type="submit" class="btn-status" name="btnEnviado" style="background-color: #574B90;"><span class="ion-paper-airplane"></span> Enviado</button>
+                            <button type="submit" class="btn-status" name="btnCaminho" style="background-color: #28a745;"><span class="ion-android-checkmark-circle"></span> Caminho</button>
+                        </form>
+                    </div>
+                  </div> 
                   
               </div>
               <div class="card-body">
@@ -29,27 +44,13 @@
                 ?>
 
                 <div class="row">
+                  <div class="col-md-12">
                     <p><b>Observação:</b> <?php echo $row['observacao']?></p>
+                  </div>
                 </div>
               </div>
-              <div class="card-footer text-muted text-end">
-                <div class="text-left">
-                     <?php
-                        if($classe != 'dark'){
-                   ?>
-                        <form action="../../Model/Funcionario/alterarStPedido.php" method="POST">
-                            <select name="status" class="form-select-sm">
-                              <option value="Enviado" <?php echo $classe == 'primary'?'selected':'' ?>>Enviado</option>
-                              <option value="Preparo" <?php echo $classe == 'info'?'selected':'' ?>>Em preparo</option>
-                              <option value="Caminho" <?php echo $classe == 'success'?'selected':'' ?>>A Caminho</option>
-                            </select>
-                            <input type="hidden" name="pedido" value="<?php echo $row['id'];?>">
-                            <button type="submit" name="alterar" class="btn btn-primary btn-sm">Alterar</button>
-                        </form>
-                    <?php
-                        }
-                    ?>
-                </div>
+              <div class="card-footer text-muted text-right">
+                <?php echo $row['data']?>
               </div>
             </div>
         <br>

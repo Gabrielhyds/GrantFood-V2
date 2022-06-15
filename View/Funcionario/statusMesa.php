@@ -11,6 +11,7 @@ require_once('includes/sessao.php');
 
 
 include_once "includes/foto.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,18 +19,27 @@ include_once "includes/foto.php";
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
     <title>Cadastrar Funcionario</title>
-
-
+    <?php
+      echo "<meta HTTP-EQUIV='refresh' CONTENT='15'>";
+    ?>
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/cards.css">
     <link rel="stylesheet" href="assets/css/demo.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/card.css">
     <style>
       * label{
           color:black;
+      }
+
+      .btn-status{
+          border: none;
+          border-radius: 30px;
+          color: white;
+          font-weight: 500;
+          font-size: 11px;
+;
       }
   </style>
 </head>
@@ -78,7 +88,13 @@ include_once "includes/foto.php";
                         <div class="sidebar-user-details">
                             <div class="user-name"><?php echo $_SESSION['usuario'];?></div>
                             <div class="user-role">
-                                Gerente
+                                <?php 
+                                    if($_SESSION['permissao'] == 1){
+                                        echo 'Gerente';
+                                    }else{
+                                        echo 'Garçom';
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -88,6 +104,9 @@ include_once "includes/foto.php";
                         <li class="active">
                             <a href="statusMesa.php"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
                         </li>
+                        <?php
+                            if($_SESSION['permissao'] == 1){
+                        ?>  
                         <li>
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
                             <ul class="menu-dropdown">
@@ -109,6 +128,9 @@ include_once "includes/foto.php";
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
+                        <?php 
+                            }
+                        ?>
                 </aside>
             </div>
             <div class="main-content">

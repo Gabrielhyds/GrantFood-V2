@@ -7,7 +7,7 @@
 ?>
 
 <div class="container">
-    <div class="row" style="color: white;"> 
+    <div class="row" style="color: black;"> 
       <div align="center">
         <h3>Baixar QRCode</h5>
         <hr>

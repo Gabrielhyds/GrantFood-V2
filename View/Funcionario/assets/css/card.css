@@ -1,4 +1,3 @@
-/* main */
 
 html {
     font-family: 'Roboto', sans-serif;
@@ -10,10 +9,9 @@ body {
     color: #000;
 }
 
-
 /* buttons */
 
-.btn {
+.btnCard {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -35,8 +33,8 @@ body {
     border-radius: 4px;
 }
 
-.btn,
-a.btn {
+.btnCard,
+a.btnCard {
     border-radius: 2px;
     letter-spacing: 0.8px;
     font-size: 14px;
@@ -92,9 +90,7 @@ a.btn-transparent-green:hover {
     background: #49ac01;
 }
 
-
 /* cards */
-
 .color-block-wrapper {
     margin-top: 40px;
     -webkit-box-shadow: 0px 15px 30px 0px rgba(124, 124, 124, 0.15);
