@@ -115,12 +115,16 @@ include 'includes/foto.php';
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
                             <ul class="menu-dropdown" >
                                 <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
-                                <li class="active"><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
-                                <li><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
+                                <li ><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
+                                <li class="active"><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
                             </ul>
                         </li>
-                        <li >
-                            <a href="inserir.php"><i class="ion ion-medkit"></i><span>Inserir</span></a>
+                        <li>
+                            <a href="#" class="has-dropdown"><i class="ion ion-medkit"></i><span>Inserir</span></a>
+                            <ul class="menu-dropdown">
+                                <li><a href="inserir.php" class="active"><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
+                                <li><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
+                            </ul>
                         </li>
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>

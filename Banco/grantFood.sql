@@ -61,7 +61,7 @@ INSERT INTO `sistema` (`id`, `status`, `pedidos`) VALUES
 create table mesa(
 	numero int(11) primary key,
 	STATUS varchar(30) DEFAULT NULL,
-	link varchar(255) DEFAULT NULL,
+	lugares varchar(255) DEFAULT NULL,
 	qtdUsada int(11) DEFAULT NULL
 );
 

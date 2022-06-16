@@ -9,15 +9,6 @@
 <div class="container">
     <div class="row">
     <?php 
-        if(isset($_GET['success'])){
-          if($_GET['success'] == 'criada'){
-            ?>
-              <div class="alert alert-success" role="alert">
-                Mesa criada com sucesso!!!
-              </div>
-            <?php
-          }
-        }
         if(isset($_GET['erro'])){
           if($_GET['erro'] == 'jaExiste'){
             ?>
