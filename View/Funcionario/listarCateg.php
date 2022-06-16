@@ -123,7 +123,7 @@ include 'includes/foto.php';
                             <a href="#" class="has-dropdown"><i class="ion ion-medkit"></i><span>Inserir</span></a>
                             <ul class="menu-dropdown">
                                 <li><a href="inserir.php" class="active"><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
-                                <li><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
+                                <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
                         <li >
@@ -147,7 +147,42 @@ include 'includes/foto.php';
             </div>
               <div>
               <?php $sql = "SELECT * FROM categoria;"; $result = $connection->query($sql);?>
-              <table class="table alert alert-info">
+              <div class="row mt-5">
+                        <div class="col-12">
+                            <div class="card">
+                            <div class="card-header">
+                                <h4>Categorias</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Ação</th>
+                                    </tr>
+
+                                    <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
+                                        <tr>
+                                            <td><?php echo $row["nomeCat"]; ?></td>
+                                            <td> 
+                                                <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCateg.php?id=<?php echo  $row['id']; ?>'">
+                                                    Excluir
+                                                </button>
+                                            </td> 
+                                        </tr>
+                                    <?php   }}else{echo '<div class="alert alert-danger" role="alert">
+                                                            Nenhuma categoria cadastrada! &#128552
+                                                        </div>';
+                                            } ?> 
+                                </table>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+              </div>
+              <!--<table class="table alert alert-info">
                 <thead>
                  
                     <tr>
@@ -171,7 +206,7 @@ include 'includes/foto.php';
                                         &#128552 nenhum produto cadastrado!
                                       </div>';
                           } ?> 
-                </table>
+                </table>-->
               </div>
             </form><br><br>
             </div>

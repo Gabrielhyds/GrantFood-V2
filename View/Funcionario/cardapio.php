@@ -140,7 +140,7 @@ include_once "includes/foto.php";
             <div class="main-content">
                 <section class="section">
                     <h1 class="section-header">
-                        <div>Cardápio - Categoria</div>
+                        <div>Cardápio - Itens</div>
                     </h1>
 
                     <div class="container">

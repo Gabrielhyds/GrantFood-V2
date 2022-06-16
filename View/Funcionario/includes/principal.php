@@ -59,8 +59,8 @@
                     <div class="color-block-head">
                      Disponível
                     </div>
-                    <div class="color-block-head">
-                      Lugares: <b><?php echo $row['lugares']?></b>
+                    <div class="color-block-head" style="color: black">
+                      Lugares: <b style="font-size: 17px"><?php echo $row['lugares']?></b>
                     </div> 
                     <div class="color-block-text">
                     Mesa <?php echo $row['numero'];?>
@@ -80,7 +80,7 @@
                     <div class="color-block-head">
                       Ocupado
                     </div>
-                    <div class="color-block-head">
+                    <div class="color-block-head" style="color: black">
                       Lugares: <b><?php echo $row['lugares']?></b>
                     </div> 
                     <div class="color-block-text">
@@ -101,7 +101,7 @@
                       <div class="color-block-head">
                         Fechar conta
                       </div>
-                      <div class="color-block-head">
+                      <div class="color-block-head" style="color: black">
                         Lugares: <b><?php echo $row['lugares']?></b>
                       </div> 
                       <div class="color-block-text">

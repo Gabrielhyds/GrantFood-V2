@@ -141,47 +141,56 @@ include_once "includes/foto.php";
               <?php $sql = "SELECT  prod.id, prod.nome, prod.descricao,prod.image,prod.preco,categ.nomeCat 
                     FROM produtos AS prod
                     LEFT JOIN categoria AS categ ON prod.categoria_id=categ.id;"; $result = $connection->query($sql);?>
-              <table class="table alert alert-info">
-                <thead>
-
-                    <tr>
-                    <th scope="col" style="color:black">Nome</th>
-                    <th scope="col" style="color:black">Descricao</th>
-                    <th scope="col" style="color:black">imagem</th>                 
-                    <th scope="col" style="color:black">preço</th>
-                    <th scope="col" style="color:black">Categoria</th>
-                    <th scope="col" style="color:black">Ações</th>
-                    
-                    </tr>
-                </thead>
-                <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
-                <tbody>
-                    <tr>
-                      <td style="color:black"><?php echo $row["nome"]; ?></td>
-                      <td style="color:black"><?php echo $row["descricao"]; ?></td>
-                      <td style="color:black"><img src="assets/img/food/<?php echo $row['image']; ?>" alt="" style="width:75px;height:75px;margin-top:2px"></td>
-                      <td style="color:black"><?php echo $row["preco"]; ?></td>
-                      <td style="color:black"><?php echo $row["nomeCat"]; ?></td>
-                      <td> 
-                        <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarCad.php?id=<?php echo $row['id']; ?>'">
-                            Editar
-                        </button> 
-                        <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCad.php?id=<?php echo $row['id']; ?>'">
-                            Excluir
-                        </button>
-                      </td> 
-                    </tr>
-                </tbody>
-                <?php   
-                    }}else{echo '<div class="alert alert-danger" role="alert">
-                                  &#128552 nenhum produto cadastrado!
-                                </div>';
-                    } 
-                ?> 
-                </table>
+              <div class="row mt-5">
+                        <div class="col-12">
+                            <div class="card">
+                            <div class="card-header">
+                                <h4>Produtos</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                    <th>Imagm</th>
+                                    <th>Preço</th>
+                                    <th>Categoria</th>
+                                    <th>Ação</th>
+                                    </tr>
+                                    <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
+                                    
+                                        <tr>
+                                        <td><?php echo $row["nome"]; ?></td>
+                                        <td><?php echo $row["descricao"]; ?></td>
+                                        <td><img src="assets/img/food/<?php echo $row['image']; ?>" alt="" style="width:75px;height:75px;margin-top:2px"></td>
+                                        <td><?php echo $row["preco"]; ?></td>
+                                        <td><?php echo $row["nomeCat"]; ?></td>
+                                        <td> 
+                                            <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarCad.php?id=<?php echo $row['id']; ?>'">
+                                                Editar
+                                            </button> 
+                                            <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCad.php?id=<?php echo $row['id']; ?>'">
+                                                Excluir
+                                            </button>
+                                        </td> 
+                                        </tr>
+                                    <?php   
+                                        }
+                                    }else{
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                    Nenhum produto cadastrado! &#128552 
+                                                    </div>';
+                                        } 
+                                        ?>
+                                </table>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
               </div>  
-           
-       
           </div>  
         </div>
       </div>
