@@ -182,7 +182,7 @@ include_once "includes/foto.php";
             <footer class="main-footer">
                 <div class="footer-left" style="color:black;">
                     COPYRIGHT &copy; 2022
-                    <div class="bullet"></div> Todos os direitos reservados a Gran-Food</a>
+                    <div class="bullet"></div> Todos os direitos reservados a Gran-Food <div class="bullet"></div> Versão 2.0</a>
                 </div>
                 <div class="footer-right"></div>
             </footer>

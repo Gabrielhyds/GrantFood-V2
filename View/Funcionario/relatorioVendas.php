@@ -127,13 +127,10 @@ include_once "includes/foto.php";
                         <li class="active">
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatório de vendas</span></a>
                         </li>
+
                         <div class="sidebar-user">
-                          <div class="sidebar-user-picture"><?php
-                              if (!is_null($foto)){ ?>
-                              <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
-                              <?php }else{ ?>
-                                  <img  class="img d-flex align-items-center justify-content-center" src="assets/img/example-image.jpeg" alt="" style="width:105px;height: 75px;">
-                              <?php }?>
+                          <div class="sidebar-user-picture">
+                                  <img  class="img d-flex align-items-center justify-content-center" src="assets/img/Logo.png" alt="" style="width:120px;height: 90px;margin-left:50px;margin-top:35px">
                           </div>
                         </div>
                 </aside>
@@ -144,69 +141,107 @@ include_once "includes/foto.php";
                         <div>Relatório de vendas</div>
                     </h1>
                    <form action="includes/gerarPdf.php" method="POST">
-                   <?php
-                      if (isset($_SESSION['msg'])) {
-                          echo $_SESSION['msg'];
-                          unset($_SESSION['msg']);
-                      }
-                    ?>
-                    <select name="" class="form-control" id="">
-                        <option value="0">Selecione</option>
-                        <option value="1">Janeiro</option>
-                        <option value="2">Feveiro</option>
-                        <option value="3">Março</option>
-                        <option value="4">Abril</option>
-                        <option value="5">Maio</option>
-                        <option value="6">Junho</option>
-                        <option value="7">Julho</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Setembro</option>
-                        <option value="10">Outubro</option>
-                        <option value="11">Novembro</option>
-                        <option value="12">Dezembro</option>
-                      </select>
-                      <br>
-                      <button class="btn btn-success" name="btnConsultar" type="submit">Consultar</button>
-                   </form>
-                </section>
-                <?php $sql = "SELECT SUM(preco) AS total_Vendas FROM logpedido wHERE data BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE();"; $result = $connection->query($sql);?>
-              <table class="table alert alert-info">
-                <thead>
+                        <?php
+                            if (isset($_SESSION['msg'])) {
+                                echo $_SESSION['msg'];
+                                unset($_SESSION['msg']);
+                            }
+                        ?>
 
-                    <tr>
-                    <th scope="col" style="color:black">Total de vendas</th>
-                    <th scope="col" style="color:black">Ações</th>
-                    
-                    </tr>
-                </thead>
-                <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
-                <tbody>
-                    <tr>
-                      <td style="color:black"><?php echo $row["total_Vendas"]; ?></td>
-                      
-                      <td> 
-                        <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarCad.php?id=<?php echo $row['id']; ?>'">
-                            Editar
-                        </button> 
-                        <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCad.php?id=<?php echo $row['id']; ?>'">
-                            Excluir
-                        </button>
-                      </td> 
-                    </tr>
-                </tbody>
-                <?php   
-                    }}else{echo '<div class="alert alert-danger" role="alert">
-                                  &#128552 nenhum produto cadastrado!
-                                </div>';
-                    } 
-                ?> 
-                </table>
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                               <label for="relatorio">Selecione o relatório</label>
+                                <select class="form-control" name="estado" id="estado" required>
+                                    <option value="0">Salecione</option>
+                                    <option value="1">Relatório Geral</option>
+                                    <option value="2">Relatório Mensal</option>
+                                </select>                  
+                            </div>
+                            <div class="col-4 mb-3" style="margin-top:30px">
+                                    <button class="btn btn-success" name="btnConsultar" type="submit">Consultar</button>
+                            </div>
+                        </div>
+
+
+                        <h2 class="section-title">Estatistica referente ao mês: </h2>
+                        <div class="row">
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="card card-sm bg-primary">
+                            <div class="card-icon">
+                                <i class="ion ion-person"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-body">
+                                <?php $sql = "SELECT COUNT(*) AS total FROM logpedido;"; $sql = $connection->query($sql);?>
+                                <?php $sql= $sql->fetch_assoc();
+                                    echo $sql['total'];?>
+                                </div>
+                                <div class="card-header">
+                                <h4>Total de Pedidos</h4>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="card card-sm bg-danger">
+                            <div class="card-icon">
+                                <i class="ion ion-ios-paper-outline"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-body">
+                                <?php $sql1 = "SELECT SUM(logped.preco) as logpedido FROM logpedido AS logped;"; $sql1 = $connection->query($sql1);?>
+                                <?php $sql2 = "SELECT SUM(g.valor) as valorGasto FROM gastos AS g;"; $sql2 = $connection->query($sql2);?>
+                                <?php $sql1= $sql1->fetch_assoc();$sql2= $sql2->fetch_assoc();
+                                    $resultado = $sql1['logpedido'] - $sql2['valorGasto'];
+                                    echo $resultado = number_format($resultado, 2, ',','.');
+                                    ?>
+                                </div>
+                                <div class="card-header">
+                                <h4>Prejuizo</h4>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="card card-sm bg-warning">
+                            <div class="card-icon">
+                                <i class="ion ion-paper-airplane"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-body">
+                                1,201
+                                </div>
+                                <div class="card-header">
+                                <h4>Reports</h4>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="card card-sm bg-dark">
+                            <div class="card-icon">
+                                <i class="ion ion-record"></i>
+                            </div>
+                            <div class="card-wrap">
+                                <div class="card-body">
+                                47
+                                </div>
+                                <div class="card-header">
+                                <h4>Online Users</h4>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        
+                    </form>
+                </section>
               </div>  
             </div>
             <footer class="main-footer">
                 <div class="footer-left" style="color:black;">
                     COPYRIGHT &copy; 2022
-                    <div class="bullet"></div> Todos os direitos reservados a Gran-Food</a>
+                    <div class="bullet"></div> Todos os direitos reservados a Gran-Food <div class="bullet"></div> Versão 2.0</a>
                 </div>
                 <div class="footer-right"></div>
             </footer>
