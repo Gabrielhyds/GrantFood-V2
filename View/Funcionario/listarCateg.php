@@ -85,10 +85,10 @@ include 'includes/foto.php';
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
                         <?php
-                            if (!is_null($foto)){ ?>
+                            if (!is_null(@$foto)){ ?>
                             <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
                             <?php }else{ ?>
-                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/fundo.jpg" alt="" style="width:105px;height: 75px;">
+                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/bg.jpg" alt="" style="width:95px;height: 75px;">
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
@@ -169,7 +169,8 @@ include 'includes/foto.php';
                 </tbody>
                 <?php   }}else{echo '<div class="alert alert-danger" role="alert">
                                         &#128552 nenhum produto cadastrado!
-                                      </div>';} ?> 
+                                      </div>';
+                          } ?> 
                 </table>
               </div>
             </form><br><br>

@@ -101,10 +101,10 @@ include_once "includes/foto.php";
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
                         <?php
-                            if (!is_null($foto)){ ?>
+                            if (!is_null(@$foto)){ ?>
                             <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
                             <?php }else{ ?>
-                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/example-image.jpeg" alt="" style="width:105px;height: 75px;">
+                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/bg.jpg" alt="" style="width:78px;height: 75px;">
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
@@ -120,6 +120,11 @@ include_once "includes/foto.php";
                         <li class="active">
                             <a href="listarPedidos.php"><i class="ion ion-clipboard"></i><span>Listar Pedidos</span></a>
                         </li>
+                        <div class="sidebar-user">
+                          <div class="sidebar-user-picture">
+                                  <img  class="img d-flex align-items-center justify-content-center" src="assets/img/Logo.png" alt="" style="width:120px;height: 90px;margin-left:50px;margin-top:35px">
+                          </div>
+                        </div>
                        
                 </aside>
             </div>

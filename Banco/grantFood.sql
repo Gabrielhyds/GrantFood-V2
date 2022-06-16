@@ -117,6 +117,7 @@ create table pedido(
 	preco double(10,2) NOT NULL,
 	status varchar(255) DEFAULT 'Enviado',
 	data varchar(50) NOT NULL,
+	observacao VARCHAR(255),
     foreign key(mesa) references mesa(numero),
     foreign key(sessao) references sessao(codSessao)
 );
@@ -197,4 +198,3 @@ SELECT SUM(logp.preco) AS totalVendas FROM logpedido AS logp;
 
 -- total de vendas feitas nos ultimos 30 dias
 SELECT SUM(logped.preco) AS totalVendas FROM logpedido AS logped wHERE data BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE();
-

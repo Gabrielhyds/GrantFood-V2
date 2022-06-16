@@ -105,10 +105,10 @@ $row_telefone = mysqli_fetch_assoc($resultado_telefone);
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
                         <?php
-                            if (!is_null($foto)){ ?>
+                            if (!is_null(@$foto)){ ?>
                             <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
                             <?php }else{ ?>
-                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/example-image.jpeg" alt="" style="width:105px;height: 75px;">
+                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/bg.jpg" alt="" style="width:78px;height: 75px;">
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
@@ -143,12 +143,17 @@ $row_telefone = mysqli_fetch_assoc($resultado_telefone);
                             <a href="#" class="has-dropdown"><i class="ion ion-medkit"></i><span>Inserir</span></a>
                             <ul class="menu-dropdown">
                                 <li><a href="inserir.php" class="active"><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
-                                <li><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
+                                <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
+                        <div class="sidebar-user">
+                          <div class="sidebar-user-picture">
+                                  <img  class="img d-flex align-items-center justify-content-center" src="assets/img/Logo.png" alt="" style="width:120px;height: 90px;margin-left:50px;margin-top:35px">
+                          </div>
+                        </div>
                 </aside>
             </div>
             <div class="main-content">

@@ -87,10 +87,10 @@ include_once "includes/foto.php";
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
                         <?php
-                            if (!is_null($foto)){ ?>
+                            if (!is_null(@$foto)){ ?>
                             <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
                             <?php }else{ ?>
-                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/example-image.jpeg" alt="" style="width:105px;height: 75px;">
+                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/bg.jpg" alt="" style="width:78px;height: 75px;">
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
@@ -125,7 +125,7 @@ include_once "includes/foto.php";
                             <a href="#" class="has-dropdown"><i class="ion ion-medkit"></i><span>Inserir</span></a>
                             <ul class="menu-dropdown">
                                 <li><a href="inserir.php" class="active"><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
-                                <li><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
+                                <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
                         <li class="active">
@@ -144,7 +144,149 @@ include_once "includes/foto.php";
                     <h1 class="section-header">
                         <div>Relatório de vendas</div>
                     </h1>
-                   <form action="includes/gerarPdf.php" method="POST">
+            <div class="row mt-12">
+              <div class="col-12 col-sm-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Seleciona a categoria</h4>
+                  </div>
+                  <div class="card-body">
+                    <ul class="nav nav-pills" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="home-tab3" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="true">Relatório Geral</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="false">Relatório Mensal</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <!-- relatorio Geral-->
+                      <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab3">
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Estatística</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive" style="overflow-x:hidden;">
+                                            <table class="table table-striped" >
+                                            <div class="row">
+                                            <div class="col-12 col-sm-6 col-lg-3">
+                                                    <?php if($_SESSION['resultado'] > 0){ ?>
+                                                        <div class="card card-sm bg-success">
+                                                        <div class="card-icon">
+                                                            &#129297
+                                                        </div>
+                                                    <?php
+                                                        }else{?>
+                                                            <div class="card card-sm bg-danger">
+                                                            <div class="card-icon">
+                                                                &#128557	
+                                                            </div>
+                                                        <?php } ?>
+                                                    <div class="card-wrap">
+                                                        <div class="card-body">
+                                                        <?php $sql1 = "SELECT SUM(logped.preco) as logpedido FROM logpedido AS logped;"; $sql1 = $connection->query($sql1);?>
+                                                        <?php $sql2 = "SELECT SUM(g.valor) as valorGasto FROM gastos AS g;"; $sql2 = $connection->query($sql2);?>
+                                                        <?php $sql1= $sql1->fetch_assoc();$sql2= $sql2->fetch_assoc();
+                                                            $resultado = $sql1['logpedido'] - $sql2['valorGasto'];
+                                                            echo $resultado = number_format($resultado, 2, ',','.');
+                                                            $_SESSION['resultado'] = $resultado;
+                                                            ?>
+                                                        </div>
+                                                        <div class="card-header">
+                                                        <h4><?php if($resultado > 0){
+                                                                 echo "Lucro";
+                                                            }else{
+                                                                echo "Prejuizo";
+                                                                
+                                                            }?></h4>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-lg-3">
+                                                    <div class="card card-sm bg-primary">
+                                                    <div class="card-icon">
+                                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                    </div>
+                                                    <div class="card-wrap">
+                                                        <div class="card-body">
+                                                        <?php $sql = "SELECT COUNT(*) AS total FROM logpedido;"; $sql = $connection->query($sql);?>
+                                                        <?php $sql= $sql->fetch_assoc();
+                                                            echo $sql['total'];?>
+                                                        </div>
+                                                        <div class="card-header">
+                                                        <h4>Total de Pedidos</h4>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-lg-3">
+                                                    <div class="card card-sm bg-warning">
+                                                    <div class="card-icon">
+                                                        <i class="ion ion-paper-airplane"></i>
+                                                    </div>
+                                                    <div class="card-wrap">
+                                                        <div class="card-body">
+                                                        <?php $sql = "SELECT sum(valor) AS total FROM gastos;"; $sql = $connection->query($sql);?>
+                                                        <?php $sql= $sql->fetch_assoc();
+                                                            $resultado = $sql['total'];
+                                                            echo $resultado = number_format($resultado, 2, ',','.');
+                                                        ?>
+                                                        </div>
+                                                        <div class="card-header">
+                                                        <h4>Total de Gastos</h4>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6 col-lg-3">
+                                                    <div class="card card-sm bg-dark">
+                                                    <div class="card-icon">
+                                                        <i class="ion ion-record"></i>
+                                                    </div>
+                                                    <div class="card-wrap">
+                                                        <div class="card-body">
+                                                        <?php $sql = "SELECT sum(preco) AS total FROM logpedido;"; $sql = $connection->query($sql);?>
+                                                        <?php $sql= $sql->fetch_assoc();
+                                                            $resultado =$sql['total'];
+                                                            echo $resultado = number_format($resultado, 2, ',','.');
+                                                        ?>
+                                                        </div>
+                                                        <div class="card-header">
+                                                        <h4>Total de vendas</h4>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <form action="includes/Relatorio.php" method="POST">
+                                                    <div>
+                                                        <button class="btn btn-success" name="btnGerar" type="submit">Gerar PDF</button>
+                                                    </div>
+                                                </form>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+
+                      <!-- LISTAR CONTAS-->
+                      <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
+                      <div class="row mt-5">
+                        <div class="col-12">
+                            <div class="card">
+                            <div class="card-header">
+                                <h4>Relatório Mensal</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive" style="overflow-x:hidden;">
+                                <table class="table table-striped">
+                                <form action="includes/gerarPdf.php" method="POST">
                         <?php
                             if (isset($_SESSION['msg'])) {
                                 echo $_SESSION['msg'];
@@ -154,91 +296,47 @@ include_once "includes/foto.php";
 
                         <div class="row">
                             <div class="col-4 mb-3">
-                               <label for="relatorio">Selecione o relatório</label>
+                               <label for="relatorio">Selecione o Mês</label>
                                 <select class="form-control" name="estado" id="estado" required>
-                                    <option value="0">Salecione</option>
-                                    <option value="1">Relatório Geral</option>
-                                    <option value="2">Relatório Mensal</option>
+                                    <option value="0" disabled selected>Selecione</option>
+                                    <option value="1">Janeiro</option>
+                                    <option value="2">Fevereiro</option>
+                                    <option value="3">Março</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Maio</option>
+                                    <option value="6">Junho</option>
+                                    <option value="7">Julho</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Setembro</option>
+                                    <option value="10">Outubro</option>
+                                    <option value="11">Novembro</option>
+                                    <option value="12">Dezembro</option>
                                 </select>                  
                             </div>
                             <div class="col-4 mb-3" style="margin-top:30px">
                                     <button class="btn btn-success" name="btnConsultar" type="submit">Consultar</button>
                             </div>
                         </div>
-
-
-                        <h2 class="section-title">Estatistica referente ao mês: </h2>
-                        <div class="row">
-                        <div class="col-12 col-sm-6 col-lg-3">
-                            <div class="card card-sm bg-primary">
-                            <div class="card-icon">
-                                <i class="ion ion-person"></i>
-                            </div>
-                            <div class="card-wrap">
-                                <div class="card-body">
-                                <?php $sql = "SELECT COUNT(*) AS total FROM logpedido;"; $sql = $connection->query($sql);?>
-                                <?php $sql= $sql->fetch_assoc();
-                                    echo $sql['total'];?>
-                                </div>
-                                <div class="card-header">
-                                <h4>Total de Pedidos</h4>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-3">
-                            <div class="card card-sm bg-danger">
-                            <div class="card-icon">
-                                <i class="ion ion-ios-paper-outline"></i>
-                            </div>
-                            <div class="card-wrap">
-                                <div class="card-body">
-                                <?php $sql1 = "SELECT SUM(logped.preco) as logpedido FROM logpedido AS logped;"; $sql1 = $connection->query($sql1);?>
-                                <?php $sql2 = "SELECT SUM(g.valor) as valorGasto FROM gastos AS g;"; $sql2 = $connection->query($sql2);?>
-                                <?php $sql1= $sql1->fetch_assoc();$sql2= $sql2->fetch_assoc();
-                                    $resultado = $sql1['logpedido'] - $sql2['valorGasto'];
-                                    echo $resultado = number_format($resultado, 2, ',','.');
-                                    ?>
-                                </div>
-                                <div class="card-header">
-                                <h4>Prejuizo</h4>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-3">
-                            <div class="card card-sm bg-warning">
-                            <div class="card-icon">
-                                <i class="ion ion-paper-airplane"></i>
-                            </div>
-                            <div class="card-wrap">
-                                <div class="card-body">
-                                1,201
-                                </div>
-                                <div class="card-header">
-                                <h4>Reports</h4>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-6 col-lg-3">
-                            <div class="card card-sm bg-dark">
-                            <div class="card-icon">
-                                <i class="ion ion-record"></i>
-                            </div>
-                            <div class="card-wrap">
-                                <div class="card-body">
-                                47
-                                </div>
-                                <div class="card-header">
-                                <h4>Online Users</h4>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
                         
                     </form>
+                                </table>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                      </div>
+
+                      <!-- LISTAR CONTAS-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
                 </section>
               </div>  
             </div>
