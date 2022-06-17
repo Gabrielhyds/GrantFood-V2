@@ -80,7 +80,7 @@ include_once "includes/foto.php";
                     </li>
                 </ul>
             </nav>
-            <div class="main-sidebar">
+            <div class="main-sidebar" style="color:black">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
                         <a href="index.html">Grant-Food</a>
@@ -95,45 +95,45 @@ include_once "includes/foto.php";
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
-                            <div class="user-name"><?php echo $_SESSION['usuario'];?></div>
-                            <div class="user-role">
+                            <div class="user-name" style="color:black"><?php echo $_SESSION['usuario'];?></div>
+                            <div class="user-role" style="color:black">
                                 Gerente
                             </div>
                         </div>
                     </div>
-                    <ul class="sidebar-menu">
+                    <ul class="sidebar-menu" >
 
-                        <li class="menu-header">Opções</li>
+                        <li class="menu-header" style="color:black">Opções</li>
                         <li>
-                            <a href="statusMesa.php"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
+                            <a href="statusMesa.php" style="color:black"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
                         </li>
                         <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
+                            <a href="#" class="has-dropdown" style="color:black"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
                             <ul class="menu-dropdown">
-                                <li><a href="CadastrarFunc.php"><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
-                                <li ><a href="listarFunc.php"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
+                                <li><a href="CadastrarFunc.php" style="color:black"><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
+                                <li ><a href="listarFunc.php" style="color:black"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
+                            <a href="#" class="has-dropdown" style="color:black"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
                             <ul class="menu-dropdown">
-                                <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
-                                <li><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
-                                <li><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
+                                <li><a href="cardapio.php" style="color:black"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
+                                <li><a href="listarCad.php" style="color:black"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
+                                <li><a href="listarCateg.php" style="color:black"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-dropdown"><i class="ion ion-medkit"></i><span>Inserir</span></a>
+                            <a href="#" class="has-dropdown" style="color:black"><i class="ion ion-medkit"></i><span>Inserir</span></a>
                             <ul class="menu-dropdown">
-                                <li><a href="inserir.php" class="active"><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
-                                <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
+                                <li><a href="inserir.php" class="active" style="color:black"><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
+                                <li><a href="listarGastos.php" style="color:black"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="listarAvaliar.php"><i class="ion ion-star"></i><span>Avaliações</span></a>
+                            <a href="listarAvaliar.php" style="color:black"><i class="ion ion-star"></i><span>Avaliações</span></a>
                         </li>
                         <li class="active">
-                            <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatório de vendas</span></a>
+                            <a href="relatorioVendas.php" style="color:black"><i class="ion ion-clipboard"></i><span>Relatório de vendas</span></a>
                         </li>
 
                         <div class="sidebar-user">
