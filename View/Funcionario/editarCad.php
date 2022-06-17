@@ -125,9 +125,8 @@ include 'includes/foto.php';
                         <li class="active">
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
                             <ul class="menu-dropdown" >
-                                <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
-                                <li class="active"><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
-                                <li><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
+                                <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar itens</a></li>
+                                <li class="active"><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar itens</a></li>
                             </ul>
                         </li>
                         <li>
@@ -167,84 +166,80 @@ include 'includes/foto.php';
                         }
                       ?>
                     </div>
-              <form action="../../Model/Funcionario/editarCad.php" method="POST" enctype="multipart/form-data">
-                <fieldset class="scheduler-border" style="border: 1px solid #3D5A80; border-radius: 4px;">
-                  <legend class="scheduler-border" style="background: #3D5A80; border-radius: 4px"><span style="padding-left: 21px">Adicionar ao cardápio</span></legend>
-                    <div class="control-group">
-                        <table style="position: relative; bottom: 70px;">
-                        <!--Produto-->
-                        <input type="hidden" name="id" value="<?php echo $row_produto['id']; ?>">
-                        <tr>
-                        <div class="input-group mb-3">
-                            <td><button class="btn btn-primary" type="button" id="button-addon1" style="width: 150px" disabled><span class="texto">Produto</span></button></td>
-                            <td><input type="text" class="form-control" placeholder="" name="nome" value="<?php echo $row_produto['nome'];?>" aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px; width: 420px" required></td>
-                        </div>
-                        </tr>
+                    <div class="row mt-12">
+              <div class="col-12 col-sm-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Editando item</h4>
+                  </div>
+                  <div class="card-body">
+                    <ul class="nav nav-pills" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="home-tab3" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="true">Produto</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
 
-                        <!--Descrição-->
-                        <tr>
-                        <div class="input-group mb-3"> 
-                            <td><button class="btn btn-secondary" type="button" id="button-addon1"style="width: 150px" disabled><span class="texto">Descrição</span></button></td>
-                            <td><input type="text" class="form-control" placeholder="" name="descricao"  value="<?php echo $row_produto['descricao'];?>" aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px" ></td>
-                            <td></td>
-                        </div>
-                        </tr>
-                        
-                        <!--Categoria-->
-                        <tr>
-                        <div class="input-group mb-3">
-                            <td><button class="btn btn-outline-success" type="button" id="button-addon1" style="background: red; border: 1px solid red; color: white; width: 150px" disabled><span class="texto">Categoria</span></button></td>
-                            <td>
-                            <!--corrigir o editar categoria-->
-                              <select class="form-control" style="position: relative; top: 5px; left: 5px" name="categoria" required>
-                              <?php
-                                    $result_categoria = "SELECT prod.id,categ.nomeCat 
-                                    FROM produtos AS prod
-                                    LEFT JOIN categoria AS categ ON prod.categoria_id=categ.id where prod.id = $id;";
-                                    $resultado_categoria = mysqli_query($connection, $result_categoria);
-                                    while($row_categoria = mysqli_fetch_assoc($resultado_categoria)){ ?>
-                                      <option value="<?php echo $row_categoria['id']; ?>" disabled selected><?php echo $row_categoria['nomeCat']; ?></option> <?php
-                                    }
-                                  ?>
-                                <?php
-                                    $result_categoria = "SELECT * FROM categoria";
-                                    $resultado_categoria = mysqli_query($connection, $result_categoria);
-                                    while($row_categoria = mysqli_fetch_assoc($resultado_categoria)){ ?>
-                                      <option value="<?php echo $row_categoria['id']; ?>"><?php echo $row_categoria['nomeCat']; ?></option> <?php
-                                    }
-                                  ?>
-                              </select>
-                            </td>
-                        </div>
-                        </tr>
+                        <!-- CADASTRAR PRODUTOS -->
+                        <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab3">
+                                    
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form action="../../Model/Funcionario/cadastrarCad.php" method="POST" enctype="multipart/form-data">
+                                        <div class="form-row">
+                                            <input type="hidden" name="id" value="<?php echo $row_produto['id']; ?>">
+                                            <div class="form-group col-md-6">
+                                                <label for="manutencao">Nome produto</label>
+                                                <input type="text" class="form-control" name="nome" value="<?php echo $row_produto['nome'];?>"  >
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="utensilios">Descrição</label>
+                                                <input type="text" class="form-control" name="descricao" value="<?php echo $row_produto['descricao'];?>" >
+                                            </div>
 
-                         <!--Inserir Imagem-->
-                         <tr>
-                            <div class="input-group mb-3">
-                              <td><button class="btn btn-warning" type="button" id="button-addon1" style=" color: white; width: 150px;" disabled><span class="texto">Insira a imagem</span></button></tc>
-                              <td><input type="file" class="form-control" id="inputGroupFile03" name="imagem" aria-describedby="inputGroupFileAddon03" aria-label="Upload" style="margin-left:5px;margin-top:8px"  required></div></td>
+                                            <div class="form-group col-md-6">
+                                                <label for="utensilios">Categoria</label>
+                                                    <select class="form-control" name="categoria">
+                                                        <option value="">Selecione...</option>
+                                                        <?php
+                                                            $result_categoria = "SELECT prod.id,categ.nomeCat 
+                                                            FROM produtos AS prod
+                                                            LEFT JOIN categoria AS categ ON prod.categoria_id=categ.id where prod.id = $id;";
+                                                            $resultado_categoria = mysqli_query($connection, $result_categoria);
+                                                            while($row_categoria = mysqli_fetch_assoc($resultado_categoria)){ ?>
+                                                            <option value="<?php echo $row_categoria['id']; ?>" disabled selected><?php echo $row_categoria['nomeCat']; ?></option> <?php
+                                                            }
+                                                        ?>
+                                                        <?php
+                                                            $result_categoria = "SELECT * FROM categoria";
+                                                            $resultado_categoria = mysqli_query($connection, $result_categoria);
+                                                            while($row_categoria = mysqli_fetch_assoc($resultado_categoria)){ ?>
+                                                            <option value="<?php echo $row_categoria['id']; ?>"><?php echo $row_categoria['nomeCat']; ?></option> <?php
+                                                            }
+                                                        ?>
+                                                    </select>
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label for="utensilios">Insira a imagem</label>
+                                                <input type="file" class="form-control" name="imagem" placeholder="Descricao..." >
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                                <label for="utensilios">Valor</label>
+                                                <input type="number" class="form-control" name="preco" value="<?php echo $row_produto['preco'];?>" >
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-success" name="btnCadastrar">Cadastrar</button>
+                                    </form>
+                                </div>
                             </div>
-                         </tr>
-
-                        <!--Preço-->
-                        <tr>
-                        <div class="input-group mb-3">
-                            <td><button class="btn btn-outline-success" type="button" id="button-addon1"  style="background-color: green; color: white; width: 150px" disabled><span class="texto">Preço</span></button></td>
-                            <td><input type="number" class="form-control" placeholder="" value="<?php echo $row_produto['preco']?>" name="preco" aria-label="Example text with button addon" aria-describedby="button-addon1" style="width: 150px; position: relative; top: 5px; left: 5px"  required></td>
-                            <td style="position: relative; top: 5px; right: 300px; color: black;">R$</td>
                         </div>
-                        </tr>
-
-                          <!--Inserir e Remover-->
-                          <tr>
-                            <div class="btn" >
-                              <td style="position: relative;  top: 20px"><button type="submit" name="btnAtualizar" class="btn btn-success" style="font-family: arial; font-weight: bold"><span class="fa fa-plus mr-1"></span>Atualizar</button>
-                            </div>
-                          </tr>
-                        </table>
                     </div>
-                </fieldset>
-              </form>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         
             </div>

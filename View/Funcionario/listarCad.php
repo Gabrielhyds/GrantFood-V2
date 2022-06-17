@@ -103,9 +103,8 @@ include_once "includes/foto.php";
                         <li class="active">
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
                             <ul class="menu-dropdown" >
-                                <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
-                                <li class="active"><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
-                                <li><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
+                                <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar itens</a></li>
+                                <li class="active"><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar itens</a></li>
                             </ul>
                         </li>
                         <li>
@@ -141,60 +140,126 @@ include_once "includes/foto.php";
                 }
               ?>
             </div>
-              <div>
-              <?php $sql = "SELECT  prod.id, prod.nome, prod.descricao,prod.image,prod.preco,categ.nomeCat 
-                    FROM produtos AS prod
-                    LEFT JOIN categoria AS categ ON prod.categoria_id=categ.id;"; $result = $connection->query($sql);?>
-              <div class="row mt-5">
-                        <div class="col-12">
-                            <div class="card">
-                            <div class="card-header">
-                                <h4>Produtos</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <tr>
-                                    <th>Nome</th>
-                                    <th>Descrição</th>
-                                    <th>Imagm</th>
-                                    <th>Preço</th>
-                                    <th>Categoria</th>
-                                    <th>Ação</th>
-                                    </tr>
-                                    <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
-                                    
+              
+            <div class="row mt-12">
+              <div class="col-12 col-sm-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Seleciona o tipo para listar</h4>
+                  </div>
+                  <div class="card-body">
+                    <ul class="nav nav-pills" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="home-tab3" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="true">Produto</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="false">Categoria</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+
+                        <!-- CADASTRAR PRODUTOS -->
+                    <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab3">
+                        <?php $sql = "SELECT  prod.id, prod.nome, prod.descricao,prod.image,prod.preco,categ.nomeCat 
+                        FROM produtos AS prod
+                        LEFT JOIN categoria AS categ ON prod.categoria_id=categ.id;"; $result = $connection->query($sql);?>
+                
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                <div class="card-header">
+                                    <h4>Produtos</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                    <table class="table table-striped">
                                         <tr>
-                                        <td><?php echo $row["nome"]; ?></td>
-                                        <td><?php echo $row["descricao"]; ?></td>
-                                        <td><img src="assets/img/food/<?php echo $row['image']; ?>" alt="" style="width:75px;height:75px;margin-top:2px"></td>
-                                        <td><?php echo $row["preco"]; ?></td>
-                                        <td><?php echo $row["nomeCat"]; ?></td>
-                                        <td> 
-                                            <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarCad.php?id=<?php echo $row['id']; ?>'">
-                                                <span class="ion-edit"></span> Editar
-                                            </button> 
-                                            <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCad.php?id=<?php echo $row['id']; ?>'">
-                                                <span class="ion-trash-a"></span> Excluir
-                                            </button>
-                                        </td> 
+                                        <th>Nome</th>
+                                        <th>Descrição</th>
+                                        <th>Imagm</th>
+                                        <th>Preço</th>
+                                        <th>Categoria</th>
+                                        <th>Ação</th>
                                         </tr>
-                                    <?php   
-                                        }
-                                    }else{
-                                        echo '<div class="alert alert-danger" role="alert">
-                                                    Nenhum produto cadastrado! &#128552 
-                                                    </div>';
-                                        } 
-                                        ?>
-                                </table>
+                                        <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
+                                        
+                                            <tr>
+                                            <td><?php echo $row["nome"]; ?></td>
+                                            <td><?php echo $row["descricao"]; ?></td>
+                                            <td><img src="assets/img/food/<?php echo $row['image']; ?>" alt="" style="width:75px;height:75px;margin-top:2px"></td>
+                                            <td><?php echo $row["preco"]; ?></td>
+                                            <td><?php echo $row["nomeCat"]; ?></td>
+                                            <td> 
+                                                <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarCad.php?id=<?php echo $row['id']; ?>'">
+                                                    <span class="ion-edit"></span> Editar
+                                                </button> 
+                                                <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCad.php?id=<?php echo $row['id']; ?>'">
+                                                    <span class="ion-trash-a"></span> Excluir
+                                                </button>
+                                            </td> 
+                                            </tr>
+                                        <?php   
+                                            }
+                                        }else{
+                                            echo '<div class="alert alert-danger" role="alert">
+                                                        Nenhum produto cadastrado! &#128552 
+                                                        </div>';
+                                            } 
+                                            ?>
+                                    </table>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
+                        </div>      
+                        
+                    </div>
+
+                      <!-- CADASTRAR CATEGORIAS-->
+                      <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
+                      <?php $sql = "SELECT * FROM categoria;"; $result = $connection->query($sql);?>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                <div class="card-header">
+                                    <h4>Categorias</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Ação</th>
+                                        </tr>
+
+                                        <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
+                                            <tr>
+                                                <td><?php echo $row["nomeCat"]; ?></td>
+                                                <td> 
+                                                    <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCateg.php?id=<?php echo  $row['id']; ?>'">
+                                                        <span class="ion-trash-a"></span> Excluir
+                                                    </button>
+                                                </td> 
+                                            </tr>
+                                        <?php   }}else{echo '<div class="alert alert-danger" role="alert">
+                                                                Nenhuma categoria cadastrada! &#128552
+                                                            </div>';
+                                                } ?> 
+                                    </table>
+                                    </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
-                        </div>
+
                       </div>
-              </div>  
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              
           </div>  
         </div>
       </div>
