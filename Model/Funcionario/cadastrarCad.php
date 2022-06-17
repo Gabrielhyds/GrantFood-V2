@@ -46,10 +46,28 @@ if(isset($dados['btnCadastrar'])){
 
                
         
-                $_SESSION['msg'] = '<div class="alert alert-success" role="alert"><b>Produto Cadastrado com sucesso &#128523;</b></div>';
+                $_SESSION['msg'] = '<div class="alert alert-success alert-has-icon alert-dismissible show fade">
+                    <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                    <div class="alert-body">
+                      <button class="close" data-dismiss="alert">
+                        <span>&times;</span>
+                      </button>
+                      <div class="alert-title">Parabéns</div>
+                        <b>Item</b> Cadastrado com sucesso!
+                    </div>
+                  </div>';
                 header("Location:../../View/Funcionario/cardapio.php");
             }else{
-                $_SESSION['msg'] = '<div class="alert alert-success" role="alert"><b>Erro ao cadastrar o produto &#128532;</b></div>';
+                $_SESSION['msg'] = '<div class="alert alert-dark alert-has-icon alert-dismissible show fade">
+                <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                <div class="alert-body">
+                  <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                  </button>
+                  <div class="alert-title">Atenção</div>
+                    Não foi possivel <b>Atualizar</b> o Funcionário
+                </div>
+              </div>';
                 header("Location:../../View/Funcionario/cardapio.php");
             }
     }

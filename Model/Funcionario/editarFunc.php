@@ -2,6 +2,9 @@
 //Iniciar a sessao
 session_start();
 
+//inclui a função para validação do CPF
+include "cpfFunc.php";
+
 //Limpar o buffer de saida
 ob_start();
 
@@ -14,19 +17,18 @@ if(isset($_POST['btnAtualizar'])){
 
     $nome = $_POST['nome'];
     $permissao = $_POST['permissao'];
-    $senha = MD5($_POST['senha']);
-    $comparaSenha = $_POST['Confirmasenha'];
+    $senha = md5($_POST['senha']);
+    $comparaSenha = md5($_POST['Confirmasenha']);
     $usuario = $_POST['usuario'];
     $genero = $_POST['genero'];
     $cpf = $_POST['cpf'];
     $salario = $_POST['salario'];
     $cargaHoraria = $_POST['cargaHoraria'];
-    $dica = $_POST['dica'];
     $foto = $_FILES['imagem'];
 
     $ddd = $_POST['ddd'];
     $telefone = $_POST['telefone'];
-    $tipo = $_POST['tipo'];
+    $tipo = $_POST['tipoTelefone'];
 
     $cep = $_POST['cep'];
     $logradouro = $_POST['logradouro'];
@@ -37,16 +39,50 @@ if(isset($_POST['btnAtualizar'])){
     $numero = $_POST['numero'];
 
     $error = array();
-    // Verifica se o arquivo é uma imagem
-    if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
-        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Isso não é uma imagem &#128552;</b></div>';
-        header("Location:../index.php");
-    } 
-    if($senha != $comparaSenha){
-        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Senhas diferentes &#128552;</b></div>';
-        header("Location:../index.php");
+    //verifica se o cpf é verdadeiro
+    if(!ValidaCpf($_POST['cpf'])){
+        $_SESSION['msg'] = ' <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+        <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+        <div class="alert-body">
+          <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+          </button>
+          <div class="alert-title">Atenção</div>
+            CPF Inválido
+        </div>
+      </div>';
+        header("Location:../../View/Funcionario/editarFunc.php?id=$id"); 
     }
-    if (count($error) == 0) {
+    // Verifica se o arquivo é uma imagem
+    else if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
+        $_SESSION['msg'] = ' <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+        <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+        <div class="alert-body">
+          <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+          </button>
+          <div class="alert-title">Atenção</div>
+            Isso não é uma <b>Imagem</b>
+        </div>
+      </div>';
+        header("Location:../../View/Funcionario/editarFunc.php?id=$id");
+    }
+    //compara as senhas
+    else if($senha != $comparaSenha){
+        $_SESSION['msg'] = ' <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+        <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+        <div class="alert-body">
+          <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+          </button>
+          <div class="alert-title">Atenção</div>
+            As <b>Senhas</b> não se correspondem
+        </div>
+      </div>';
+        header("Location:../../View/Funcionario/editarFunc.php?id=$id");
+    }
+    // sem erro executa a inserção no banco
+    else if (count($error) == 0) {
             // Pega extensão da imagem
             preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext);
             // Gera um nome único para a imagem
@@ -73,11 +109,29 @@ if(isset($_POST['btnAtualizar'])){
                 $stmt->execute([$ddd, $telefone, $tipo, $id]);
                 
                 //Criar a variavel global para salvar a mensagem de sucesso
-                $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Funcionário Atualizado com sucesso &#128526</div>';
+                $_SESSION['msg'] = '<div class="alert alert-success alert-has-icon alert-dismissible show fade">
+                <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                <div class="alert-body">
+                  <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                  </button>
+                  <div class="alert-title">Parabéns</div>
+                    <b>Funcionário</b> atualizado com sucesso!
+                </div>
+              </div>';
                 header("Location:../../View/Funcionario/cadastrarFunc.php");
             }else{
                 //Criar a variavel global para salvar a mensagem de sucesso
-                $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Erro ao Atualizado o Funcionário &#128532;</b></div>';
+                $_SESSION['msg'] = '<div class="alert alert-dark alert-has-icon alert-dismissible show fade">
+                <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                <div class="alert-body">
+                  <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                  </button>
+                  <div class="alert-title">Atenção</div>
+                    Não foi possivel <b>Atualizar</b> o Funcionário
+                </div>
+              </div>';
                 header("Location:../../View/Funcionario/editarFunc.php?id=$id");
             }
     }
