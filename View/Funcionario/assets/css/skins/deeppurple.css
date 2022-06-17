@@ -1,13 +1,13 @@
 .bg-primary {
-    background-color: #39065A !important;
+    background-color: #0d3180 !important;
 }
 
 .text-primary {
-    color: #39065A !important;
+    color: #0d3180 !important;
 }
 
 a {
-    color: #39065A;
+    color: #0d3180;
 }
 
 a:hover {
@@ -15,7 +15,7 @@ a:hover {
 }
 
 .btn-primary {
-    background-color: #39065A;
+    background-color: #0d3180;
     border-color: transparent !important;
 }
 
@@ -28,26 +28,26 @@ a:hover {
 
 .btn-primary.disabled,
 .btn-primary:disabled {
-    background-color: #39065A;
-    border-color: #39065A;
+    background-color: #0d3180;
+    border-color: #0d3180;
 }
 
 .btn-outline-primary {
-    color: #39065A;
+    color: #0d3180;
     background-color: transparent;
     background-image: none;
-    border-color: #39065A;
+    border-color: #0d3180;
 }
 
 .btn-outline-primary:hover {
     color: #fff;
-    background-color: #39065A;
-    border-color: #39065A;
+    background-color: #0d3180;
+    border-color: #0d3180;
 }
 
 .btn-outline-primary.disabled,
 .btn-outline-primary:disabled {
-    color: #39065A;
+    color: #0d3180;
     background-color: transparent;
 }
 
@@ -55,14 +55,14 @@ a:hover {
 .btn-outline-primary:not([disabled]):not(.disabled).active,
 .show>.btn-outline-primary.dropdown-toggle {
     color: #fff;
-    background-color: #39065A;
-    border-color: #39065A;
+    background-color: #0d3180;
+    border-color: #0d3180;
 }
 
 .btn-link {
     font-weight: 400;
-    color: #39065A;
-    background-color: transparent;
+    color: #0d3180;
+    background-color: #0d3180;
 }
 
 .btn-link:hover {
@@ -72,42 +72,42 @@ a:hover {
 .dropdown-item.active,
 .dropdown-item:active {
     color: #fff;
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .custom-control-input:checked~.custom-control-label::before {
     color: #fff;
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .custom-checkbox .custom-control-input:indeterminate~.custom-control-label::before {
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .custom-radio .custom-control-input:checked~.custom-control-label::before {
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .page-link {
-    color: #39065A;
+    color: #0d3180;
     background-color: #fff;
     border: 1px solid #ededed;
 }
 
 .page-item.active .page-link {
     color: #fff;
-    background-color: #39065A;
-    border-color: #39065A;
+    background-color: #0d3180;
+    border-color: #0d3180;
 }
 
 .page-link:focus,
@@ -117,130 +117,130 @@ a:hover {
 
 .badge-primary {
     color: #fff;
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .progress-bar {
     color: #fff;
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .list-group-item.active {
     color: #fff;
-    background-color: #39065A;
-    border-color: #39065A;
+    background-color: #0d3180;
+    border-color: #0d3180;
 }
 
 .bg-primary {
-    background-color: #39065A !important;
+    background-color: #0d3180 !important;
 }
 
 .border-primary {
-    border-color: #39065A !important;
+    border-color: #0d3180 !important;
 }
 
 .text-primary {
-    color: #39065A !important;
+    color: #0d3180 !important;
 }
 
 .navbar.active {
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .navbar-bg {
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .form-control:focus {
-    border-color: #39065A;
+    border-color: #0d3180;
 }
 
 .main-sidebar .sidebar-menu li.active a {
     background-color: #f9f9f9;
-    color: #39065A;
+    color: #0d3180;
 }
 
 .main-sidebar .sidebar-menu li ul.menu-dropdown li a:hover {
-    color: #39065A;
+    color: #0d3180;
 }
 
 .main-sidebar .sidebar-menu li ul.menu-dropdown li.active a {
-    color: #39065A;
+    color: #0d3180;
 }
 
 .alert.alert-primary {
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .card.card-primary {
-    border-top: 2px solid #39065A;
+    border-top: 2px solid #0d3180;
 }
 
 .fc button.fc-state-active {
-    background-color: #39065A;
+    background-color: #0d3180;
     color: #fff;
 }
 
 .jqvmap-circle {
-    background-color: #39065A;
+    background-color: #0d3180;
     border: 1px solid #000;
 }
 
 .weather ul li {
-    border: 2px solid #39065A;
-    color: #39065A;
+    border: 2px solid #0d3180;
+    color: #0d3180;
 }
 
 .card-chat .chat-content .chat-item.chat-right .chat-details .chat-text {
-    background-color: #39065A;
+    background-color: #0d3180;
     color: #fff;
 }
 
 .nav-tabs .nav-item .nav-link {
-    color: #39065A;
+    color: #0d3180;
 }
 
 .nav-pills .nav-item .nav-link {
-    color: #39065A;
+    color: #0d3180;
 }
 
 .swal-button.swal-button--confirm {
-    background-color: #39065A;
+    background-color: #0d3180;
 }
 
 .page-item .page-link {
-    color: #39065A;
+    color: #0d3180;
 }
 
 .page-item.active .page-link {
-    background-color: #39065A;
-    border-color: #39065A;
+    background-color: #0d3180;
+    border-color: #0d3180;
 }
 
 .btn-group .btn.active {
-    background-color: #39065A;
+    background-color: #0d3180;
     color: #fff;
 }
 
 .media .media-right {
-    color: #39065A;
+    color: #0d3180;
 }
 
 .selectric-items li.selected,
 .selectric-items li.highlighted {
-    background-color: #39065A;
+    background-color: #0d3180;
     color: #fff;
 }
 
 .dropzone {
-    border: 2px dashed #39065A;
+    border: 2px dashed #0d3180;
 }
 
 .accordion .accordion-header[aria-expanded="true"] {
-    background-color: #39065A;
+    background-color: #0d3180;
     color: #fff;
 }
 
 .bootstrap-tagsinput .tag {
-    background-color: #39065A;
+    background-color: #0d3180;
 }

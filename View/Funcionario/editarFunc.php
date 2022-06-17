@@ -237,7 +237,7 @@ $row_telefone = mysqli_fetch_assoc($resultado_telefone);
               <div class="form-group col-md-5">
                 <label for="telefone">Tipo do telefone</label>
                 <select name="tipoTelefone" id="" class="form-control" required>
-                  <option value="0" desabled selected>Selecione</option>
+                  <option value="<?php $row_telefone['tipo']; ?>"><?php echo $row_telefone['tipo'];?></option>
                   <option value="Comercial" >Comercial</option>
                   <option value="Residêncial" >Residencial</option>
                 </select>
@@ -283,6 +283,7 @@ $row_telefone = mysqli_fetch_assoc($resultado_telefone);
                   <div class="col-4 mb-3">
                     <label for="estado" class="form-label">Estado</label>
                     <select class="form-control" name="estado" id="estado" value="<?php echo $row_endereco['estado'];?>" required>
+                    <option value="<?php $row_endereco['estado']; ?>"><?php echo $row_endereco['estado'];?></option>
                       <option value="">Selecione</option>
                       <option value="AC">Acre</option>
                       <option value="AL">Alagoas</option>
@@ -327,7 +328,17 @@ $row_telefone = mysqli_fetch_assoc($resultado_telefone);
                   <div class="col mb-5">
                     <label for="permissao" class="form-label" >Permissão</label>
                     <select name="permissao" class="form-control" required>
-                      <option value="0" disabled selected>Selecione</option>
+                      <option value="<?php $row_usuario['tipo'] ?>">
+                      <?php if($row_usuario['tipo'] == 1)
+                      {
+                        echo "Gerente";
+                      }else if($row_usuario['tipo'] == 2)
+                      {
+                        echo "Garçom";
+                      }else if($row_usuario['tipo'] == 3)
+                      {
+                        echo "Cozinha";
+                      }?></option>
                       <option value="1">Gerente</option>
                       <option value="2">Garçom</option>
                       <option value="3">Cozinha</option>

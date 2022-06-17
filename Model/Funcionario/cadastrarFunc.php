@@ -1,32 +1,68 @@
 <?php
-    //Iniciar a sessao
-    session_start();
+//Iniciar a sessao
+session_start();
 
-    //Limpar o buffer de saida
-    ob_start();
+//incluindo a funcão para verficar se o CPF é verdadeiro
+include "cpfFunc.php";
 
-    //Incluir a conexao com BD
-    include_once "../../Banco/Conexao.php"; 
-    
-    //Receber os dados do formulario
-    $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-    //var_dump($dados);
+//Limpar o buffer de saida
+ob_start();
+
+//Incluir a conexao com BD
+include_once "../../Banco/Conexao.php"; 
+
+//Receber os dados do formulario
+$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+//var_dump($dados);
     
     if(isset($dados['btnCadastrar'])){
         $foto = $_FILES['imagem'];
         $comparaSenha = md5($dados['Confirmasenha']);
         $senha = md5($dados['senha']);
         $error = array();
+        $cpf = $dados['cpf'];
+        //verifica se o cpf é verdadeiro
+        if(!ValidaCpf($cpf)){
+            $_SESSION['msg'] = ' <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+            <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+            <div class="alert-body">
+            <button class="close" data-dismiss="alert">
+                <span>&times;</span>
+            </button>
+            <div class="alert-title">Atenção</div>
+                CPF Inválido
+            </div>
+            </div>';
+            header("Location:../../View/Funcionario/cadastrarFunc.php"); 
+        }
         // Verifica se o arquivo é uma imagem
-        if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
-            $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Isso não é uma imagem &#128552;</b></div>';
+        else if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
+            $_SESSION['msg'] = ' <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+            <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+            </button>
+            <div class="alert-title">Atenção</div>
+                Isso não é uma <b>Imagem</b>
+            </div>
+            </div>';
             header("Location:../../View/Funcionario/cadastrarFunc.php");
         }
-        if($senha != $comparaSenha){
-            $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Senhas diferentes &#128552;</b></div>';
+        else if($senha != $comparaSenha){
+            $_SESSION['msg'] = ' <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+            <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+            <div class="alert-body">
+              <button class="close" data-dismiss="alert">
+                <span>&times;</span>
+              </button>
+              <div class="alert-title">Atenção</div>
+                As <b>Senhas</b> não se correspondem
+            </div>
+          </div>';
             header("Location:../../View/Funcionario/cadastrarFunc.php");  
         }
-        if (count($error) == 0) {
+        else if (count($error) == 0) {
                 // Pega extensão da imagem
                 preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext);
                 // Gera um nome único para a imagem
@@ -78,9 +114,30 @@
                     $cad_telefone->execute();
         
                     //Criar a variavel global para salvar a mensagem de sucesso
-                    $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Usuário Cadastrado com sucesso &#128526</div>';
+                    $_SESSION['msg'] = '<div class="alert alert-success alert-has-icon alert-dismissible show fade">
+                    <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                    <div class="alert-body">
+                      <button class="close" data-dismiss="alert">
+                        <span>&times;</span>
+                      </button>
+                      <div class="alert-title">Parabéns</div>
+                        <b>Funcionário</b> Cadastrado com sucesso!
+                    </div>
+                  </div>';
                     header("Location:../../View/Funcionario/cadastrarFunc.php");
                 }
+            }else{
+                $_SESSION['msg'] = '<div class="alert alert-dark alert-has-icon alert-dismissible show fade">
+                <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                <div class="alert-body">
+                  <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                  </button>
+                  <div class="alert-title">Atenção</div>
+                    Não foi possivel <b>Atualizar</b> o Funcionário
+                </div>
+              </div>';
+                header("Location:../../View/Funcionario/cadastrarFunc.php");
             }
         }
 ?>
