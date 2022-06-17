@@ -141,7 +141,74 @@ include_once "includes/foto.php";
                 }
               ?>
             </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-primary">
+                    <i class="ion ion-cash"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total contas</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT SUM(valor) AS total FROM gastos WHERE tipo = 'Contas'";
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        $resultado = $sql['total'];
 
+                        echo $resultado = number_format($resultado, 2, ',','.');
+                        ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-warning">
+                    <i class="ion ion-settings"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total manutenção</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT SUM(valor) AS total FROM gastos WHERE tipo = 'Manutenção'";
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        $resultado = $sql['total'];
+
+                        echo $resultado = number_format($resultado, 2, ',','.');
+                        ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-dark">
+                    <i class="ion ion-fork"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total estoque</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT SUM(valor) AS total FROM gastos WHERE tipo = 'Estoque'";
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        $resultado = $sql['total'];
+
+                        echo $resultado = number_format($resultado, 2, ',','.');
+                        ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>       
             <div class="row mt-12">
               <div class="col-12 col-sm-12 col-lg-12">
                 <div class="card">
@@ -163,7 +230,7 @@ include_once "includes/foto.php";
                     <div class="tab-content" id="myTabContent">
                         <!-- LISTAR CONTAS-->
                       <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab3">
-                      <div class="row mt-5">
+                      <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
@@ -212,7 +279,7 @@ include_once "includes/foto.php";
 
                       <!-- LISTAR CONTAS-->
                       <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
-                      <div class="row mt-5">
+                      <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
@@ -261,7 +328,7 @@ include_once "includes/foto.php";
 
                       <!-- LISTAR CONTAS-->
                       <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab3">
-                      <div class="row mt-5">
+                      <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
