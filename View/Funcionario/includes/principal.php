@@ -1,3 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <b style="font-size: 20px">Sistema: 
+        <?php
+          $sistema = "SELECT status FROM sistema WHERE id = '1'";
+          $resultado =  mysqli_query($connection, $sistema);
+          $linha = mysqli_fetch_array($resultado);
+
+          $sisStatus = $linha['status'];
+
+          switch($sisStatus){
+            case 'Off':
+                $valorStatus = 'dark';
+                break;
+            case 'On':
+                $valorStatus = 'success';
+                break;
+            default:
+                $valorStatus = 'dark';
+                break;
+          }
+        ?>
+      </b>
+      <span class="badge badge-<?php echo $valorStatus;?>"><?php echo $linha['status'];?></span>
+    </div>
+
+    <div class="col-md-8 text-right">
+      <!-- Status enviado -->
+      <b>Alterar status:</b>
+      <form action="../../Model/Funcionario/sistema.php" method="post">
+          <button type="submit" class="btn-status badge badge-success" name="btnOn"><span class="ion-power"></span> On</button>
+          <button type="submit" class="btn-status badge badge-dark" name="btnOff"><span class="ion-close-circled"></span> Off</button>
+      </form>
+  </div>
+  </div>
+</div>
+<?php
+  if($sisStatus == 'On'){
+?>
 <br>
   <div class="container">
     <div class="row" style="color: white;"> 
@@ -116,14 +156,40 @@
               <?php
           }
         ?>
-      <!--<div class="<?php echo $status ?> col-md-3">
-        <div class="txt">
-          <a href="?telas=vermesa&idMesa=<?php echo $row['numero']?>">Mesa <?php echo $row['numero'];?></a>
-        </div>
-      </div>-->
       <?php
           }
         }
       ?>
-      
     </div>
+  <?php
+    }else{
+      ?>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h3>Sistema off.</h3>
+          </div>
+        </div>
+        <br>
+        <?php 
+          if(isset($_GET['success'])){
+            if ($_GET['success'] == 'criada'){
+              ?>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <div class="alert alert-success" role="alert">
+                    Mesa <b><?php echo $_GET['mesaCriada']?></b> criada com sucesso!!!
+                  </div>
+                </div>
+              </div>
+              <?php
+            }
+          }
+        ?>
+        <div class="row">
+          <div class="col-md-12" align="right">
+            <a href="?telas=addmesa" class="btn btn-success"><span class="ion-plus"></span> Adicionar mesa</a>
+          </div>
+        </div>
+      <?php
+    }
+  ?>
