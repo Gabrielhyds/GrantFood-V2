@@ -18,9 +18,10 @@ include_once "includes/foto.php";
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>Cadastrar Funcionario</title>
+    <title>GrantFood - Status da Mesa</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
     <?php
-      echo "<meta HTTP-EQUIV='refresh' CONTENT='15'>";
+      //echo "<meta HTTP-EQUIV='refresh' CONTENT='15'>";
     ?>
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
@@ -28,6 +29,7 @@ include_once "includes/foto.php";
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/demo.css">
     <link rel="stylesheet" href="assets/css/card.css">
+    <link rel="stylesheet" href="assets/css/botaoApagar.css">
     <style>
       * label{
           color:black;
@@ -39,7 +41,6 @@ include_once "includes/foto.php";
           color: white;
           font-weight: 500;
           font-size: 11px;
-;
       }
   </style>
 </head>
@@ -129,9 +130,13 @@ include_once "includes/foto.php";
                                 <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
-                        <li >
+                        <li>
+                            <a href="listarAvaliar.php"><i class="ion ion-star"></i><span>Avaliações</span></a>
+                        </li>
+                        <li>
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
+                        
                         <div class="sidebar-user">
                           <div class="sidebar-user-picture">
                                   <img  class="img d-flex align-items-center justify-content-center" src="assets/img/Logo.png" alt="" style="width:120px;height: 90px;margin-left:50px;margin-top:35px">
@@ -197,20 +202,9 @@ include_once "includes/foto.php";
   <script src="assets/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
   <script src="assets/js/sa-functions.js"></script>
   
-  <script src="http://maps.google.com/maps/api/js?key=YOUR_API_KEY&amp;sensor=true"></script>
-  <script src="assets/modules/gmaps.js"></script>
-  <script>
-    // init map
-    var simple_map = new GMaps({
-      div: '#simple-map',
-      lat: -6.5637928,
-      lng: 106.7535061
-    })
-  </script>
+  <script src="assets/modules/toastr/build/toastr.min.js"></script>
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script src="assets/js/demo.js"></script>
-  <script src="assets/js/cepFunc.js"></script>
 </body>
 
 </html>

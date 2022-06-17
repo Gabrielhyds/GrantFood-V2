@@ -22,7 +22,8 @@ include 'includes/foto.php';
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>Cadastrar Funcionario</title>
+    <title>GrantFood - Listar categorias</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
 
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
@@ -126,6 +127,9 @@ include 'includes/foto.php';
                                 <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="listarAvaliar.php"><i class="ion ion-star"></i><span>Avaliações</span></a>
+                        </li>
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
@@ -166,7 +170,7 @@ include 'includes/foto.php';
                                             <td><?php echo $row["nomeCat"]; ?></td>
                                             <td> 
                                                 <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCateg.php?id=<?php echo  $row['id']; ?>'">
-                                                    Excluir
+                                                    <span class="ion-trash-a"></span> Excluir
                                                 </button>
                                             </td> 
                                         </tr>
@@ -182,31 +186,7 @@ include 'includes/foto.php';
                         </div>
                       </div>
               </div>
-              <!--<table class="table alert alert-info">
-                <thead>
-                 
-                    <tr>
-                    <th scope="col" style="color:black">Nome da categoria</th>
-                    <th scope="col" style="color:black">Ações</th>
-                    </tr>
-                </thead>
-                <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
-                <tbody>
-                    <tr>
-                    <td><?php echo $row["nomeCat"]; ?></td>
-                    <td> 
-                      <a href="../../Model/Funcionario/excluirCateg.php?id=<?php echo  $row['id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
-                      </a> 
-                    </td> 
-                    </tr>
-                </tbody>
-                <?php   }}else{echo '<div class="alert alert-danger" role="alert">
-                                        &#128552 nenhum produto cadastrado!
-                                      </div>';
-                          } ?> 
-                </table>-->
+             
               </div>
             </form><br><br>
             </div>
@@ -246,7 +226,7 @@ include 'includes/foto.php';
   </script>
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script src="assets/js/demo.js"></script>
+  
   <script src="assets/js/cepFunc.js"></script>
   <script src="assets/js/modal.js"></script>
 </body>

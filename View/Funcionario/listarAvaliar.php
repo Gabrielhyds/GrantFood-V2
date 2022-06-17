@@ -12,8 +12,9 @@ session_start();
 //verifica se a sessão usuario existe  
 require_once('includes/sessao.php');
 
-//inclui a foto do usuário
-include_once "includes/foto.php";
+//inclui a foto de perfil do usuário
+include 'includes/foto.php';
+
 
 ?>
 <!DOCTYPE html>
@@ -21,21 +22,32 @@ include_once "includes/foto.php";
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>GrantFood - Listar funcionários</title>
+    <title>GrantFood - Listar avaliações</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
 
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="assets/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
-
+ 
   <link rel="stylesheet" href="assets/css/demo.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <style>
-      * label{
-          color:black;
-      }
-
+    <style>
+        input[type=text]::placeholder {
+          color: black;
+        }
+        
+        input[type=password]::placeholder {
+          color: black;
+        }
+        
+        input[type=number]::placeholder {
+          color: black;
+        }
+        label{
+          color:#ff3a0b;
+        }
+    </style>
   </style>
 </head>
 
@@ -77,7 +89,7 @@ include_once "includes/foto.php";
                             if (!is_null(@$foto)){ ?>
                             <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
                             <?php }else{ ?>
-                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/bg.jpg" alt="" style="width:78px;height: 75px;">
+                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/bg.jpg" alt="" style="width:95px;height: 75px;">
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
@@ -93,19 +105,19 @@ include_once "includes/foto.php";
                         <li>
                             <a href="statusMesa.php"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
                             <ul class="menu-dropdown">
                                 <li><a href="CadastrarFunc.php"><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
-                                <li class="active"><a href="listarFunc.php"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
+                                <li ><a href="listarFunc.php"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
-                            <ul class="menu-dropdown">
+                            <ul class="menu-dropdown" >
                                 <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
-                                <li><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
-                                <li><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
+                                <li ><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
+                                <li ><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
                             </ul>
                         </li>
                         <li>
@@ -115,27 +127,21 @@ include_once "includes/foto.php";
                                 <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="listarAvaliar.php"><i class="ion ion-star"></i><span>Avaliações</span></a>
                         </li>
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
-                        <div class="sidebar-user">
-                          <div class="sidebar-user-picture">
-                                  <img  class="img d-flex align-items-center justify-content-center" src="assets/img/Logo.png" alt="" style="width:120px;height: 90px;margin-left:50px;margin-top:35px">
-                          </div>
-                        </div>
                 </aside>
             </div>
             <div class="main-content">
                 <section class="section">
                     <h1 class="section-header">
-                        <div>Funcionários cadastrados no sistema</div>
+                        <div>Avaliações dos clientes
+                        </div>
                     </h1>
-
-        <!-- Pagina principal -->
-     <form method="POST">
+                    <form method="POST">
             <div>
               <?php
                 if (isset($_SESSION['msg'])) {
@@ -144,59 +150,124 @@ include_once "includes/foto.php";
                 }
               ?>
             </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-primary">
+                    <i class="ion ion-ios-paper-outline"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total avaliações</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php $sql = "SELECT COUNT(*) AS total FROM avaliacao;"; $sql = $connection->query($sql);?>
+                    <?php $sql= $sql->fetch_assoc();
+                        echo $sql['total'];?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-warning">
+                    <i class="ion ion-paper-airplane"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>5 estrelas</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT COUNT(qtdEstrela) AS total FROM avaliacao WHERE qtdEstrela = 5"; 
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        echo $sql['total'];?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-dark">
+                    <i class="ion ion-record"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Comentários</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT COUNT(comentario) AS total FROM avaliacao"; 
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        echo $sql['total'];?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
               <div>
-              <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
-              <div class="row mt-5">
+              <?php $sql = "SELECT * FROM avaliacao;"; $result = $connection->query($sql);?>
+              <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
-                                <h4>Funcionários</h4>
+                                <h4>Avaliações</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                 <table class="table table-striped">
                                     <tr>
-                                    <th>Id</th>
-                                    <th>Nome</th>
-                                    <th>Usuário</th>
-                                    <th>Salário</th>
-                                    <th>Permissão</th>
-                                    <th>Ações</th>
+                                        <th>ID</th>
+                                        <th>Estrelas</th>
+                                        <th>Comentário</th>
+                                        <th>Data/Hora</th>
+                                        <th>Mesa</th>
                                     </tr>
 
                                     <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
                                         <tr>
-                                            <th scope="row">#<?php echo $row["idFunc"]; ?></th>
-                                            <td><?php echo $row["nome"]; ?></td>
-                                            <td><?php echo $row["usuario"]; ?></td>
-                                            <td><?php echo $row["salario"]; ?></td>
+                                            <th><?php echo $row["id"]; ?></th>
+                                            <td>
                                             <?php
-                                            
-                                            switch($row['tipo']){
-                                                case 1:
-                                                $tipo = 'Gerente';
-                                                break;
-                                                case 2:
-                                                $tipo = "Garçom";
-                                                break;
-                                                case 3:
-                                                $tipo = "Cozinha";
-                                                break;
-                                            }
+                                                switch($row["qtdEstrela"]){
+                                                    case 1:
+                                                            ?>
+                                                              <i class="ion ion-star"></i>  
+                                                            <?php
+                                                        break;
+                                                    case 2:
+                                                            ?>
+                                                              <i class="ion ion-star"></i><i class="ion ion-star"></i>  
+                                                            <?php
+                                                        break;
+                                                    case 3:
+                                                            ?>
+                                                              <i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i>   
+                                                            <?php
+                                                        break;
+                                                    case 4:
+                                                            ?>
+                                                              <i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i>   
+                                                            <?php
+                                                        break;
+                                                    case 5:
+                                                            ?>
+                                                              <i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i>   
+                                                            <?php
+                                                        break;
+                                                }
+                                                echo '('.$row["qtdEstrela"].')';
                                             ?>
-                                            <td><?php echo $tipo;?></td>
-                                            <td> 
-                                                <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarFunc.php?id=<?php echo $row['idFunc']; ?>'">
-                                                    <span class="ion-edit"></span> Editar
-                                                </button> 
-                                                <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirFunc.php?id=<?php echo  $row['idFunc']; ?>'">
-                                                   <span class="ion-trash-a"></span> Excluir
-                                                </button>
                                             </td>
-
+                                            <td><?php echo $row["comentario"] == NULL?'Sem comentário.':$row["comentario"]; ?></td>
+                                            <td><?php echo $row["data_hora"]; ?></td>
+                                            <td><?php echo $row["codMesa"]; ?></td>
+                                            
                                         </tr>
                                     <?php   }}else{echo '<div class="alert alert-danger" role="alert">
-                                                            Nenhuma categoria cadastrada! &#128552
+                                                            Nenhuma avaliação cadastrada! &#128552
                                                         </div>';
                                             } ?> 
                                 </table>
@@ -207,59 +278,10 @@ include_once "includes/foto.php";
                         </div>
                       </div>
               </div>
-              <!--<table class="table alert alert-info">
-                <thead>
- 
-                    <tr>
-                    <th scope="col" style="color:black">Id</th>
-                    <th scope="col" style="color:black">Nome</th>
-                    <th scope="col" style="color:black">Usuário</th>
-                    <th scope="col" style="color:black">Salário</th>
-                    <th scope="col" style="color:black">Permissão</th>
-                    <th scope="col" style="color:black">Ações</th>
-                    </tr>
-                </thead>
-                <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
-                <tbody>
-                    <tr>
-                    <th scope="row"><?php echo $row["idFunc"]; ?></th>
-                    <td><?php echo $row["nome"]; ?></td>
-                    <td><?php echo $row["usuario"]; ?></td>
-                    <td><?php echo $row["salario"]; ?></td>
-                    <?php
-                    
-                      switch($row['tipo']){
-                        case 1:
-                          $tipo = 'Gerente';
-                          break;
-                        case 2:
-                          $tipo = "Garçom";
-                          break;
-                        case 3:
-                          $tipo = "Cozinha";
-                          break;
-                      }
-                    ?>
-                    <td><?php echo $tipo;?></td>
-                    <td> 
-                      <a href="editarFunc.php?id=<?php echo $row['idFunc']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>
-                      </a> 
-                      <a href="../../Model/Funcionario/excluirFunc.php?id=<?php echo  $row['idFunc']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
-                      </a> 
-                    </td> 
-                    </tr>
-                </tbody>
-                <?php   }}else{echo '<div class="alert alert-danger" role="alert">
-                                        &#128552 nenhum usuário cadastrado!
-                                      </div>';} ?> 
-                </table>-->
+             
               </div>
-            </form>
-          </div>  
-        </div>
+            </form><br><br>
+            </div>
       </div>
 
     </section>
@@ -282,9 +304,10 @@ include_once "includes/foto.php";
   <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
   <script src="assets/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
   <script src="assets/js/sa-functions.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="http://maps.google.com/maps/api/js?key=YOUR_API_KEY&amp;sensor=true"></script>
   <script src="assets/modules/gmaps.js"></script>
+  
   <script>
     // init map
     var simple_map = new GMaps({
@@ -297,6 +320,7 @@ include_once "includes/foto.php";
   <script src="assets/js/custom.js"></script>
   
   <script src="assets/js/cepFunc.js"></script>
+  <script src="assets/js/modal.js"></script>
 </body>
 
 </html>

@@ -186,11 +186,21 @@
             <?php
             include 'avaliar.php';
           }else if($_GET['success'] == 'pedidoFeito'){
+
+            $sessao = $_SESSION['chave'];
+            $sql = "SELECT status FROM pedido WHERE sessao = '$sessao' AND status = 'Pagar'";
+                          
+            $gotResuslts1 = mysqli_query($connection,$sql);
+                                                
+              if($gotResuslts1){
+                if(mysqli_num_rows($gotResuslts1)>0){
             ?> 
                 <form action="../../Model/Cliente/fecharConta.php" method="POST">
                   <button type="submit" class="btn" name="update">Fechar conta</button>
                 </form>
             <?php
+                  }
+              }
           }
           if($_GET['success'] == 'avaliar'){
                 if(isset($_SESSION['msg'])){
@@ -199,11 +209,20 @@
                 }
           }
         }else{
+          $sessao = $_SESSION['chave'];
+            $sql = "SELECT status FROM pedido WHERE sessao = '$sessao' AND status = 'Pagar'";
+                          
+            $gotResuslts1 = mysqli_query($connection,$sql);
+                                                
+              if($gotResuslts1){
+                if(mysqli_num_rows($gotResuslts1)>0){
           ?> 
                 <form action="../../Model/Cliente/fecharConta.php" method="POST">
                   <button type="submit" class="btn" name="update">Fechar conta</button>
                 </form>
             <?php
+              }
+            }
         }
         $sessao = $_SESSION['chave'];
         $sql = "SELECT * FROM pedido WHERE sessao = '$sessao' ORDER BY id DESC";

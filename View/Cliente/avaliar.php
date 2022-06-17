@@ -21,6 +21,13 @@
 					
 					<label for="estrela_cinco"><i class="fa"></i></label>
 					<input type="radio" id="estrela_cinco" name="estrela" value="5">
+					
+					<br><br>
+					<div class="form-floating">
+                    	<span for="floatingTextarea">Observação (opcional)</span>
+                   		<textarea class="form-control" name="comentario" style="height: 100px" placeholder="Escreva a sua observação do pedido." id="floatingTextarea"></textarea>
+                  	</div>
+					  <br>
 					<button type="submit" class="botao">Avaliar</button>
 				</div>
 						

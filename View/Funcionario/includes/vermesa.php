@@ -12,21 +12,33 @@
 
     if(!isset($erro)){
 
-    $sqlSessao = "SELECT codSessao FROM sessao WHERE codMesa = '$idMesa'";
-    $result = mysqli_query($connection, $sqlSessao);
-    $row = mysqli_fetch_array($result);
-
-    if(@$row['codSessao'] != ''){
+    /*if(@$row['codSessao'] != ''){
         $codSessao = $row['codSessao'];
     }else{
         $codSessao = 'Nenhuma sessão ativa';
-    }
+    }*/
 ?>
 
     <h2 class="mb-4">Mesa #<?php echo $idMesa;?> - Informações</h2>
     <div class="row">
         <div class="col-md-12">
-            <span><b>SESSÃO:</b> <ins><?php echo $codSessao;?></ins> </span>
+            <span><b>SESSÃO:</b> 
+            <?php
+                 $sqlSessao = "SELECT codSessao FROM sessao WHERE codMesa = '$idMesa'";
+                 $result = mysqli_query($connection, $sqlSessao);
+                 if(mysqli_num_rows($result) > 0){
+                     while($row = mysqli_fetch_array($result)){
+                         ?>
+                            <ins><?php echo $row['codSessao'];?></ins> -
+                         <?php
+                     }
+                 }else{
+                     ?>
+                        <ins>Nenhuma sessão ativa.</ins>
+                     <?php
+                 }
+            ?>
+            </span>
         </div>
         
     </div>
@@ -35,13 +47,37 @@
         <div class="col-md-6">
             <form action="../../Model/Funcionario/configMesa.php" method="POST">
                 <input type="hidden" name="mesa" value="<?php echo $idMesa?>">
-                <button type="submit" name="apagar" class="btn btn-danger"><span class="ion-trash-a"></span> Apagar mesa</button>
+                <div class="email" onclick="this.classList.add('expand')">
+                    <div class="from">
+                    <button type="submit" name="apagar" class="btn btn-danger"><span class="ion-trash-a"></span> Apagar mesa</button>
+                    </div>
+                    <div class="to">
+                    <div class="to-contents">
+                        <div class="top">
+                        <div class="name-large"><span class="ion-gear-a"></span> Configurações mesa</div>
+                        <div class="x-touch" onclick="document.querySelector('.email').classList.remove('expand');event.stopPropagation();">
+                            <div class="x">
+                            <div class="line1"></div>
+                            <div class="line2"></div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="bottom">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <span style="margin: 15px;">Você irá apagar a mesa: <b style="font-size: 18px;"><?php echo $idMesa?></b></span>
+                                <button type="submit" name="apagar" class="btn btn-danger"><span class="ion-trash-a"></span> Apagar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
         </div>
         <div class="col-md-6 text-right">
                 <button type="submit" name="finalizar" class="btn btn-danger"><span class="ion-close-circled"></span> Finalizar mesa</button>
                 <button type="button"  onclick="window.location.href='statusMesa.php?telas=baixarQR&idMesa=<?php echo $idMesa;?>'" class="btn btn-success"><span class="ion-arrow-down-a"></span> Baixar QRCode</button>
             </form>
-            
         </div>
     </div>
     <br>

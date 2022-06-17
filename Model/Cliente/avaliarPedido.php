@@ -5,11 +5,18 @@ include_once("../../Banco/Conexao.php");
 if(!empty($_POST['estrela'])){
 	$estrela = $_POST['estrela'];
 	$codMesa = $_SESSION['mesa'];
+	$comentario = $_POST['comentario'];
+
+	if(empty($comentario)){
+		$coment = NULL;
+	}else{
+		$coment = $comentario;
+	}
 
 	print_r($codMesa);
 
 	//Salvar no banco de dados
-	$result_avaliacao = "INSERT INTO avaliacao (qtdEstrela, data_hora, codMesa) VALUES ('$estrela', NOW(), '$codMesa')";
+	$result_avaliacao = "INSERT INTO avaliacao (qtdEstrela, comentario, data_hora, codMesa) VALUES ('$estrela', '$coment', NOW(), '$codMesa')";
 	$resultado_avaliacao = mysqli_query($connection, $result_avaliacao);
 		
 	if(mysqli_insert_id($connection)){

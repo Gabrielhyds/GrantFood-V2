@@ -21,7 +21,8 @@ include_once "includes/foto.php";
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>Cadastrar Funcionario</title>
+    <title>GrantFood - Listar gastos</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
 
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
@@ -114,6 +115,9 @@ include_once "includes/foto.php";
                                 <li class="active"><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="listarAvaliar.php"><i class="ion ion-star"></i><span>Avaliações</span></a>
+                        </li>
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
@@ -188,7 +192,10 @@ include_once "includes/foto.php";
                                     <td><?php echo $row['descricao']?></td>
                                     <td><?php echo $row['valor']?></td>
                                     <td><?php echo $row['data']?></td>
-                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">Excluir</button></td>
+                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">
+                                            <span class="ion-trash-a"></span> Excluir
+                                        </button>
+                                    </td>
                                     </tr>
                                     <?php
                                                 }
@@ -234,7 +241,10 @@ include_once "includes/foto.php";
                                     <td><?php echo $row['descricao']?></td>
                                     <td><?php echo $row['valor']?></td>
                                     <td><?php echo $row['data']?></td>
-                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">Excluiar</button></td>
+                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">
+                                            <span class="ion-trash-a"></span> Excluir
+                                        </button>
+                                    </td>
                                     </tr>
                                     <?php
                                                 }
@@ -280,7 +290,10 @@ include_once "includes/foto.php";
                                     <td><?php echo $row['descricao']?></td>
                                     <td><?php echo $row['valor']?></td>
                                     <td><?php echo $row['data']?></td>
-                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">Excluir</button></td>
+                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">
+                                            <span class="ion-trash-a"></span> Excluir
+                                        </button>
+                                    </td>
                                     </tr>
                                     <?php
                                                 }
@@ -337,7 +350,7 @@ include_once "includes/foto.php";
   </script>
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script src="assets/js/demo.js"></script>
+  
   <script src="assets/js/cepFunc.js"></script>
   <script src="assets/js/modal.js"></script>
 </body>

@@ -29,8 +29,16 @@
       <!-- Status enviado -->
       <b>Alterar status:</b>
       <form action="../../Model/Funcionario/sistema.php" method="post">
-          <button type="submit" class="btn-status badge badge-success" name="btnOn"><span class="ion-power"></span> On</button>
-          <button type="submit" class="btn-status badge badge-dark" name="btnOff"><span class="ion-close-circled"></span> Off</button>
+          <?php if($sisStatus == 'On'){
+            ?>            
+              <button type="submit" class="btn-status badge badge-dark" name="btnOff"><span class="ion-close-circled"></span> Off</button>
+            <?php
+          }else{
+            ?>          
+              <button type="submit" class="btn-status badge badge-success" name="btnOn"><span class="ion-power"></span> On</button>
+            <?php
+          }
+          ?>
       </form>
   </div>
   </div>
@@ -101,6 +109,8 @@
                     </div>
                     <div class="color-block-head" style="color: black">
                       Lugares: <b style="font-size: 17px"><?php echo $row['lugares']?></b>
+                      <br>
+                      Usada: <b style="font-size: 17px"><?php echo $row['qtdUsada']?></b>
                     </div> 
                     <div class="color-block-text">
                     Mesa <?php echo $row['numero'];?>
@@ -121,7 +131,8 @@
                       Ocupado
                     </div>
                     <div class="color-block-head" style="color: white">
-                      Lugares: <b><?php echo $row['lugares']?></b>
+                      Lugares: <b><?php echo $row['lugares']?></b><br>
+                      Usada: <b style="font-size: 17px"><?php echo $row['qtdUsada']?></b>
                     </div> 
                     <div class="color-block-text">
                     Mesa <?php echo $row['numero'];?>
@@ -143,6 +154,8 @@
                       </div>
                       <div class="color-block-head" style="color: white">
                         Lugares: <b><?php echo $row['lugares']?></b>
+                        <br>
+                        Usada: <b style="font-size: 17px"><?php echo $row['qtdUsada']?></b>
                       </div> 
                       <div class="color-block-text">
                         Mesa <?php echo $row['numero'];?>
@@ -164,12 +177,13 @@
   <?php
     }else{
       ?>
+        <br>
         <div class="row">
           <div class="col-md-12 text-center">
             <h3>Sistema off.</h3>
           </div>
         </div>
-        <br>
+        <hr>
         <?php 
           if(isset($_GET['success'])){
             if ($_GET['success'] == 'criada'){

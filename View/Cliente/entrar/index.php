@@ -100,7 +100,11 @@
                                           ?>
                                           <h4 style="color: red;"> Mesa já está sendo utilizada</h4>
                                           <?php
-                                      }
+                                      }else if($_GET['error'] == 'mesanaoexiste'){
+                                        ?>
+                                        <h4 style="color: red;"> Esta mesa não existe no sistema</h4>
+                                        <?php
+                                    }
                                     }
                                   ?>
                               
