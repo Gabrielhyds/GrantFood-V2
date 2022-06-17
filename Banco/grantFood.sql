@@ -187,6 +187,7 @@ create table fechaConta(
 CREATE TABLE avaliacao(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	qtdEstrela CHAR(1) NOT NULL ,
+  comentario varchar(255) NULL,
 	data_hora DATETIME NOT NULL
   codMesa int NOT NULL,
   foreign key(codMesa) references mesa(numero)

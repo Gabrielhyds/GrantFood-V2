@@ -21,7 +21,8 @@ include_once "includes/foto.php";
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>Relatório de vendas</title>
+    <title>GrantFood - Relatório de vendas</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
 
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
@@ -127,6 +128,9 @@ include_once "includes/foto.php";
                                 <li><a href="inserir.php" class="active"><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
                                 <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="listarAvaliar.php"><i class="ion ion-star"></i><span>Avaliações</span></a>
                         </li>
                         <li class="active">
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatório de vendas</span></a>
@@ -372,7 +376,8 @@ include_once "includes/foto.php";
   </script>
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script src="assets/js/demo.js"></script>
+  
+
   <script src="assets/js/cepFunc.js"></script>
 </body>
 

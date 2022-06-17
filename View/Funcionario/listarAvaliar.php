@@ -22,7 +22,7 @@ include 'includes/foto.php';
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>GrantFood - Listar categorias</title>
+    <title>GrantFood - Listar avaliações</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
 
@@ -112,12 +112,12 @@ include 'includes/foto.php';
                                 <li ><a href="listarFunc.php"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
                             </ul>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#" class="has-dropdown"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
                             <ul class="menu-dropdown" >
                                 <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
                                 <li ><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
-                                <li class="active"><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
+                                <li ><a href="listarCateg.php"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
                             </ul>
                         </li>
                         <li>
@@ -127,7 +127,7 @@ include 'includes/foto.php';
                                 <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="listarAvaliar.php"><i class="ion ion-star"></i><span>Avaliações</span></a>
                         </li>
                         <li >
@@ -138,7 +138,8 @@ include 'includes/foto.php';
             <div class="main-content">
                 <section class="section">
                     <h1 class="section-header">
-                        <div>Categorias cadastradas no sistema</div>
+                        <div>Avaliações dos clientes
+                        </div>
                     </h1>
                     <form method="POST">
             <div>
@@ -149,33 +150,124 @@ include 'includes/foto.php';
                 }
               ?>
             </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-primary">
+                    <i class="ion ion-ios-paper-outline"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total avaliações</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php $sql = "SELECT COUNT(*) AS total FROM avaliacao;"; $sql = $connection->query($sql);?>
+                    <?php $sql= $sql->fetch_assoc();
+                        echo $sql['total'];?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-warning">
+                    <i class="ion ion-paper-airplane"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>5 estrelas</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT COUNT(qtdEstrela) AS total FROM avaliacao WHERE qtdEstrela = 5"; 
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        echo $sql['total'];?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-dark">
+                    <i class="ion ion-record"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Comentários</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT COUNT(comentario) AS total FROM avaliacao"; 
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        echo $sql['total'];?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
               <div>
-              <?php $sql = "SELECT * FROM categoria;"; $result = $connection->query($sql);?>
-              <div class="row mt-5">
+              <?php $sql = "SELECT * FROM avaliacao;"; $result = $connection->query($sql);?>
+              <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
-                                <h4>Categorias</h4>
+                                <h4>Avaliações</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                 <table class="table table-striped">
                                     <tr>
-                                        <th>Nome</th>
-                                        <th>Ação</th>
+                                        <th>ID</th>
+                                        <th>Estrelas</th>
+                                        <th>Comentário</th>
+                                        <th>Data/Hora</th>
+                                        <th>Mesa</th>
                                     </tr>
 
                                     <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
                                         <tr>
-                                            <td><?php echo $row["nomeCat"]; ?></td>
-                                            <td> 
-                                                <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirCateg.php?id=<?php echo  $row['id']; ?>'">
-                                                    <span class="ion-trash-a"></span> Excluir
-                                                </button>
-                                            </td> 
+                                            <th><?php echo $row["id"]; ?></th>
+                                            <td>
+                                            <?php
+                                                switch($row["qtdEstrela"]){
+                                                    case 1:
+                                                            ?>
+                                                              <i class="ion ion-star"></i>  
+                                                            <?php
+                                                        break;
+                                                    case 2:
+                                                            ?>
+                                                              <i class="ion ion-star"></i><i class="ion ion-star"></i>  
+                                                            <?php
+                                                        break;
+                                                    case 3:
+                                                            ?>
+                                                              <i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i>   
+                                                            <?php
+                                                        break;
+                                                    case 4:
+                                                            ?>
+                                                              <i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i>   
+                                                            <?php
+                                                        break;
+                                                    case 5:
+                                                            ?>
+                                                              <i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i><i class="ion ion-star"></i>   
+                                                            <?php
+                                                        break;
+                                                }
+                                                echo '('.$row["qtdEstrela"].')';
+                                            ?>
+                                            </td>
+                                            <td><?php echo $row["comentario"] == NULL?'Sem comentário.':$row["comentario"]; ?></td>
+                                            <td><?php echo $row["data_hora"]; ?></td>
+                                            <td><?php echo $row["codMesa"]; ?></td>
+                                            
                                         </tr>
                                     <?php   }}else{echo '<div class="alert alert-danger" role="alert">
-                                                            Nenhuma categoria cadastrada! &#128552
+                                                            Nenhuma avaliação cadastrada! &#128552
                                                         </div>';
                                             } ?> 
                                 </table>

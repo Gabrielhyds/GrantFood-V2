@@ -21,7 +21,8 @@ include_once "includes/foto.php";
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>Cadastrar Funcionario</title>
+    <title>GrantFood - Listar gastos</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
 
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
@@ -114,6 +115,9 @@ include_once "includes/foto.php";
                                 <li class="active"><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="listarAvaliar.php"><i class="ion ion-star"></i><span>Avaliações</span></a>
+                        </li>
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
@@ -137,7 +141,74 @@ include_once "includes/foto.php";
                 }
               ?>
             </div>
+            <div class="row mt-4">
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-primary">
+                    <i class="ion ion-cash"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total contas</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT SUM(valor) AS total FROM gastos WHERE tipo = 'Contas'";
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        $resultado = $sql['total'];
 
+                        echo $resultado = number_format($resultado, 2, ',','.');
+                        ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-warning">
+                    <i class="ion ion-settings"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total manutenção</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT SUM(valor) AS total FROM gastos WHERE tipo = 'Manutenção'";
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        $resultado = $sql['total'];
+
+                        echo $resultado = number_format($resultado, 2, ',','.');
+                        ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-dark">
+                    <i class="ion ion-fork"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total estoque</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT SUM(valor) AS total FROM gastos WHERE tipo = 'Estoque'";
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        $resultado = $sql['total'];
+
+                        echo $resultado = number_format($resultado, 2, ',','.');
+                        ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>       
             <div class="row mt-12">
               <div class="col-12 col-sm-12 col-lg-12">
                 <div class="card">
@@ -159,7 +230,7 @@ include_once "includes/foto.php";
                     <div class="tab-content" id="myTabContent">
                         <!-- LISTAR CONTAS-->
                       <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab3">
-                      <div class="row mt-5">
+                      <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
@@ -188,7 +259,10 @@ include_once "includes/foto.php";
                                     <td><?php echo $row['descricao']?></td>
                                     <td><?php echo $row['valor']?></td>
                                     <td><?php echo $row['data']?></td>
-                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">Excluir</button></td>
+                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">
+                                            <span class="ion-trash-a"></span> Excluir
+                                        </button>
+                                    </td>
                                     </tr>
                                     <?php
                                                 }
@@ -205,7 +279,7 @@ include_once "includes/foto.php";
 
                       <!-- LISTAR CONTAS-->
                       <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
-                      <div class="row mt-5">
+                      <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
@@ -234,7 +308,10 @@ include_once "includes/foto.php";
                                     <td><?php echo $row['descricao']?></td>
                                     <td><?php echo $row['valor']?></td>
                                     <td><?php echo $row['data']?></td>
-                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">Excluiar</button></td>
+                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">
+                                            <span class="ion-trash-a"></span> Excluir
+                                        </button>
+                                    </td>
                                     </tr>
                                     <?php
                                                 }
@@ -251,7 +328,7 @@ include_once "includes/foto.php";
 
                       <!-- LISTAR CONTAS-->
                       <div class="tab-pane fade" id="contact3" role="tabpanel" aria-labelledby="contact-tab3">
-                      <div class="row mt-5">
+                      <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
@@ -280,7 +357,10 @@ include_once "includes/foto.php";
                                     <td><?php echo $row['descricao']?></td>
                                     <td><?php echo $row['valor']?></td>
                                     <td><?php echo $row['data']?></td>
-                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">Excluir</button></td>
+                                    <td><button type="button" name="excluir" class="btn btn-action btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirGastos.php?id=<?php echo $row['id']; ?>'">
+                                            <span class="ion-trash-a"></span> Excluir
+                                        </button>
+                                    </td>
                                     </tr>
                                     <?php
                                                 }
@@ -337,7 +417,7 @@ include_once "includes/foto.php";
   </script>
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script src="assets/js/demo.js"></script>
+  
   <script src="assets/js/cepFunc.js"></script>
   <script src="assets/js/modal.js"></script>
 </body>

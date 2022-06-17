@@ -247,7 +247,8 @@ if(isset($_GET["action"]))
                   </p>
                   <div class="options">
                     <h6>
-                      R$ <?php echo $row["preco"]; ?>
+                      R$ <?php echo $resultado = number_format($row["preco"], 2, ',','.'); ?>
+                      
                     </h6>
                       <form method="post" action="cardapio.php?action=add&id=<?php echo $row["id"]; ?>"> 
                         <button style="background-color: Transparent; background-repeat:no-repeat; border: none; " type="submit" name="addcart" data-target="#add">

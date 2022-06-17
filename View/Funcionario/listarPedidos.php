@@ -21,7 +21,8 @@ include_once "includes/foto.php";
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>Cadastrar Funcionario</title>
+    <title>GrantFood - Listar pedidos</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
 
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
@@ -302,7 +303,7 @@ include_once "includes/foto.php";
   </script>
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script src="assets/js/demo.js"></script>
+  
   <script src="assets/js/cepFunc.js"></script>
 </body>
 

@@ -39,7 +39,8 @@ $row_telefone = mysqli_fetch_assoc($resultado_telefone);
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>Cadastrar Funcionario</title>
+    <title>GrantFood - Editar funcionário</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
 
   <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
@@ -145,6 +146,9 @@ $row_telefone = mysqli_fetch_assoc($resultado_telefone);
                                 <li><a href="inserir.php" class="active"><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
                                 <li><a href="listarGastos.php"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="listarAvaliar.php"><i class="ion ion-star"></i><span>Avaliações</span></a>
                         </li>
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
@@ -391,7 +395,7 @@ $row_telefone = mysqli_fetch_assoc($resultado_telefone);
   </script>
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
-  <script src="assets/js/demo.js"></script>
+  
   <script src="assets/js/cepFunc.js"></script>
 </body>
 

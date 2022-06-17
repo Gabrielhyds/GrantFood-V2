@@ -101,8 +101,7 @@
                     <div class="col"><b>#<?php echo $values['id']?></b></div>
                     <div class="col"><?php echo $values['item']?></div>
                     <div class="col"><?php echo $values['quantidade']?></div>
-                    <div class="col">R$ <?php echo $values['total']?></div>
-                </div>
+                    <div class="col">R$ <?php echo $resultado = number_format($values['total'], 2, ',','.');?></div>                </div>
                 <?php
                 $total = $total + $values['total'];
                               }
@@ -113,7 +112,7 @@
                 <div class="row">
                     <div class="col-md-12">
                        <p class="card-text text-right">
-                            <b>Total:</b> <ins><?php echo $total;?></ins> 
+                       <b>Total:</b> <ins><?php echo $resultado = number_format($total, 2, ',','.');?></ins>
                         </p> 
                     </div>
                 </div>
@@ -129,7 +128,7 @@
             if(mysqli_num_rows($result) != 0){
           ?>
             <div class="col-md-12 text-right">
-                <h3 style="color: white;"><b>Total:</b> <?php echo $geral;?></h3>
+                <h3 style="color: white;"><b>Total:</b> <?php echo $resultado = number_format($geral, 2, ',','.');?></h3>
             </div>
           <?php
             }

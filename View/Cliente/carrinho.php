@@ -194,7 +194,7 @@ if(isset($_GET["action"]))
                                 <div class="row text-muted"><?php echo $values["item_name"]; ?></div>
                             </div>
                             <div class="col"><a href="#" class="border"><?php echo $values["item_quantity"]; ?></a></div>
-                            <div class="col">R$ <?php echo $values["item_price"]; ?> <a href="carrinho.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="close">&#10005;</span></a> </div>
+                            <div class="col">R$ <?php echo $resultado = number_format($values["item_price"], 2, ',','.'); ?> <a href="carrinho.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="close">&#10005;</span></a> </div>
                         </div>
                     </div>
                     <?php
@@ -215,7 +215,7 @@ if(isset($_GET["action"]))
                     </div>
                     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                         <div class="col">Total</div>
-                        <div class="col text-right">R$ <?php echo number_format($total, 2);?></div>
+                        <div class="col text-right">R$ <?php echo $resultado = number_format($total, 2, ',','.');?></div>
                         
                           <input type="hidden" name="total" value="<?php echo $total; ?>">
                           <input type="hidden" name="mesa" value="<?php echo $_SESSION['mesa'];?>">
