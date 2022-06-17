@@ -80,7 +80,7 @@ include_once "includes/foto.php";
                     </li>
                 </ul>
             </nav>
-            <div class="main-sidebar" style="color:black">
+            <div class="main-sidebar" >
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
                         <a href="index.html">Grant-Food</a>
@@ -95,50 +95,44 @@ include_once "includes/foto.php";
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
-                            <div class="user-name" style="color:black"><?php echo $_SESSION['usuario'];?></div>
-                            <div class="user-role" style="color:black">
+                            <div class="user-name" ><?php echo $_SESSION['usuario'];?></div>
+                            <div class="user-role">
                                 Gerente
                             </div>
                         </div>
                     </div>
                     <ul class="sidebar-menu" >
 
-                        <li class="menu-header" style="color:black">Opções</li>
+                        <li class="menu-header">Opções</li>
                         <li>
-                            <a href="statusMesa.php" style="color:black"><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
+                            <a href="statusMesa.php" ><i class="ion ion-clipboard"></i><span>Status da Mesa</span></a>
                         </li>
                         <li>
-                            <a href="#" class="has-dropdown" style="color:black"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
+                            <a href="#" class="has-dropdown"><i class="ion ion-ios-people"></i><span>Funcionários</span></a>
                             <ul class="menu-dropdown">
-                                <li><a href="CadastrarFunc.php" style="color:black"><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
-                                <li ><a href="listarFunc.php" style="color:black"><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
+                                <li><a href="CadastrarFunc.php" ><i class="ion ion-person-add"></i>Cadastrar Funcionário</a></li>
+                                <li ><a href="listarFunc.php" ><i class="ion ion-ios-eye"></i>Consultar Funcionário</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-dropdown" style="color:black"><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
+                            <a href="#" class="has-dropdown" ><i class="ion ion-ios-cart"></i><span>Cardápio</span></a>
                             <ul class="menu-dropdown">
-<<<<<<< HEAD
                                 <li><a href="cardapio.php"><i class="ion ion-pizza"></i>Cadastrar itens</a></li>
                                 <li><a href="listarCad.php"><i class="ion ion-ios-eye"></i>Consultar itens</a></li>
-=======
-                                <li><a href="cardapio.php" style="color:black"><i class="ion ion-pizza"></i>Cadastrar Produto</a></li>
-                                <li><a href="listarCad.php" style="color:black"><i class="ion ion-ios-eye"></i>Consultar Produto</a></li>
-                                <li><a href="listarCateg.php" style="color:black"><i class="ion ion-ios-eye"></i>Consultar Categoria</a></li>
->>>>>>> 08f5210510d5ee430c49036bc011ec276438459f
                             </ul>
                         </li>
                         <li>
-                            <a href="#" class="has-dropdown" style="color:black"><i class="ion ion-medkit"></i><span>Inserir</span></a>
+                            <a href="#" class="has-dropdown" ><i class="ion ion-medkit"></i><span>Inserir</span></a>
                             <ul class="menu-dropdown">
-                                <li><a href="inserir.php" class="active" style="color:black"><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
-                                <li><a href="listarGastos.php" style="color:black"><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
+                                <li><a href="inserir.php" class="active" ><i class="ion ion-bag"></i>Cadastro de gastos</a></li>
+                                <li><a href="listarGastos.php" ><i class="ion ion-ios-eye"></i>Consultar gastos</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="listarAvaliar.php" style="color:black"><i class="ion ion-star"></i><span>Avaliações</span></a>
+                            <a href="listarAvaliar.php" ><i class="ion ion-star"></i><span>Avaliações</span></a>
                         </li>
                         <li class="active">
-                            <a href="relatorioVendas.php" style="color:black"><i class="ion ion-clipboard"></i><span>Relatório de vendas</span></a>
+                            <a href="relatorioVendas.php" ><i class="ion ion-clipboard"></i><span>Relatório de vendas</span></a>
                         </li>
 
                         <div class="sidebar-user">
@@ -295,7 +289,7 @@ include_once "includes/foto.php";
                             <div class="card-body">
                                 <div class="table-responsive" style="overflow-x:hidden;">
                                 <table class="table table-striped">
-                                <form action="includes/gerarPdf.php" method="POST">
+                                <form action="" method="POST">
                         <?php
                             if (isset($_SESSION['msg'])) {
                                 echo $_SESSION['msg'];
@@ -306,7 +300,7 @@ include_once "includes/foto.php";
                         <div class="row">
                             <div class="col-4 mb-3">
                                <label for="relatorio">Selecione o Mês</label>
-                                <select class="form-control" name="estado" id="estado" required>
+                                <select class="form-control" name="mes" id="mes" required>
                                     <option value="0" disabled selected>Selecione</option>
                                     <option value="1">Janeiro</option>
                                     <option value="2">Fevereiro</option>
@@ -320,14 +314,22 @@ include_once "includes/foto.php";
                                     <option value="10">Outubro</option>
                                     <option value="11">Novembro</option>
                                     <option value="12">Dezembro</option>
-                                </select>                  
+                                </select>                 
                             </div>
                             <div class="col-4 mb-3" style="margin-top:30px">
-                                    <button class="btn btn-success" name="btnConsultar" type="submit">Consultar</button>
+                                <button class="btn btn-success" name="btnConsultar" type="submit">Gerar PDF</button>
                             </div>
                         </div>
                         
                     </form>
+                    <?php
+                                  if(isset($_POST['btnConsultar'])){
+                                      $mes = $_POST['mes'];
+                                      $_SESSION['mes'] = $mes;
+                                        header("Location:includes/RelatorioMensal.php");
+                                  }
+
+                                ?> 
                                 </table>
                                 </div>
                             </div>
