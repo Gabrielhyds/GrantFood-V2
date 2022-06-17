@@ -21,7 +21,7 @@ include_once "includes/foto.php";
     <title>GrantFood - Status da Mesa</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
     <?php
-      //echo "<meta HTTP-EQUIV='refresh' CONTENT='15'>";
+      echo "<meta HTTP-EQUIV='refresh' CONTENT='15'>";
     ?>
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">

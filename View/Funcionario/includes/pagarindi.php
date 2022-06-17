@@ -78,7 +78,7 @@
                     <div class="col"><b>#<?php echo $values['id']?></b></div>
                     <div class="col"><?php echo $values['item']?></div>
                     <div class="col"><?php echo $values['quantidade']?></div>
-                    <div class="col">R$ <?php echo $values['total']?></div>
+                    <div class="col">R$ <?php echo $resultado = number_format($values['total'], 2, ',','.');?></div>                </div>
                 </div>
                 <?php
                 $total = $total + $values['total'];
@@ -89,8 +89,8 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="card-text text-right">
-                            <b>Total:</b> <ins><?php echo $total;?></ins> 
+                        <p class="card-text text-right" style="margin-right: 20px;">
+                        <b>Total:</b> <ins><?php echo $resultado = number_format($total, 2, ',','.');?></ins>
                         </p>
                     </div>
                     
@@ -140,6 +140,7 @@
                                 <input type="hidden" name="mesa" value="<?php echo $idMesa?>">
                         </div>
                     </div>
+                    <br>
               </div>
                       
                       <div class="card-footer text-muted text-center">

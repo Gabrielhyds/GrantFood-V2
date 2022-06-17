@@ -175,7 +175,7 @@
                     <div class="col"><b>#<?php echo $values['id']?></b></div>
                     <div class="col"><?php echo $values['item']?></div>
                     <div class="col"><?php echo $values['quantidade']?></div>
-                    <div class="col">R$ <?php echo $values['total']?></div>
+                    <div class="col">R$ <?php echo $resultado = number_format($values['total'], 2, ',','.');?></div>
                 </div>
                 <?php
                 $total = $total + $values['total'];
@@ -190,7 +190,7 @@
                     </div>
                     <div class="col-md-6">
                         <p class="card-text text-right">
-                            <b>Total:</b> <ins><?php echo $total;?></ins>
+                            <b>Total:</b> <ins><?php echo $resultado = number_format($total, 2, ',','.');?></ins>
                         </p>
                     </div>
                 </div>
