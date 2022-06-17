@@ -176,7 +176,7 @@ include_once "includes/foto.php";
                                                     <?php if($_SESSION['resultado'] > 0){ ?>
                                                         <div class="card card-sm bg-success">
                                                         <div class="card-icon">
-                                                            &#129297
+                                                         &#x24
                                                         </div>
                                                     <?php
                                                         }else{?>

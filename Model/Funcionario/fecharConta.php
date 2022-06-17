@@ -1,6 +1,7 @@
 <?php
 include('../../Banco/Conexao.php');
 session_start();
+date_default_timezone_set('America/Sao_Paulo');
 
 if(isset($_POST['finalizar'])){
 	$idPedido = $_POST['idPedido'];
@@ -36,7 +37,7 @@ if(isset($_POST['geral'])){
         foreach($_SESSION["ids"] as $keys => $values){
                 $pedido_id = $values["pedido_id"];
 
-               $sql2 = "INSERT INTO fechaConta (codPedido, formaPagamento, data) VALUES ('$pedido_id', '$metodo', NOW())";    
+               $sql2 = "INSERT INTO fechaconta (codPedido, formaPagamento, DATA) VALUES ('$pedido_id', '$metodo', NOW())";    
                $results2 = mysqli_query($connection, $sql2); 
 
                 $sql3 = "UPDATE pedido SET status = 'Finalizado' WHERE id = '$pedido_id'";

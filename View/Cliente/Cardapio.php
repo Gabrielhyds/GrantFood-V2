@@ -8,13 +8,11 @@
   }
 
   $idSessao = $_SESSION['chave'];
-  $sqlSessao = "SELECT codSessao FROM logsessao WHERE codSessao = '$idSessao'";
+  
+  $sqlSessao = "SELECT codSessao FROM sessao WHERE codSessao = '$idSessao'";
   $result = mysqli_query($connection, $sqlSessao);
-  $row = mysqli_fetch_array($result);
-
-  if(!empty($row['codSessao'])){
+  if(mysqli_num_rows($result) == 0){
       header("location: entrar");
-    exit;
   }
 
 if(isset($_POST["addcart"]))

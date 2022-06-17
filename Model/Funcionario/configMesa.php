@@ -19,10 +19,10 @@ if(isset($_POST['finalizar'])){
 	$idMesa = $_POST['mesa'];
 
     if(!empty($idMesa)){
-        $sql = "DELETE FROM pedidoitem WHERE mesa = '$idMesa'";
-        $sql2 = "DELETE FROM pedido WHERE mesa = '$idMesa'";
-        $sql3 = "UPDATE mesa SET status = 1 WHERE numero = '$idMesa'";
-        $sql4 = "DELETE FROM sessao WHERE codMesa = '$idMesa'";
+        $sql = "DELETE FROM pedidoitem WHERE mesa = '$idMesa'"; //nao foi
+        $sql2 = "DELETE FROM pedido WHERE mesa = '$idMesa'"; // foi
+        $sql3 = "UPDATE mesa SET status = 1 WHERE numero = '$idMesa'"; // foi
+        $sql4 = "DELETE FROM sessao WHERE codMesa = '$idMesa'"; //nao foi
 
         $results1  = mysqli_query($connection, $sql);
         $results2  = mysqli_query($connection, $sql2);

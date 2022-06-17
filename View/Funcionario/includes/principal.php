@@ -80,7 +80,7 @@
                     <div class="color-block-head">
                       Ocupado
                     </div>
-                    <div class="color-block-head" style="color: black">
+                    <div class="color-block-head" style="color: white">
                       Lugares: <b><?php echo $row['lugares']?></b>
                     </div> 
                     <div class="color-block-text">
@@ -101,7 +101,7 @@
                       <div class="color-block-head">
                         Fechar conta
                       </div>
-                      <div class="color-block-head" style="color: black">
+                      <div class="color-block-head" style="color: white">
                         Lugares: <b><?php echo $row['lugares']?></b>
                       </div> 
                       <div class="color-block-text">
