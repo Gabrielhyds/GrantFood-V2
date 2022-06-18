@@ -20,7 +20,16 @@ if(isset($dados['btnCadastrar'])){
     $error = array();
     // Verifica se o arquivo é uma imagem
     if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
-        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Isso não é uma imagem &#128552;</b></div>';
+        $_SESSION['msg'] = ' <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+        <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+        <div class="alert-body">
+            <button class="close" data-dismiss="alert">
+        <span>&times;</span>
+        </button>
+        <div class="alert-title">Atenção</div>
+            Isso não é uma <b>Imagem</b>
+        </div>
+        </div>';
         header("Location:../../View/Funcionario/cardapio.php");
     } 
     if (count($error) == 0) {
@@ -65,7 +74,7 @@ if(isset($dados['btnCadastrar'])){
                     <span>&times;</span>
                   </button>
                   <div class="alert-title">Atenção</div>
-                    Não foi possivel <b>Atualizar</b> o Funcionário
+                    Não foi possivel <b>Cadastrar</b> o item
                 </div>
               </div>';
                 header("Location:../../View/Funcionario/cardapio.php");

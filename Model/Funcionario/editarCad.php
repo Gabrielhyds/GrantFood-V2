@@ -19,7 +19,16 @@ if(isset($_POST['btnAtualizar'])){
     $error = array();
     // Verifica se o arquivo é uma imagem
     if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
-        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Isso não é uma imagem &#128552;</b></div>';
+        $_SESSION['msg'] = ' <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+        <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+        <div class="alert-body">
+          <button class="close" data-dismiss="alert">
+            <span>&times;</span>
+          </button>
+          <div class="alert-title">Atenção</div>
+            Isso não é uma <b>Imagem</b>
+        </div>
+      </div>';
         header("Location:../index.php");
     }
     if (count($error) == 0) {
@@ -38,11 +47,29 @@ if(isset($_POST['btnAtualizar'])){
                 $stmt->execute([$produto, $descricao, $nome_imagem, $preco, $categoria, $id]);
             
                 //Criar a variavel global para salvar a mensagem de sucesso
-                $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Produto Atualizado com sucesso &#128526</div>';
+                $_SESSION['msg'] = '<div class="alert alert-success alert-has-icon alert-dismissible show fade">
+                <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                <div class="alert-body">
+                  <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                  </button>
+                  <div class="alert-title">Parabéns</div>
+                    <b>Produto</b> atualizado com sucesso!
+                </div>
+              </div>';
                 header("Location:../../View/Funcionario/cardapio.php");
             }else{
                 //Criar a variavel global para salvar a mensagem de sucesso
-                $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Erro ao Atualizar o Produto &#128532;</b></div>';
+                $_SESSION['msg'] = '<div class="alert alert-dark alert-has-icon alert-dismissible show fade">
+                <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                <div class="alert-body">
+                  <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                  </button>
+                  <div class="alert-title">Atenção</div>
+                    Não foi possivel <b>Atualizar</b> o Item
+                </div>
+              </div>';
                 header("Location:../../View/Funcionario/editarCad.php?id=$id");
             }
     }

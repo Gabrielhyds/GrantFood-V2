@@ -21,8 +21,8 @@ include_once "includes/foto.php";
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
-    <title>Cadastrar Funcionario</title>
-
+    <title>GrantFood - Listar Funcionários</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.jpg">
 
     <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/modules/ionicons/css/ionicons.min.css">
@@ -139,7 +139,7 @@ include_once "includes/foto.php";
                     </div>
               <div>
               <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
-              <div class="row mt-5">
+              <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
@@ -179,10 +179,10 @@ include_once "includes/foto.php";
                                             <td><?php echo $tipo;?></td>
                                             <td> 
                                                 <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarFunc.php?id=<?php echo $row['idFunc']; ?>'">
-                                                    Editar
+                                                    <span class="ion-edit"></span>Editar
                                                 </button> 
                                                 <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirFunc.php?id=<?php echo $row['idFunc']; ?>'">
-                                                    Excluir
+                                                    <span class="ion-trash-a"></span> Excluir
                                                 </button>
                                             </td> 
                                         </tr>
