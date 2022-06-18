@@ -176,7 +176,7 @@ include_once "includes/foto.php";
                                             <table class="table table-striped" >
                                             <div class="row">
                                             <div class="col-12 col-sm-6 col-lg-3">
-                                                    <?php if($_SESSION['resultado'] > 0){ ?>
+                                                    <?php if(@$_SESSION['resultado'] > 0){ ?>
                                                         <div class="card card-sm bg-success">
                                                         <div class="card-icon">
                                                          &#x24

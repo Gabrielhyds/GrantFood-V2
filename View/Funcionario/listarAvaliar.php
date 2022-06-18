@@ -132,6 +132,11 @@ include 'includes/foto.php';
                         <li >
                             <a href="relatorioVendas.php"><i class="ion ion-clipboard"></i><span>Relatorio de vendas</span></a>
                         </li>
+                        <div class="sidebar-user">
+                          <div class="sidebar-user-picture">
+                                  <img  class="img d-flex align-items-center justify-content-center" src="assets/img/Logo.png" alt="" style="width:120px;height: 90px;margin-left:50px;margin-top:35px">
+                          </div>
+                        </div>
                 </aside>
             </div>
             <div class="main-content">
