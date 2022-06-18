@@ -297,7 +297,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .navbar .nav-link {
-    color: #fff;
+    color: rgb(255, 255, 255);
     padding-left: 10px !important;
     padding-right: 10px !important;
 }
@@ -854,7 +854,7 @@ body.sidebar-gone .main-content {
 }
 
 .card.card-primary {
-    border-top: 2px solid #574B90;
+    border-top: 2px solid #2b00ff;
 }
 
 .card.card-secondary {
@@ -1844,7 +1844,7 @@ table tr:hover .table-links {
 
 .card-chat .chat-content .chat-item.chat-right .chat-details .chat-text {
     text-align: left;
-    background-color: #574B90;
+    background-color: #0d3180;
     color: #fff;
 }
 

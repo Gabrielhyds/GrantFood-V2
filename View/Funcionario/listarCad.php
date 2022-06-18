@@ -152,7 +152,7 @@ include_once "includes/foto.php";
                       <li class="nav-item">
                         <a class="nav-link active" id="home-tab3" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="true">Produto</a>
                       </li>
-                      <li class="nav-item">
+                      <li class="nav-item ">
                         <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="false">Categoria</a>
                       </li>
                     </ul>
@@ -220,7 +220,7 @@ include_once "includes/foto.php";
                       <?php $sql = "SELECT * FROM categoria;"; $result = $connection->query($sql);?>
                         <div class="row">
                             <div class="col-12">
-                                <div class="card">
+                                <div class="card ">
                                 <div class="card-header">
                                     <h4>Categorias</h4>
                                 </div>

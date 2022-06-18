@@ -16,7 +16,16 @@
             $cad_categoria = $connPDO->prepare($query_categoria);
             $cad_categoria->bindParam(':nomeCat', $dados['nome'], PDO::PARAM_STR);
             $cad_categoria->execute();
-            $_SESSION['msg'] = '<div class="alert alert-success" role="alert">Categoria Cadastrada com sucesso &#128526</div>';
+            $_SESSION['msg'] = '<div class="alert alert-success alert-has-icon alert-dismissible show fade">
+                    <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                    <div class="alert-body">
+                      <button class="close" data-dismiss="alert">
+                        <span>&times;</span>
+                      </button>
+                      <div class="alert-title">Parabéns</div>
+                        <b>Categoria</b> Cadastrada com sucesso!
+                    </div>
+                  </div>';
             header("Location:../../View/Funcionario/cardapio.php");
     }
 ?>
