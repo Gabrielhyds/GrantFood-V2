@@ -77,7 +77,7 @@ include_once "includes/foto.php";
                             if (!is_null(@$foto)){ ?>
                             <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
                             <?php }else{ ?>
-                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/bg.jpg" alt="" style="width:78px;height: 75px;">
+                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/bg.jpg" alt="" style="width:78px;height: 75px;">
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
@@ -140,7 +140,64 @@ include_once "includes/foto.php";
                 }
               ?>
             </div>
-              
+            <div class="row mt-4">
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-primary">
+                    <i class="ion ion-android-bar"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total Produtos</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php $sql = "SELECT COUNT(*) AS total FROM produtos;"; $sql = $connection->query($sql);?>
+                    <?php $sql= $sql->fetch_assoc();
+                        echo $sql['total'];?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-warning">
+                    <i class="ion ion-ios-nutrition"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Total Categoria</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT COUNT(*) AS total FROM categoria"; 
+                        $sql = $connection->query($sql);
+                         $sql= $sql->fetch_assoc();
+                        echo $sql['total']?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-success">
+                    <i class="ion ion-cash"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Valor em produtos R$</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT sum(preco) AS total FROM produtos"; 
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        $resultado = $sql['total'];
+                        echo $resultado = number_format($resultado, 2, ',','.');?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="row mt-12">
               <div class="col-12 col-sm-12 col-lg-12">
                 <div class="card">
@@ -176,7 +233,7 @@ include_once "includes/foto.php";
                                         <tr>
                                         <th>Nome</th>
                                         <th>Descrição</th>
-                                        <th>Imagm</th>
+                                        <th>Imagem</th>
                                         <th>Preço</th>
                                         <th>Categoria</th>
                                         <th>Ação</th>
@@ -187,7 +244,7 @@ include_once "includes/foto.php";
                                             <td><?php echo $row["nome"]; ?></td>
                                             <td><?php echo $row["descricao"]; ?></td>
                                             <td><img src="assets/img/food/<?php echo $row['image']; ?>" alt="" style="width:75px;height:75px;margin-top:2px"></td>
-                                            <td><?php echo $row["preco"]; ?></td>
+                                            <td><?php $resultado = $row["preco"]; echo $resultado = number_format($resultado, 2, ',','.'); ?></td>
                                             <td><?php echo $row["nomeCat"]; ?></td>
                                             <td> 
                                                 <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarCad.php?id=<?php echo $row['id']; ?>'">
@@ -201,9 +258,16 @@ include_once "includes/foto.php";
                                         <?php   
                                             }
                                         }else{
-                                            echo '<div class="alert alert-danger" role="alert">
-                                                        Nenhum produto cadastrado! &#128552 
-                                                        </div>';
+                                            echo '<div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+                                            <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                                            <div class="alert-body">
+                                              <button class="close" data-dismiss="alert">
+                                                <span>&times;</span>
+                                              </button>
+                                              <div class="alert-title">Atenção</div>
+                                                <b>Nenhum</b> item Cadastrado
+                                            </div>
+                                          </div>';
                                             } 
                                             ?>
                                     </table>
@@ -241,9 +305,16 @@ include_once "includes/foto.php";
                                                     </button>
                                                 </td> 
                                             </tr>
-                                        <?php   }}else{echo '<div class="alert alert-danger" role="alert">
-                                                                Nenhuma categoria cadastrada! &#128552
-                                                            </div>';
+                                        <?php   }}else{echo '<div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+                                            <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                                            <div class="alert-body">
+                                              <button class="close" data-dismiss="alert">
+                                                <span>&times;</span>
+                                              </button>
+                                              <div class="alert-title">Atenção</div>
+                                                <b>Nenhuma</b> categoria Cadastrada
+                                            </div>
+                                          </div>';
                                                 } ?> 
                                     </table>
                                     </div>

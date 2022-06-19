@@ -1,7 +1,10 @@
+-- Criando e selecionando o banco 'Grantfood'
 CREATE DATABASE grantFood;
 USE grantFood;
 
--- funcionario 
+--
+-- tabela funcionario 
+--
 create table usuario(
     idFunc int primary KEY auto_increment,
     nome varchar(100),
@@ -11,13 +14,22 @@ create table usuario(
     genero varchar(20),
     cpf char(11),
     salario decimal(7,2),
-    cargaHoraria int , 
-    ponto varchar(15),
-    dica varchar(50),
+    cargaHoraria int, 
     foto VARCHAR(255)
 );
 
-SELECT * FROM usuario;
+--
+-- Inserção de dados na tabela usuário
+--
+INSERT INTO `usuario` (`idFunc`, `nome`, `tipo`, `senha`, `usuario`, `genero`, `cpf`, `salario`, `cargaHoraria`, `foto`) VALUES
+(1, 'AlessandrTeste', '1', '21232f297a57a5a743894a0e4a801fc3', 'ale', 'Masculino', '12345678912', '10.00', 8, NULL),
+(2, 'Alessandro Alves', '1', '81dc9bdb52d04dc20036dbd8313ed055', 'alealves', 'Masculino', '12345678912', '1500.00', 12, '82893a687df605a9dacad2f927ae5632.jpg'),
+(3, 'AleCozinha', '3', '202cb962ac59075b964b07152d234b70', 'alecozinha', 'Masculino', '12345678912', '1500.00', 45, '08ebdf7aac7211c4b0baba01f5c3c26e.jpg'),
+(4, 'gabriel ', '1', '21232f297a57a5a743894a0e4a801fc3', 'Gabriel', 'Masculino', '1234567890', '1000.00', 8, 'ee45c748d50bbd63773e9c51772551a1.png');
+
+--
+-- tabela endereço
+-- 
 create table endereco(
     idEndereco int primary key auto_increment,
     cep CHAR(9),
@@ -31,6 +43,9 @@ create table endereco(
     foreign key(codEndereco) references usuario(idFunc)
 );
 
+--
+-- tabela telefone
+--
 create table telefone(
     id int primary key auto_increment,
     ddd char(3),
@@ -40,6 +55,9 @@ create table telefone(
     foreign key(codTelefone) references usuario(idFunc)
 );
 
+--
+-- tabela gastos
+--
 create table gastos(
     id int primary key auto_increment,
     valor decimal(7,2),
@@ -48,16 +66,24 @@ create table gastos(
     data datetime
 );
 
+--
+-- tabela sistema
+--
 CREATE TABLE sistema (
   id int(5) NOT NULL,
   status varchar(50) DEFAULT NULL,
   pedidos int(11) DEFAULT NULL
 );
 
+--
+-- inserção de dados na tabela sistema
+--
 INSERT INTO `sistema` (`id`, `status`, `pedidos`) VALUES
 (1, 'On', 0);
 
--- CARDAPIO
+--
+-- tabela mesa
+--
 create table mesa(
 	numero int(11) primary key,
 	STATUS varchar(30) DEFAULT NULL,
@@ -65,6 +91,9 @@ create table mesa(
 	qtdUsada int(11) DEFAULT NULL
 );
 
+--
+-- tabela Sessão
+--
 CREATE TABLE sessao (
   codSessao varchar(30) primary key,
   codMesa int(11) DEFAULT NULL,
@@ -72,7 +101,9 @@ CREATE TABLE sessao (
   foreign key(codMesa) references mesa(numero)
 );
 
-
+--
+-- trigger tgr_sessao_delete
+--
 DELIMITER $$
 	CREATE TRIGGER tgr_sessao_delete AFTER DELETE
     ON sessao
@@ -82,14 +113,35 @@ DELIMITER $$
     END $$
 DELIMITER ;
 
-
+--
+-- tabela logSessao
+-- 
 create table logSessao(
   codSessao varchar(30) primary key,
   codMesa int(11) DEFAULT NULL,
   dataHora datetime DEFAULT NULL
 );
 
+--
+-- tabela Categoria
+--
+CREATE TABLE categoria(
+	id INT(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nomeCat VARCHAR(100)
+);
 
+--
+-- inserção de dados na tabela Categoria
+--
+INSERT INTO `categoria` (`id`, `nomeCat`) VALUES
+(1, 'pizza'),
+(2, 'bebida'),
+(3, 'lanche'),
+(4, 'sobremesa');
+
+--
+-- tabela produtos
+--
 create table produtos(
     id int(5) NOT NULL primary key auto_increment,
 	nome varchar(100) NOT NULL,
@@ -100,16 +152,15 @@ create table produtos(
 	FOREIGN KEY(categoria_id) REFERENCES categoria(id)
 );
 
+--
+-- iserção de dados na tabela produtos
+--
+INSERT INTO PRODUTOS VALUES (1,'Batata', 'batata e creme', 'Batata.png', 24.00, 'fries',3);
+INSERT INTO PRODUTOS VALUES (2,'Pizza Frango', 'frango', 'Pizza Frango.png', 55.00, 'pizza',1);
 
-CREATE TABLE categoria(
-	id INT(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	nomeCat VARCHAR(100)
-);
-
-
-insert INTO PRODUTOS VALUES (1,'Batata', 'batata e creme', 'Batata.png', 24.00, 'fries');
-insert INTO PRODUTOS VALUES (2,'Pizza Frango', 'frango', 'Pizza Frango.png', 55.00, 'pizza');
-
+--
+-- tabela pedido
+--
 create table pedido(
    id int NOT NULL primary key,
 	sessao varchar(255) NOT NULL,
@@ -122,6 +173,9 @@ create table pedido(
     foreign key(sessao) references sessao(codSessao)
 );
 
+--
+-- tabela logPedido 
+--
 create table logPedido(
 	id int NOT NULL primary key auto_increment,
 	sessao varchar(255) NOT NULL,
@@ -130,6 +184,9 @@ create table logPedido(
   data varchar(50) NOT NULL
 );
 
+--
+-- trigger trg_pedido_delete
+--
 DELIMITER $$
 	CREATE TRIGGER tgr_pedido_delete AFTER DELETE
     ON pedido
@@ -139,6 +196,9 @@ DELIMITER $$
     END $$
 DELIMITER ;
 
+--
+-- tabela pedidoitem
+--
 create table pedidoitem(
    id int(5) NOT NULL primary key auto_increment,
    mesa int(50) NOT NULL,
@@ -155,7 +215,9 @@ create table pedidoitem(
    foreign key(idProduto) references produtos(id)
 );
 
-
+--
+-- tabela logPedidoItem
+--
 create table logPedidoItem(
 	id int NOT NULL primary key auto_increment,
 	mesa int(50) NOT NULL,
@@ -167,7 +229,9 @@ create table logPedidoItem(
    total varchar(50) NOT NULL DEFAULT 0
 );
 
-
+--
+-- trigger tgr_pedidoitem_delete
+--
 DELIMITER $$
 	CREATE TRIGGER tgr_pedidoitem_delete AFTER DELETE
     ON pedidoitem
@@ -177,6 +241,9 @@ DELIMITER $$
     END $$
 DELIMITER ;
 
+-- 
+-- Tabela fechaConta
+--
 create table fechaConta(
     id int primary key auto_increment,
     codPedido INT,
@@ -184,14 +251,18 @@ create table fechaConta(
     DATA DATETIME
 );
 
+--
+-- Tabela Avaliação
+--
 CREATE TABLE avaliacao(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	qtdEstrela CHAR(1) NOT NULL ,
   comentario varchar(255) NULL,
-	data_hora DATETIME NOT NULL
+	data_hora DATETIME NOT NULL,
   codMesa int NOT NULL,
   foreign key(codMesa) references mesa(numero)
 );
+
 
 
 -- total de pedidos feitos

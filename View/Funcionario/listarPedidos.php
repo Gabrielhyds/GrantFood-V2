@@ -105,7 +105,7 @@ include_once "includes/foto.php";
                             if (!is_null(@$foto)){ ?>
                             <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
                             <?php }else{ ?>
-                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/bg.jpg" alt="" style="width:78px;height: 75px;">
+                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/bg.jpg" alt="" style="width:78px;height: 75px;">
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
@@ -260,8 +260,15 @@ include_once "includes/foto.php";
               }
             }else{
               ?>
-                <div class="alert alert-info" style="font-size: 25px" role="alert">
-                 Nenhum pedido.
+                <div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+                <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                <div class="alert-body">
+                    <button class="close" data-dismiss="alert">
+                    <span>&times;</span>
+                    </button>
+                    <div class="alert-title">Atenção</div>
+                    <b>Nenhum</b> pedido
+                </div>
                 </div>
               <?php
             }

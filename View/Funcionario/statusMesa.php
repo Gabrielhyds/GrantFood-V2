@@ -80,7 +80,7 @@ include_once "includes/foto.php";
                     <div class="sidebar-user">
                         <div class="sidebar-user-picture">
                         <?php
-                            if (!is_null($foto)){ ?>
+                            if (!is_null(@$foto)){ ?>
                             <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
                             <?php }else{ ?>
                                 <img  class="img d-flex align-items-center justify-content-center" src="assets/img/bg.jpg" alt="" style="width:78px;height: 75px;">

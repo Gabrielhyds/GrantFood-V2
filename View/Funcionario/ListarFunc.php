@@ -76,7 +76,7 @@ include_once "includes/foto.php";
                             if (!is_null(@$foto)){ ?>
                             <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/<?php echo $foto ?>" alt="" style="width:75px;height: 75px;">
                             <?php }else{ ?>
-                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/FotoPerfil/bg.jpg" alt="" style="width:78px;height: 75px;">
+                                <img  class="img d-flex align-items-center justify-content-center" src="assets/img/bg.jpg" alt="" style="width:78px;height: 75px;">
                             <?php }?>
                         </div>
                         <div class="sidebar-user-details">
@@ -126,7 +126,7 @@ include_once "includes/foto.php";
             <div class="main-content">
                 <section class="section">
                     <h1 class="section-header">
-                        <div>Produtos cadastrados no sistema</div>
+                        <div>Funcionários cadastrados no sistema</div>
                     </h1>
                     <form method="POST">
                     <div>
@@ -137,13 +137,88 @@ include_once "includes/foto.php";
                             }
                         ?>
                     </div>
-              <div>
+              <div class="row mt-4">
+              <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-primary">
+                    <i class="ion ion-ios-people"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Funcionários</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php $sql = "SELECT COUNT(*) AS total FROM usuario;"; $sql = $connection->query($sql);?>
+                    <?php $sql= $sql->fetch_assoc();
+                        echo $sql['total'];?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-warning">
+                    <i class="ion ion-person"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Gerente</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT COUNT(*) AS total FROM usuario WHERE tipo = 1"; 
+                        $sql = $connection->query($sql);
+                         $sql= $sql->fetch_assoc();
+                        echo $sql['total']?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-success">
+                    <i class="ion ion-person"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Garçom</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT COUNT(*) AS total FROM usuario WHERE tipo = 2"; 
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        echo $sql['total'];?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-3">
+                <div class="card card-sm-4">
+                  <div class="card-icon bg-success">
+                    <i class="ion ion-person"></i>
+                  </div>
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Cozinha</h4>
+                    </div>
+                    <div class="card-body">
+                    <?php 
+                        $sql = "SELECT COUNT(*) AS total FROM usuario WHERE tipo = 3"; 
+                        $sql = $connection->query($sql);
+                        $sql= $sql->fetch_assoc();
+                        echo $sql['total']?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
               <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
               <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
-                                <h4>Funcionarios Cadastrados no sistema</h4>
+                                <h4>Lista de Funcionários</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -189,9 +264,16 @@ include_once "includes/foto.php";
                                     <?php   
                                         }
                                     }else{
-                                        echo '<div class="alert alert-danger" role="alert">
-                                                    Nenhum produto cadastrado! &#128552 
-                                                    </div>';
+                                        echo '<div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+                                        <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                                        <div class="alert-body">
+                                          <button class="close" data-dismiss="alert">
+                                            <span>&times;</span>
+                                          </button>
+                                          <div class="alert-title">Atenção</div>
+                                            <b>Nenhum</b> funcionário Cadastrado
+                                        </div>
+                                      </div>';
                                         } 
                                         ?>
                                 </table>
