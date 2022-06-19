@@ -308,8 +308,8 @@ include_once "includes/foto.php";
                             </div>
                             </div>
                             <div >
-                            <button type="submit" class="btn btn-success" name="btnCadastrar">CADASTRAR</button>
-                            <button type="reset" class="btn btn-danger"  name="btnEditar">LIMPAR</button>
+                            <button type="submit" class="btn btn-success" name="btnCadastrar"><span class="fa fa-plus mr-1"></span>CADASTRAR</button>
+                            <button type="reset" class="btn btn-danger"  name="btnEditar"><span class="fa fa-trash mr-1"></span>LIMPAR</button>
                             </div>
                         </fieldset>
                         </form>

@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
     <title>Esqueceu Senha</title>
-
+    <link rel="icon" type="image/x-icon" href="assetsLogin/img/favicon.jpg">
     <link rel="stylesheet" href="assetsLogin/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assetsLogin/modules/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="assetsLogin/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
@@ -41,17 +41,17 @@
                             </div>
 
                             <div class="card-body">
-                                <p class="text-muted">Para recuperar a senha informe os dados abaixo</p>
+                                <p class="text-muted" style="color:black">Para recuperar a senha informe os dados abaixo</p>
                                 <form method="POST">
 									<!--USUÁRIO-->
                                     <div class="form-group">
-                                        <label for="usuario">Usuário</label>
+                                        <label for="usuario" style="color:black">Usuário</label>
                                         <input id="usuario" type="text" class="form-control" name="usuario" tabindex="1" required autofocus>
                                     </div>
 
 									<!--CPF-->
 									<div class="form-group">
-                                        <label for="cpf">CPF</label>
+                                        <label for="cpf" style="color:black">CPF</label>
                                         <input id="cpf" type="number" class="form-control" name="cpf" tabindex="1" required autofocus>
                                     </div>
 

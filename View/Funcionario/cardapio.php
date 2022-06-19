@@ -215,7 +215,7 @@ include_once "includes/foto.php";
                                             <input type="number" class="form-control" name="preco" placeholder="Valor" >
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-success" name="btnCadastrar">Cadastrar</button>
+                                    <button type="submit" class="btn btn-success" name="btnCadastrar"><span class="fa fa-plus mr-1"></span>Cadastrar</button>
                                 </form>
                             </div>
                         </div>

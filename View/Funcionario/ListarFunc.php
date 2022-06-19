@@ -281,7 +281,7 @@ include_once "includes/foto.php";
                                             <td><?php echo $tipo;?></td>
                                             <td> 
                                                 <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarFunc.php?id=<?php echo $row['idFunc']; ?>'">
-                                                    <span class="ion-edit"></span>Editar
+                                                    <span class="ion-edit"></span> Editar
                                                 </button> 
                                                 <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirFunc.php?id=<?php echo $row['idFunc']; ?>'">
                                                     <span class="ion-trash-a"></span> Excluir
@@ -354,7 +354,7 @@ include_once "includes/foto.php";
                                             <td><?php echo $tipo;?></td>
                                             <td> 
                                                 <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarFunc.php?id=<?php echo $row['idFunc']; ?>'">
-                                                    <span class="ion-edit"></span>Editar
+                                                    <span class="ion-edit"></span> Editar
                                                 </button> 
                                                 <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirFunc.php?id=<?php echo $row['idFunc']; ?>'">
                                                     <span class="ion-trash-a"></span> Excluir
@@ -427,7 +427,7 @@ include_once "includes/foto.php";
                                             <td><?php echo $tipo;?></td>
                                             <td> 
                                                 <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarFunc.php?id=<?php echo $row['idFunc']; ?>'">
-                                                    <span class="ion-edit"></span>Editar
+                                                    <span class="ion-edit"></span> Editar
                                                 </button> 
                                                 <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirFunc.php?id=<?php echo $row['idFunc']; ?>'">
                                                     <span class="ion-trash-a"></span> Excluir

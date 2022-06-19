@@ -15,7 +15,7 @@ session_start();
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
     <title>Alterar Senha</title>
-
+    <link rel="icon" type="image/x-icon" href="assetsLogin/img/favicon.jpg">
     <link rel="stylesheet" href="assetsLogin/modules/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assetsLogin/modules/ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="assetsLogin/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
@@ -45,17 +45,17 @@ session_start();
                             </div>
 
                             <div class="card-body">
-                                <p class="text-muted">Digite a nova senha</p>
+                                <p class="text-muted" style="color:black">Digite a nova senha</p>
                                 <form method="POST">
 									<!--Senha-->
                                     <div class="form-group">
-                                        <label for="senha">Senha</label>
+                                        <label for="senha" style="color:black">Senha</label>
                                         <input id="senha" type="password" class="form-control" name="senha" tabindex="1" required autofocus>
                                     </div>
 
 									<!--Confirma Senha-->
                                     <div class="form-group">
-                                        <label for="ConfirmaSenha">Confirmar Senha</label>
+                                        <label for="ConfirmaSenha" style="color:black">Confirmar Senha</label>
                                         <input id="ConfirmaSenha" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="ConfirmaSenha" tabindex="2" required>
                                         <div id="pwindicator" class="pwindicator">
                                             <div class="bar"></div>
