@@ -10,7 +10,12 @@ session_start();
  ob_start();
 
 //verifica se a sessão usuario existe  
-require_once('includes/sessao.php');
+if(!isset($_SESSION['permissao']))
+    {
+      //se não houver sessão ele redireciona para tela de login
+      header("Location: ../Login/index.php");
+      exit;
+}
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 

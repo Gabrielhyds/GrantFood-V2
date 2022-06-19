@@ -84,9 +84,6 @@ include_once "includes/foto.php";
                             <div class="d-sm-none d-lg-inline-block">olá, <?php echo $_SESSION['usuario']?></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="profile.html" class="dropdown-item has-icon">
-                                <i class="ion ion-android-person"></i> Perfil
-                            </a>
                             <a href="../../Controller/Funcionario/sair.php" class="dropdown-item has-icon">
                                 <i class="ion ion-log-out"></i> Sair
                             </a>

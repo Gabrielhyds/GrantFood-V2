@@ -233,14 +233,14 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .btn-primary {
-    background-color: #574B90;
+    background-color: #0d3180;
 }
 
 .btn-primary:focus,
 .btn-primary:focus:active,
 .btn-primary:active,
 .btn-primary:hover {
-    background-color: #4b3f82 !important;
+    background-color: #0d3180 !important;
 }
 
 .btn-round {
@@ -854,7 +854,7 @@ body.sidebar-gone .main-content {
 }
 
 .card.card-primary {
-    border-top: 2px solid #574B90;
+    border-top: 2px solid #0d3180;
 }
 
 .card.card-secondary {

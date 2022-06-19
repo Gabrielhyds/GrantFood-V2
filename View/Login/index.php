@@ -37,7 +37,7 @@
                                 <form method="POST" action="../../Controller/Funcionario/logarFunc.php" class="needs-validation" novalidate="">
                                     <!--Usuário-->
                                     <div class="form-group">
-                                        <label for="email">Usuário</label>
+                                        <label for="usuario" style="color:black">Usuário</label>
                                         <input id="usuario" type="text" class="form-control" name="usuario" tabindex="1" required autofocus>
                                         <div class="invalid-feedback">
                                             Necessario o usuário
@@ -45,9 +45,9 @@
                                     </div>
                                     <!--Senha-->
                                     <div class="form-group">
-                                        <label for="password" class="d-block">Senha
+                                        <label for="password" class="d-block" style="color:black">Senha
                                           <div class="float-right">
-                                            <a href="esqueceuSenha.php">
+                                            <a href="esqueceuSenha.php" style="color:black">
                                               Esqueceu a senha?
                                             </a>
                                           </div>
@@ -60,7 +60,7 @@
 
                                     <!--Permissão-->
                                     <div class="form-group">
-                                        <label for="password" class="d-block">Permissão</label>
+                                        <label for="password" class="d-block" style="color:black">Permissão</label>
                                         <select name="permissao" id="permissao" class="form-control" tabindex="2" required>
                                           <option value="0" disabled selected>Selecione</option>
                                           <option value="1">Gerente</option>
@@ -98,8 +98,7 @@
     <script src="assetsLogin/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
     <script src="assetsLogin/js/sa-functions.js"></script>
     <script src="assetsLogin/js/scripts.js"></script>
-    <script src="assetsLogin/js/custom.js"></script>
-    <script src="assetsLogin/js/demo.js"></script>
+
 </body>
 
 </html>

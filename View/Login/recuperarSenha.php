@@ -117,8 +117,6 @@ session_start();
     <script src="assetsLogin/js/sa-functions.js"></script>
 
     <script src="assetsLogin/js/scripts.js"></script>
-    <script src="assetsLogin/js/custom.js"></script>
-    <script src="assetsLogin/js/demo.js"></script>
 </body>
 
 </html>
