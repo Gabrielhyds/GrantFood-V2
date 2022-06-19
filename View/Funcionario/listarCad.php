@@ -281,7 +281,7 @@ include_once "includes/foto.php";
 
                       <!-- CADASTRAR CATEGORIAS-->
                       <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
-                      <?php $sql = "SELECT * FROM categoria;"; $result = $connection->query($sql);?>
+                        <?php $sql = "SELECT * FROM categoria;"; $result = $connection->query($sql);?>
                         <div class="row">
                             <div class="col-12">
                                 <div class="card ">

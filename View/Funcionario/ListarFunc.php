@@ -195,7 +195,7 @@ include_once "includes/foto.php";
               </div>
               <div class="col-12 col-sm-6 col-lg-3">
                 <div class="card card-sm-4">
-                  <div class="card-icon bg-success">
+                  <div class="card-icon bg-danger">
                     <i class="ion ion-person"></i>
                   </div>
                   <div class="card-wrap">
@@ -213,12 +213,34 @@ include_once "includes/foto.php";
                 </div>
               </div>
             </div>
-              <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
-              <div class="row">
+            <div class="row mt-12">
+              <div class="col-12 col-sm-12 col-lg-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Seleciona o tipo para listar</h4>
+                  </div>
+                  <div class="card-body">
+                    <ul class="nav nav-pills" id="myTab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="home-tab3" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="true">Gerente</a>
+                      </li>
+                      <li class="nav-item ">
+                        <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="false">Garçom</a>
+                      </li>
+                      <li class="nav-item ">
+                        <a class="nav-link" id="profile-tab4" data-toggle="tab" href="#profile4" role="tab" aria-controls="profile4" aria-selected="false">Cozinha</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+
+                        <!-- CADASTRAR PRODUTOS -->
+                    <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab3">
+                    <?php $sql = "SELECT * FROM usuario WHERE tipo = 1"; $result = $connection->query($sql);?>
+                    <div class="row">
                         <div class="col-12">
                             <div class="card">
                             <div class="card-header">
-                                <h4>Lista de Funcionários</h4>
+                                <h4>Lista de Funcionários com a permissão Gerente</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -271,24 +293,174 @@ include_once "includes/foto.php";
                                             <span>&times;</span>
                                           </button>
                                           <div class="alert-title">Atenção</div>
-                                            <b>Nenhum</b> funcionário Cadastrado
+                                            <b>Nenhum</b> funcionário cadastrado com a permissão Gerente
                                         </div>
                                       </div>';
                                         } 
                                         ?>
-                                </table>
+                                    </table>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
+                        </div>      
+                        
+                    </div>
+                    <!-- CADASTRAR CATEGORIAS-->
+                    <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
+                        <?php $sql = "SELECT * FROM usuario WHERE tipo = 2"; $result = $connection->query($sql);?>
+                        <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                            <div class="card-header">
+                                <h4>Lista de Funcionários com a permissão Garçom</h4>
                             </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Usuário</th>
+                                    <th>Salário</th>
+                                    <th>Permissão</th>
+                                    <th>Ação</th>
+                                    </tr>
+                                    <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
+                                    
+                                        <tr>
+                                            <td><?php echo $row["idFunc"]; ?></td>
+                                            <td><?php echo $row["nome"]; ?></td> 
+                                            <td><?php echo $row["usuario"]; ?></td>
+                                            <td><?php echo $row["salario"]; ?></td>
+                                            <?php
+                                                switch($row['tipo']){
+                                                case 1:
+                                                    $tipo = 'Gerente';
+                                                    break;
+                                                case 2:
+                                                    $tipo = "Garçom";
+                                                    break;
+                                                case 3:
+                                                    $tipo = "Cozinha";
+                                                    break;
+                                                }
+                                            ?>
+                                            <td><?php echo $tipo;?></td>
+                                            <td> 
+                                                <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarFunc.php?id=<?php echo $row['idFunc']; ?>'">
+                                                    <span class="ion-edit"></span>Editar
+                                                </button> 
+                                                <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirFunc.php?id=<?php echo $row['idFunc']; ?>'">
+                                                    <span class="ion-trash-a"></span> Excluir
+                                                </button>
+                                            </td> 
+                                        </tr>
+                                    <?php   
+                                        }
+                                    }else{
+                                        echo '<div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+                                        <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                                        <div class="alert-body">
+                                          <button class="close" data-dismiss="alert">
+                                            <span>&times;</span>
+                                          </button>
+                                          <div class="alert-title">Atenção</div>
+                                            <b>Nenhum</b> funcionário Cadastrado com a permissão Garçom
+                                        </div>
+                                      </div>';
+                                        } 
+                                        ?>
+                                    </table>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                      </div>
+                    <!-- CADASTRAR CATEGORIAS-->
+                    <div class="tab-pane fade" id="profile4" role="tabpanel" aria-labelledby="profile-tab4">
+                        <?php $sql = "SELECT * FROM usuario WHERE tipo = 3"; $result = $connection->query($sql);?>
+                        <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                            <div class="card-header">
+                                <h4>Lista de Funcionários com a permissão Cozinha</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Usuário</th>
+                                    <th>Salário</th>
+                                    <th>Permissão</th>
+                                    <th>Ação</th>
+                                    </tr>
+                                    <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
+                                    
+                                        <tr>
+                                            <td><?php echo $row["idFunc"]; ?></td>
+                                            <td><?php echo $row["nome"]; ?></td> 
+                                            <td><?php echo $row["usuario"]; ?></td>
+                                            <td><?php echo $row["salario"]; ?></td>
+                                            <?php
+                                                switch($row['tipo']){
+                                                case 1:
+                                                    $tipo = 'Gerente';
+                                                    break;
+                                                case 2:
+                                                    $tipo = "Garçom";
+                                                    break;
+                                                case 3:
+                                                    $tipo = "Cozinha";
+                                                    break;
+                                                }
+                                            ?>
+                                            <td><?php echo $tipo;?></td>
+                                            <td> 
+                                                <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarFunc.php?id=<?php echo $row['idFunc']; ?>'">
+                                                    <span class="ion-edit"></span>Editar
+                                                </button> 
+                                                <button type="button" name="excluir" class="btn btn-danger" onclick="window.location.href='../../Model/Funcionario/excluirFunc.php?id=<?php echo $row['idFunc']; ?>'">
+                                                    <span class="ion-trash-a"></span> Excluir
+                                                </button>
+                                            </td> 
+                                        </tr>
+                                    <?php   
+                                        }
+                                    }else{
+                                        echo '<div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+                                        <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                                        <div class="alert-body">
+                                          <button class="close" data-dismiss="alert">
+                                            <span>&times;</span>
+                                          </button>
+                                          <div class="alert-title">Atenção</div>
+                                            <b>Nenhum</b> funcionário cadastrado com a permissão Cozinha
+                                        </div>
+                                      </div>';
+                                        } 
+                                        ?>
+                                    </table>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    </div>
                         </div>
                         </div>
                       </div>
               </div>  
           </div>  
-                                    </form>
-        </div>
-      </div>
-
+            
       
 
     </section>
