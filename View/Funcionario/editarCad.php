@@ -190,7 +190,7 @@ include 'includes/foto.php';
                                     
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form action="../../Model/Funcionario/cadastrarCad.php" method="POST" enctype="multipart/form-data">
+                                    <form action="../../Model/Funcionario/editarCad.php" method="POST" enctype="multipart/form-data">
                                         <div class="form-row">
                                             <input type="hidden" name="id" value="<?php echo $row_produto['id']; ?>">
                                             <div class="form-group col-md-6">
@@ -235,7 +235,7 @@ include 'includes/foto.php';
                                                 <input type="number" class="form-control" name="preco" value="<?php echo $row_produto['preco'];?>" >
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-success" name="btnCadastrar">Cadastrar</button>
+                                        <button type="submit" class="btn btn-success" name="btnAtualizar">Atualizar</button>
                                     </form>
                                 </div>
                             </div>
