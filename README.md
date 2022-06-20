@@ -16,8 +16,15 @@
     - cadastrar funcionários
     - editar/excluir Funcionarios
   - RELATORIO DE VENDAS
-    - lista os gastos,vendas..
-    - e gera um relatorio em PDF
+    - relatorio Geral
+      - total de vendas
+      - lucro/prejuizo
+      - total de gastos
+      - total de pedidos
+    - relatorio mensal
+      - total de vendas (referênte aquele mês)
+      - lucro/prejuizo (referênte aquele mês)
+      - total de gastos (referênte aquele mês)
   - CARDÁPIO
     - cadastrar Produtos/categoria no cardápio
     - editar/excluir produtos do cardápio
