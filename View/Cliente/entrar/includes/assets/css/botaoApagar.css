@@ -1,0 +1,120 @@
+.email {
+    color: white;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    width: 150px;
+    -webkit-tap-highlight-color: transparent;
+    transition: width 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+      height 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+      box-shadow 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+      border-radius 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  .email:not(.expand) {
+    cursor: pointer;
+  }
+  
+  .from {
+    position: absolute;
+    transition: opacity 200ms 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  }
+  .from-contents {
+    display: flex;
+    flex-direction: row;
+    transform-origin: 0 0;
+    background-color: red;
+    transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  .to {
+    opacity: 0;
+    position: absolute;
+    transition: opacity 100ms cubic-bezier(0.4, 0.0, 1, 1);
+  }
+  .to-contents {
+    transform: scale(.55);
+    transform-origin: 0 0;
+    transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .name {
+    font-size: 14px;
+    line-height: 32px;
+    margin-left: 10px;
+  }
+  .top {
+    background: #dc3545;
+    display: flex;
+    flex-direction: row;
+    height: 45px;
+    transition: height 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+    width: 300px;
+  }
+  .name-large {
+    color: white;
+    font-size: 16px;
+    line-height: 45px;
+    margin-left: 20px;
+  }
+  .x-touch {
+    align-items: center;
+    align-self: center;
+    cursor: pointer;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    margin-left: auto;
+    width: 50px;
+  }
+  .x {
+    background: black;
+    border-radius: 10px;
+    height: 20px;
+    position: relative;
+    width: 20px;
+  }
+  .x-touch:hover .x {
+    background: white;
+  }
+  .line1 {
+    background: red;
+    height: 12px;
+    position: absolute;
+    transform: translateX(9px) translateY(4px) rotate(45deg);
+    width: 2px;
+  }
+  .line2 {
+    background: red;
+    height: 12px;
+    position: absolute;
+    transform: translateX(9px) translateY(4px) rotate(-45deg);
+    width: 2px;
+  }
+  
+  .bottom {
+    background: #FFF;
+    color:  #444247;
+    font-size: 14px;
+    height: 100px;
+    padding-top: 5px;
+    width: 300px;
+  }
+  .email.expand {
+    border-radius: 6px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.10), 0 6px 6px rgba(0,0,0,0.16);
+    height: 140px;
+    width: 300px;
+  }
+  .expand .from {
+    opacity: 0;
+    transition: opacity 100ms cubic-bezier(0.4, 0.0, 1, 1);
+  }
+  .expand .from-contents {
+    transform: scale(1.91);
+  }
+  .expand .to {
+    opacity: 1;
+    transition: opacity 200ms 100ms cubic-bezier(0.0, 0.0, 0.2, 1);
+  }
+  .expand .to-contents {
+    transform: scale(1);
+  }

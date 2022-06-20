@@ -30,6 +30,16 @@
   <!-- font awesome style -->
   <link href="../assets/css/font-awesome.min.css" rel="stylesheet" />
 
+  <link rel="stylesheet" href="includes/assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="includes/assets/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="includes/assets/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+  <link rel="stylesheet" href="includes/assets/css/demo.css">
+  <link rel="stylesheet" href="includes/assets/css/style.css">
+
+
+
+
   <!-- Custom styles for this template -->
   <link href="../assets/css/style.css" rel="stylesheet" />
   <!-- responsive style -->
@@ -179,6 +189,9 @@
                                     
        
     ?>
+
+
+  <script src="includes/assets/js/scripts.js"></script>
 </body>
 
 </html>

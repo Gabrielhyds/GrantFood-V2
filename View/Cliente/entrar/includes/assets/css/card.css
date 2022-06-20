@@ -1,0 +1,234 @@
+
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: #f3f3f3;
+    font-size: 16px;
+    color: #000;
+}
+
+/* buttons */
+
+.btnCard {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.btnCard,
+a.btnCard {
+    border-radius: 2px;
+    letter-spacing: 0.8px;
+    font-size: 14px;
+    line-height: 1;
+    padding: 16px 28px;
+    text-transform: uppercase;
+    -moz-transition: all 0.15s ease-out;
+    -o-transition: all 0.15s ease-out;
+    -webkit-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    border: 2px solid transparent;
+}
+
+.btn-transparent-lblue,
+a.btn-transparent-lblue {
+    border: 1px solid #005bb7;
+    color: #005bb7;
+    background: transparent;
+}
+
+.btn-transparent-lblue,
+a.btn-transparent-lblue:hover {
+    border: 1px solid #005bb7;
+    color: #fff;
+    background: #005bb7;
+}
+
+.btn-transparent,
+a.btn-transparent {
+    border: 1px solid #004387;
+    color: #004387;
+    background: transparent;
+}
+
+.btn-transparent,
+a.btn-transparent:hover {
+    border: 1px solid #004387;
+    color: #fff;
+    background: #004387;
+}
+
+.btn-transparent-green,
+a.btn-transparent-green {
+    border: 1px solid #49ac01;
+    color: #49ac01;
+    background: transparent;
+}
+
+.btn-transparent-green,
+a.btn-transparent-green:hover {
+    border: 1px solid #49ac01;
+    color: #fff;
+    background: #49ac01;
+}
+
+/* cards */
+.color-block-wrapper {
+    margin-top: 40px;
+    -webkit-box-shadow: 0px 15px 30px 0px rgba(124, 124, 124, 0.15);
+    -moz-box-shadow: 0px 15px 30px 0px rgba(124, 124, 124, 0.15);
+    box-shadow: 0px 15px 30px 0px rgba(124, 124, 124, 0.15);
+}
+
+.color-block {
+    color: #fff;
+    border-radius: 2px 2px 0 0;
+    padding: 30px 40px 40px;
+    height: 160px;
+    margin-top: 75px;
+    position: relative;
+}
+
+.color-block:before {
+    content: '';
+    border-radius: 2px 2px 0 0;
+    width: calc(100% - 12px);
+    height: 6px;
+    position: absolute;
+    top: -6px;
+    left: 6px;
+    opacity: 0.4;
+    z-index: 20;
+}
+
+.color-block:after {
+    content: '';
+    border-radius: 2px 2px 0 0;
+    width: calc(100% - 24px);
+    height: 12px;
+    position: absolute;
+    top: -12px;
+    left: 12px;
+    opacity: 0.3;
+    z-index: 10;
+}
+
+.color-block-head {
+    opacity: 0.5;
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.color-block-bottom {
+    background: #fff;
+    padding: 30px 40px;
+}
+
+.color-block-text {
+    width: 200px;
+    letter-spacing: 0.5px;
+    font-size: 20px;
+}
+
+
+/* cards colors */
+
+.color-block-lblue {
+    background: #005bb7;
+    z-index: 30;
+}
+
+.color-block-lblue:before {
+    background: #0064ca;
+}
+
+.color-block-lblue:after {
+    background: #007fff;
+}
+
+.color-block-dblue {
+    background: #004387;
+}
+
+.color-block-dblue:before {
+    background: #0c457e;
+}
+
+.color-block-dblue:after {
+    background: #135ba5;
+}
+
+.color-block-green {
+    background: #49ac01;
+}
+
+.color-block-green:before {
+    background: #49ac01;
+}
+
+.color-block-green:after {
+    background: #82c600;
+    opacity: 0.4;
+}
+
+
+/* cards icons */
+
+.color-block-icon-list .color-block-text:after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    background: url(https://image.ibb.co/nv13dV/icons.png) no-repeat;
+    background-position: -250px -90px;
+    right: 40px;
+    top: calc(50% - 20px);
+    opacity: 0.4;
+}
+
+.color-block-icon-person .color-block-text:after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    background: url(https://image.ibb.co/nv13dV/icons.png) no-repeat;
+    background-position: -60px -10px;
+    right: 40px;
+    top: calc(50% - 20px);
+    opacity: 0.4;
+}
+
+.color-block-icon-lock .color-block-text:after {
+    content: '';
+    display: block;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    background: url(https://image.ibb.co/nv13dV/icons.png) no-repeat;
+    background-position: -140px -10px;
+    right: 40px;
+    top: calc(50% - 20px);
+    opacity: 0.4;
+}
