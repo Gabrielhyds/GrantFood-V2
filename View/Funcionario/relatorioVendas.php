@@ -165,6 +165,7 @@ include_once "includes/foto.php";
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="false">Relatório Mensal</a>
+                        
                       </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
@@ -195,11 +196,12 @@ include_once "includes/foto.php";
                                                         <?php } ?>
                                                     <div class="card-wrap">
                                                         <div class="card-body">
-                                                        <?php $sql1 = "SELECT SUM(logped.preco) as logpedido FROM logpedido AS logped;"; $sql1 = $connection->query($sql1);?>
+                                                        <?php $sql1 = "SELECT SUM(logped.preco) as logpedido FROM logpedido AS logped"; $sql1 = $connection->query($sql1);?>
                                                         <?php $sql2 = "SELECT SUM(g.valor) as valorGasto FROM gastos AS g;"; $sql2 = $connection->query($sql2);?>
                                                         <?php $sql1= $sql1->fetch_assoc();$sql2= $sql2->fetch_assoc();
                                                             $resultado = $sql1['logpedido'] - $sql2['valorGasto'];
                                                             echo $resultado = number_format($resultado, 2, ',','.');
+
                                                             $_SESSION['resultado'] = $resultado;
                                                             ?>
                                                         </div>
@@ -282,11 +284,18 @@ include_once "includes/foto.php";
                             </div>
                         </div>
                       </div>
-
+                      
                       <!-- LISTAR CONTAS-->
                       <div class="tab-pane fade" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
                       <div class="row mt-5">
                         <div class="col-12">
+                        <?php
+                            if (isset($_SESSION['msg2'])) {
+                                echo @$_SESSION['msg2'];
+                                unset($_SESSION['msg2']);
+                            }
+                           
+                        ?>
                             <div class="card">
                             <div class="card-header">
                                 <h4>Relatório Mensal</h4>
@@ -295,13 +304,6 @@ include_once "includes/foto.php";
                                 <div class="table-responsive" style="overflow-x:hidden;">
                                 <table class="table table-striped">
                                 <form action="" method="POST">
-                        <?php
-                            if (isset($_SESSION['msg'])) {
-                                echo $_SESSION['msg'];
-                                unset($_SESSION['msg']);
-                            }
-                        ?>
-
                         <div class="row">
                             <div class="col-4 mb-3">
                                <label for="relatorio">Selecione o Mês</label>
@@ -319,6 +321,7 @@ include_once "includes/foto.php";
                                     <option value="10">Outubro</option>
                                     <option value="11">Novembro</option>
                                     <option value="12">Dezembro</option>
+                                    
                                 </select>                 
                             </div>
                             <div class="col-4 mb-3" style="margin-top:30px">
@@ -328,12 +331,23 @@ include_once "includes/foto.php";
                         
                     </form>
                     <?php
-                                  if(isset($_POST['btnConsultar'])){
-                                      $mes = $_POST['mes'];
-                                      $_SESSION['mes'] = $mes;
-                                        header("Location:includes/RelatorioMensal.php");
-                                  }
-
+                    if(!isset($_POST['mes'])){
+                        $_SESSION['msg2'] = '<div class="alert alert-danger alert-has-icon alert-dismissible show fade">
+                        <div class="alert-icon"><i class="ion ion-ios-lightbulb-outline"></i></div>
+                            <div class="alert-body">
+                            <button class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                            <div class="alert-title">Atenção</div>
+                                É necessario <b>selecionar</b> um mês para gerar o PDF
+                            </div>
+                        </div>'; 
+                    }else if(isset($_POST['btnConsultar']) ){
+                        $mes =  $_POST['mes'];
+                        $_SESSION['mes'] = $mes;
+                
+                        header("Location:includes/RelatorioMensal.php");
+                    }
                                 ?> 
                                 </table>
                                 </div>
@@ -348,6 +362,7 @@ include_once "includes/foto.php";
                     </div>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>  

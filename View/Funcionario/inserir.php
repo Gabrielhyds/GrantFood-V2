@@ -174,7 +174,7 @@ include_once "includes/foto.php";
                   <input type="number" class="form-control" name="valor" placeholder="Valor... " >
                 </div>
             
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6" >
                   <label for="estoque">Tipo (luz, água, etc)</label>
                   <select class="form-control" name="descricao">
                     <option value="0">Selecione...</option>
@@ -199,8 +199,8 @@ include_once "includes/foto.php";
                   <input type="number" class="form-control" name="valor" placeholder="Valor..."  >
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="utensilios">Descri</label>
-                  <input type="text" class="form-control" name="descricao" placeholder="Descricao..." >
+                  <label for="utensilios">Descrição</label>
+                  <input type="text" class="form-control" name="descricao" placeholder="Descricao..." required >
                 </div>
               </div>
               <button type="submit" class="btn btn-success" name="adicionarManutencao">Enviar (Manutenção)</button>
