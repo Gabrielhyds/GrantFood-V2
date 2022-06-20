@@ -5,7 +5,7 @@
           <div class="page-inner">
             <h1>404</h1>
             <div class="page-description">
-              No momento o sistema está off &#128531
+              No momento o sistema está offline &#128531
             </div>
             <div class="page-search">
               <div class="mt-3">
