@@ -90,4 +90,30 @@
 
 ![MicrosoftTeams-image (8)](https://user-images.githubusercontent.com/85001629/175424364-fca92eb0-43a1-430e-9561-f2ae516b5943.png)
 
+# Tela do garçom
+
+- baixar QrCode da mesa
+
+![MicrosoftTeams-image (11)](https://user-images.githubusercontent.com/85001629/175427456-6c4ee15c-ae31-4032-8209-31a25b5ff96a.png)
+
+- Pedidos enviados
+
+![MicrosoftTeams-image (13)](https://user-images.githubusercontent.com/85001629/175427453-85549c15-bdc0-4aa2-9b73-ac39a910af14.png)
+
+- Pagar conta
+
+![MicrosoftTeams-image (12)](https://user-images.githubusercontent.com/85001629/175427454-6453cbd9-11ff-43b4-ac0c-3c584751e872.png)
+
+# Tela da Cozinha
+
+- Pedidos enviados
+
+![MicrosoftTeams-image (14)](https://user-images.githubusercontent.com/85001629/175427452-82a59ffb-d5be-4b86-a7ad-eecc95aa2209.png)
+
+- Pedidos em preparos
+
+![MicrosoftTeams-image (15)](https://user-images.githubusercontent.com/85001629/175427451-eb9b98cb-a372-441e-a6be-f98bebc51802.png)
+
+
+
   
