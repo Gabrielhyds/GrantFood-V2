@@ -49,7 +49,22 @@
   - fechar conta
   - avaliar o sistema 
   
-  # imagens do sistema Gerente/Garçom/Cozinha
+  # imagens do sistema
+  
+ - Tela de Login
+  
+  ![Captura de Tela (12)](https://user-images.githubusercontent.com/85001629/175430011-ebe1e699-6b57-44b6-9c1d-3fc3df4408f6.png)
+  
+  - esqueceu a senha (validação de usuario)
+  
+  ![Captura de Tela (13)](https://user-images.githubusercontent.com/85001629/175430012-1bc09796-a4c5-419e-9ee0-a630a5dc0b96.png)
+  
+  - Redefine a senha conforme o usuário
+  
+  ![Captura de Tela (11)](https://user-images.githubusercontent.com/85001629/175430010-73cad1c3-b5d1-4511-a307-9e57992604b1.png)
+
+  # Tela do Gerente
+  
 - Tela de status mesa (Gerente)
 
 ![MicrosoftTeams-image](https://user-images.githubusercontent.com/85001629/175424384-77e4322c-8c63-489e-a347-745d8404be32.png)
