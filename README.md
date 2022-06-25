@@ -129,6 +129,25 @@
 
 ![MicrosoftTeams-image (15)](https://user-images.githubusercontent.com/85001629/175427451-eb9b98cb-a372-441e-a6be-f98bebc51802.png)
 
+# Tela dos Clientes
+- home da pagina do cliente
 
+![MicrosoftTeams-image (4)](https://user-images.githubusercontent.com/85001629/175751990-137bee15-95f1-426f-8b03-e73a910b4684.png)
+
+- cardapio
+
+![MicrosoftTeams-image (6)](https://user-images.githubusercontent.com/85001629/175751993-fd5e2442-7d05-442f-98b1-ba89134494bb.png)
+
+- carrinho 
+
+![MicrosoftTeams-image (5)](https://user-images.githubusercontent.com/85001629/175751991-a453fdfa-e62a-439b-9cd0-a138be4945d1.png)
+
+- pedido enviado
+
+![MicrosoftTeams-image (3)](https://user-images.githubusercontent.com/85001629/175751989-5ac5ba67-a066-497d-a655-b8fe09a60ffa.png)
+
+- footer do site
+
+![MicrosoftTeams-image (1)](https://user-images.githubusercontent.com/85001629/175751997-3a25a783-7b0d-43d8-8978-dd819f9ac244.png)
 
   
